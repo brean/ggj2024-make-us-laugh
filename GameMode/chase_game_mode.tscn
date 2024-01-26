@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyxbmhq4eceq0"]
+
+[ext_resource type="Script" path="res://GameMode/ChaseGameMode.gd" id="1_m2d65"]
+
+[node name="ChaseGameMode" type="Node3D"]
+script = ExtResource("1_m2d65")

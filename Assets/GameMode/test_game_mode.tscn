@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://loopv88sm7ve"]
-
-[ext_resource type="Script" path="res://Scripts/GameMode/GameMode.gd" id="1_oxbt8"]
-
-[node name="TestGameMode" type="Node3D"]
-script = ExtResource("1_oxbt8")
