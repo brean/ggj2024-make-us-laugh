@@ -15,6 +15,7 @@ func _physics_process(delta):
 
 
 func _on_hitbox_hit_something():
+	self.hitbox.knockback_dir = self.dir
 	self.queue_free()
 
 

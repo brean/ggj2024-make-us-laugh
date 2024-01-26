@@ -29,6 +29,12 @@ use_collision = true
 collision_mask = 0
 size = Vector3(3.67345, 2.05164, 8.26923)
 
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(0.103149, -0.708697, -0.697932, 0.103614, 0.705513, -0.701082, 0.989255, 0, 0.146204, 11.9791, 1.43336, -0.838077)
+use_collision = true
+collision_mask = 0
+size = Vector3(3.67345, 2.05164, 8.26923)
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.850738, 0.52559, 0, -0.52559, 0.850738, 0.872195, 7.86511, 14.7793)
 
@@ -39,6 +45,7 @@ dummy = false
 
 [node name="Player2" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+player_id = -1
 dummy = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

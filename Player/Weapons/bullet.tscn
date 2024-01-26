@@ -31,7 +31,7 @@ mesh = SubResource("SphereMesh_1tfpb")
 shape = SubResource("SphereShape3D_7d386")
 
 [node name="Hitbox" parent="." instance=ExtResource("1_x7ilj")]
-knockback_strength = 420
+knockback_strength = 550
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
 shape = SubResource("SphereShape3D_ee1y2")

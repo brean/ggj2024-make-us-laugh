@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_j7un2"]
 [ext_resource type="PackedScene" uid="uid://bqhq0org0h7hc" path="res://Player/HitHurtBox/hurtbox.tscn" id="2_d61p2"]
-[ext_resource type="PackedScene" uid="uid://b44s6m1sql0q8" path="res://Player/Weapons/gun.tscn" id="2_n0one"]
+[ext_resource type="PackedScene" uid="uid://l4im14mvdbg8" path="res://Player/Weapons/punch.tscn" id="2_iva54"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_345q3"]
 
@@ -40,7 +40,7 @@ mesh = SubResource("BoxMesh_d8dol")
 
 [node name="WeaponHand" type="Node3D" parent="ModelNode"]
 
-[node name="Gun" parent="ModelNode/WeaponHand" instance=ExtResource("2_n0one")]
+[node name="Punch" parent="ModelNode/WeaponHand" instance=ExtResource("2_iva54")]
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_d61p2")]
 
