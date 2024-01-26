@@ -39,7 +39,7 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.352941, 0.117647, 0.878431, 1)
 theme_override_font_sizes/font_size = 70
-text = "12"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -49,7 +49,7 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.878431, 0.282353, 0.113725, 1)
 theme_override_font_sizes/font_size = 70
-text = "12"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -59,7 +59,7 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.113725, 0.878431, 0.654902, 1)
 theme_override_font_sizes/font_size = 70
-text = "12"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -69,6 +69,6 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.878431, 0.831373, 0.113725, 1)
 theme_override_font_sizes/font_size = 70
-text = "12"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
