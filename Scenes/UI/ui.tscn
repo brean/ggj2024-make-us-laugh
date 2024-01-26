@@ -31,17 +31,41 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Score_p1" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-text = "100"
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.352941, 0.117647, 0.878431, 1)
+theme_override_font_sizes/font_size = 70
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Score_p2" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-text = "100"
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.878431, 0.282353, 0.113725, 1)
+theme_override_font_sizes/font_size = 70
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Score_p3" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-text = "100"
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.113725, 0.878431, 0.654902, 1)
+theme_override_font_sizes/font_size = 70
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Score_p4" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-text = "100"
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.878431, 0.831373, 0.113725, 1)
+theme_override_font_sizes/font_size = 70
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1

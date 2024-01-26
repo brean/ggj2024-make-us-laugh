@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://3nt1gsmetmi3"]
+[gd_scene load_steps=8 format=3 uid="uid://3nt1gsmetmi3"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_j7un2"]
+[ext_resource type="PackedScene" uid="uid://bqhq0org0h7hc" path="res://Player/HitHurtBox/hurtbox.tscn" id="2_d61p2"]
+[ext_resource type="PackedScene" uid="uid://l4im14mvdbg8" path="res://Player/Weapons/punch.tscn" id="2_iva54"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_345q3"]
 
@@ -8,6 +10,9 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_d8dol"]
 size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l4oax"]
+radius = 0.4
 
 [node name="Player" type="RigidBody3D"]
 collision_layer = 2
@@ -32,3 +37,14 @@ skeleton = NodePath("../..")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ModelNode/Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.607741, 0.445933)
 mesh = SubResource("BoxMesh_d8dol")
+
+[node name="WeaponHand" type="Node3D" parent="ModelNode"]
+
+[node name="Punch" parent="ModelNode/WeaponHand" instance=ExtResource("2_iva54")]
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_d61p2")]
+
+[node name="CollisionShape3D" parent="Hurtbox" index="0"]
+shape = SubResource("CapsuleShape3D_l4oax")
+
+[editable path="Hurtbox"]

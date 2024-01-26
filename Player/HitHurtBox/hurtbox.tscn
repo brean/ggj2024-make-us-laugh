@@ -1,7 +1,15 @@
-[gd_scene format=3 uid="uid://bqhq0org0h7hc"]
+[gd_scene load_steps=2 format=3 uid="uid://bqhq0org0h7hc"]
+
+[ext_resource type="Script" path="res://Player/HitHurtBox/hurtbox.gd" id="1_7ndy1"]
 
 [node name="Hurtbox" type="Area3D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_7ndy1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
 [node name="InvisibleTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="InvisibleTimer" to="." method="_on_invisible_timer_timeout"]

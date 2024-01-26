@@ -23,6 +23,8 @@ var core_actions = []
 # ... so it doesn't need to generate them every time
 var device_actions = {}
 
+var handled_devices = [false, false, false, false, false, false, false, false]
+
 func _init():
 	reset()
 
@@ -56,6 +58,9 @@ func _on_joy_connection_changed(device: int, connected: bool):
 		_delete_actions_for_device(device)
 
 func _create_actions_for_device(device: int):
+	if handled_devices[device]:
+		return
+	handled_devices[device] = true
 	device_actions[device] = {}
 	for core_action in core_actions:
 		var new_action = "%s%s" % [device, core_action]

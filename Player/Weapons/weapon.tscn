@@ -1,5 +1,13 @@
-[gd_scene format=3 uid="uid://byla65wkvuqbj"]
+[gd_scene load_steps=2 format=3 uid="uid://byla65wkvuqbj"]
+
+[ext_resource type="Script" path="res://Player/Weapons/weapon.gd" id="1_ups3l"]
 
 [node name="Weapon" type="Node3D"]
+script = ExtResource("1_ups3l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
