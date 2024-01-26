@@ -11,3 +11,4 @@ func give_points(player_id: int, points: int):
 	
 	points_per_player[player_id] += points
 	points_updated.emit(player_id, points)
+	print("points updated: player ", player_id, " points: ", points)

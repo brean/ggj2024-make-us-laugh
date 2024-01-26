@@ -4,3 +4,4 @@
 
 [node name="ChaseGameMode" type="Node3D"]
 script = ExtResource("1_m2d65")
+duration = 10.0
