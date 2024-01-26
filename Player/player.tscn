@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://3nt1gsmetmi3"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_j7un2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_345q3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sp42m"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_d8dol"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Player" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 3
+mass = 40.0
+can_sleep = false
+lock_rotation = true
+script = ExtResource("1_j7un2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_345q3")
+
+[node name="GroundCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1.1, 0)
+
+[node name="ModelNode" type="Node3D" parent="."]
+
+[node name="Model" type="MeshInstance3D" parent="ModelNode"]
+mesh = SubResource("CapsuleMesh_sp42m")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelNode/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.607741, 0.445933)
+mesh = SubResource("BoxMesh_d8dol")
