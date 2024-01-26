@@ -1,13 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://l4im14mvdbg8"]
+[gd_scene load_steps=7 format=3 uid="uid://l4im14mvdbg8"]
 
 [ext_resource type="PackedScene" uid="uid://byla65wkvuqbj" path="res://Player/Weapons/weapon.tscn" id="1_lp11l"]
 [ext_resource type="PackedScene" uid="uid://juu16uw5o7so" path="res://Player/HitHurtBox/hitbox.tscn" id="2_o7ffo"]
 [ext_resource type="Script" path="res://Player/Weapons/punch.gd" id="2_p86ai"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bf01"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.658824, 0.211765, 0.27451, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_x1jew"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_wy11b"]
 
 [node name="Punch" instance=ExtResource("1_lp11l")]
 script = ExtResource("2_p86ai")
+cooldown = 0.2
+
+[node name="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.00215)
+visible = false
+material_override = SubResource("StandardMaterial3D_1bf01")
+mesh = SubResource("SphereMesh_x1jew")
 
 [node name="Hitbox" parent="." index="2" instance=ExtResource("2_o7ffo")]
 monitoring = false
@@ -17,5 +31,10 @@ knockback_strength = 400
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0035)
 shape = SubResource("SphereShape3D_wy11b")
+
+[node name="AttackTimer" type="Timer" parent="." index="3"]
+one_shot = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 
 [editable path="Hitbox"]

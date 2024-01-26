@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://dk2apli142xp7"]
+
+[ext_resource type="Script" path="res://Player/Weapons/bullet.gd" id="1_jfecc"]
+[ext_resource type="PackedScene" uid="uid://juu16uw5o7so" path="res://Player/HitHurtBox/hitbox.tscn" id="1_x7ilj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlhdw"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.309804, 0.34902, 0.835294, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1tfpb"]
+radius = 0.4
+height = 0.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7d386"]
+radius = 0.35
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ee1y2"]
+radius = 0.4
+
+[node name="Bullet" type="CharacterBody3D"]
+top_level = true
+collision_layer = 0
+script = ExtResource("1_jfecc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_tlhdw")
+mesh = SubResource("SphereMesh_1tfpb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_7d386")
+
+[node name="Hitbox" parent="." instance=ExtResource("1_x7ilj")]
+knockback_strength = 550
+
+[node name="CollisionShape3D" parent="Hitbox" index="0"]
+shape = SubResource("SphereShape3D_ee1y2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="hit_something" from="Hitbox" to="." method="_on_hitbox_hit_something"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="Hitbox"]

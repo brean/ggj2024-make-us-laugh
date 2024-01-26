@@ -1,7 +1,12 @@
 extends RigidBody3D
 
-const OriginalSpeed := 5.0
-const OriginalAcc := 12.0
+const MaterialList = [preload("res://Player/Materials/player_blue.tres"), 
+					  preload("res://Player/Materials/player_red.tres"), 
+					  preload("res://Player/Materials/player_green.tres"), 
+					  preload("res://Player/Materials/player_yellow.tres")]
+
+const OriginalSpeed := 5.5
+const OriginalAcc := 14.5
 const OriginalJumpImpulse := 250.0
 const RotationSpeed := 0.2
 
@@ -26,10 +31,11 @@ signal got_hit # self id any enemy id that hit this player
 signal player_did_fall 
 
 func _ready():
+	GameManager.players[player_id] = self
 	self.hurtbox.player = self
 	self.hurtbox.connect("got_hit", self.hitbox_got_hit)
 	self.update_weapon()
-	
+	$ModelNode/Model.material_override = self.MaterialList[self.player_id]
 
 func _physics_process(delta):
 	# Get input
@@ -42,7 +48,8 @@ func _physics_process(delta):
 		# Add impuls if not to fast
 		var horizontal_velocity = Vector2(self.linear_velocity.x, self.linear_velocity.z)
 		if horizontal_velocity.length() < self.max_speed:
-			self.direction = self.direction.normalized()
+			var input_strength = self.direction.length()
+			self.direction = min(1.0, input_strength) * self.direction.normalized()
 			self.apply_central_impulse(acceleration * Vector3(self.direction.x, 0.0, self.direction.y))
 		
 		# Jump
@@ -52,14 +59,19 @@ func _physics_process(delta):
 				self.apply_central_impulse(jump_impulse * Vector3(0.0, 1.0, 0.0))
 
 		# Attack
-		if MultiplayerInput.is_action_just_pressed(self.player_id, "Punch"):
+		if MultiplayerInput.is_action_pressed(self.player_id, "Punch"):
 			self.current_weapon.use_weapon()
+
+		# Reset if stuck (maybe remove later)
+		if MultiplayerInput.is_action_just_pressed(self.player_id, "Reset") and self.can_reset:
+			self.reset_player()
 
 	# Rotate model
 	self.rotate_model()
 
 	if self.global_position.y < -5:
-		pass
+		self.reset_player()
+		self.emit_signal("player_did_fall", self.player_id)
 
 
 func rotate_model():
@@ -70,9 +82,14 @@ func rotate_model():
 
 
 func update_weapon():
-	self.current_weapon = self.weapon_hand.get_children()[0]
+	self.current_weapon = self.weapon_hand.get_children()[-1]
 	self.current_weapon.update_owner(self.player_id)
 
 
 func hitbox_got_hit(enemy_id):
 	self.emit_signal("got_hit", self.player_id, enemy_id)
+
+
+func reset_player():
+	self.global_position = Vector3(0, 5.0, 0)
+	self.linear_velocity = Vector3(0, 0, 0)

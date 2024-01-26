@@ -6,12 +6,15 @@ class_name Weapon
 
 var on_cooldown := false
 
+@onready var cooldown_timer = $CooldownTimer
+
+
 func use_weapon():
 	pass
 
 
 func update_owner(value):
-	self.onwner_id = value
+	self.owner_id = value
 
 
 func _on_cooldown_timer_timeout():
