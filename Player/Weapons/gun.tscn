@@ -1,5 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://b44s6m1sql0q8"]
+[gd_scene load_steps=5 format=3 uid="uid://b44s6m1sql0q8"]
 
 [ext_resource type="PackedScene" uid="uid://byla65wkvuqbj" path="res://Player/Weapons/weapon.tscn" id="1_56yop"]
+[ext_resource type="Script" path="res://Player/Weapons/gun.gd" id="2_k00gw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_erdap"]
+albedo_color = Color(0.258824, 0.25098, 0.392157, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_65mx6"]
+size = Vector3(0.4, 0.4, 1)
 
 [node name="Gun" instance=ExtResource("1_56yop")]
+script = ExtResource("2_k00gw")
+
+[node name="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08372, 0.086799, 0)
+material_override = SubResource("StandardMaterial3D_erdap")
+mesh = SubResource("BoxMesh_65mx6")

@@ -18,16 +18,21 @@ sky = SubResource("Sky_ksave")
 [node name="BattleScene" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.404165, 0, 0.357101)
-size = Vector3(24, 1, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.419474, 0, -0.803345)
+use_collision = true
+collision_mask = 0
+size = Vector3(32.4853, 1, 24.9026)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.951894, 0.306426, 0, -0.306426, 0.951894, 0.872195, 5.73414, 13.8397)
+transform = Transform3D(1, 0, 0, 0, 0.850738, 0.52559, 0, -0.52559, 0.850738, 0.872195, 7.86511, 14.7793)
 
 [node name="Player" parent="." instance=ExtResource("1_rysm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-player_id = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82714, 2, 0)
+player_id = -1
 dummy = false
+
+[node name="Player2" parent="." instance=ExtResource("1_rysm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_00kde")

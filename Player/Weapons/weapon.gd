@@ -6,6 +6,9 @@ class_name Weapon
 
 var on_cooldown := false
 
+@onready var cooldown_timer = $CooldownTimer
+
+
 func use_weapon():
 	pass
 
