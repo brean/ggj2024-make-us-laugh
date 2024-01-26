@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://caefj76lpbcl3"]
+[gd_scene load_steps=15 format=3 uid="uid://caefj76lpbcl3"]
 
 [ext_resource type="PackedScene" uid="uid://3nt1gsmetmi3" path="res://Player/player.tscn" id="1_rysm8"]
 [ext_resource type="PackedScene" uid="uid://dpd7gr332dte2" path="res://Scenes/UI/ui.tscn" id="1_s85fw"]
 [ext_resource type="PackedScene" uid="uid://chtkpqwflii5j" path="res://GameModeController/game_mode_controller.tscn" id="2_x7cyb"]
 [ext_resource type="PackedScene" uid="uid://dyxbmhq4eceq0" path="res://GameMode/chase_game_mode.tscn" id="3_agjdt"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_73lj1"]
-top_radius = 0.8
+[ext_resource type="Shader" path="res://Shader/water.gdshader" id="5_d4asp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x8cwy"]
 sky_top_color = Color(0.352941, 0.654902, 0.968627, 1)
@@ -20,8 +18,53 @@ sky_material = SubResource("ProceduralSkyMaterial_x8cwy")
 [sub_resource type="Environment" id="Environment_00kde"]
 background_mode = 2
 sky = SubResource("Sky_ksave")
+fog_light_energy = 2.68
+fog_density = 0.3995
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c3kht"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xh4hp"]
+width = 64
+height = 64
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_c3kht")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_41ham"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j1yf7"]
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_41ham")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g3bmt"]
+render_priority = 0
+shader = ExtResource("5_d4asp")
+shader_parameter/speed = 0.05
+shader_parameter/color = Color(0, 0.431373, 0.988235, 1)
+shader_parameter/edge_color = Color(0.741176, 0.92549, 0.992157, 1)
+shader_parameter/edge_scale = 2.0
+shader_parameter/near = 0.1
+shader_parameter/far = 100.0
+shader_parameter/wave_strength = Vector2(0.2, 0.3)
+shader_parameter/wave_frequncy = Vector2(10, 8)
+shader_parameter/time_factor = Vector2(0.2, 0.4)
+shader_parameter/noise1 = SubResource("NoiseTexture2D_xh4hp")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_j1yf7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_12pd0"]
+size = Vector2(100, 100)
+subdivide_width = 32
+subdivide_depth = 32
 
 [node name="BattleScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_00kde")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 9, 17)
+shadow_enabled = true
 
 [node name="UI" parent="." instance=ExtResource("1_s85fw")]
 
@@ -48,23 +91,16 @@ transform = Transform3D(1, 0, 0, 0, 0.850738, 0.52559, 0, -0.52559, 0.850738, 0.
 
 [node name="Player" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82714, 2, 0)
-player_id = -1
-dummy = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("CylinderMesh_73lj1")
 
 [node name="Player2" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 player_id = -1
 dummy = false
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_00kde")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 9, 17)
-shadow_enabled = true
-
 [node name="GameModeController" parent="." instance=ExtResource("2_x7cyb")]
 game_modes = Array[PackedScene]([ExtResource("3_agjdt")])
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.373678, 0)
+material_override = SubResource("ShaderMaterial_g3bmt")
+mesh = SubResource("PlaneMesh_12pd0")
