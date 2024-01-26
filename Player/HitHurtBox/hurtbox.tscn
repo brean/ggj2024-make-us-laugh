@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bqhq0org0h7hc"]
+
+[node name="Hurtbox" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="InvisibleTimer" type="Timer" parent="."]
