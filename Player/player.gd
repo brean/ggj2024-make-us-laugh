@@ -55,11 +55,16 @@ func _physics_process(delta):
 		if MultiplayerInput.is_action_just_pressed(self.player_id, "Punch"):
 			self.current_weapon.use_weapon()
 
+		# Reset if stuck (maybe remove later)
+		if MultiplayerInput.is_action_just_pressed(self.player_id, "Reset") and self.can_reset:
+			self.reset_player()
+
 	# Rotate model
 	self.rotate_model()
 
 	if self.global_position.y < -5:
-		pass
+		self.reset_player()
+		self.emit_signal("player_did_fall", self.player_id)
 
 
 func rotate_model():
@@ -76,3 +81,8 @@ func update_weapon():
 
 func hitbox_got_hit(enemy_id):
 	self.emit_signal("got_hit", self.player_id, enemy_id)
+
+
+func reset_player():
+	self.global_position = Vector3(0, 5.0, 0)
+	self.linear_velocity = Vector3(0, 0, 0)
