@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://caefj76lpbcl3"]
+
+[ext_resource type="PackedScene" uid="uid://3nt1gsmetmi3" path="res://Player/player.tscn" id="1_rysm8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x8cwy"]
+sky_top_color = Color(0.352941, 0.654902, 0.968627, 1)
+sky_horizon_color = Color(0.729412, 0.913725, 0.941176, 1)
+ground_bottom_color = Color(0.25098, 0.466667, 0.792157, 1)
+ground_horizon_color = Color(0.658824, 0.741176, 0.882353, 1)
+
+[sub_resource type="Sky" id="Sky_ksave"]
+sky_material = SubResource("ProceduralSkyMaterial_x8cwy")
+
+[sub_resource type="Environment" id="Environment_00kde"]
+background_mode = 2
+sky = SubResource("Sky_ksave")
+
+[node name="BattleScene" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.404165, 0, 0.357101)
+size = Vector3(24, 1, 18)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.951894, 0.306426, 0, -0.306426, 0.951894, 0.872195, 5.73414, 13.8397)
+
+[node name="Player" parent="." instance=ExtResource("1_rysm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+player_id = 1
+dummy = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_00kde")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 9, 17)
+shadow_enabled = true
