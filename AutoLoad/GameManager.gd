@@ -2,7 +2,7 @@ extends Node
 
 signal points_updated(player_id: int, points: int)
 
-var players: Array[RigidBody3D] = []
+var players: Dictionary = {}
 var points_per_player: Dictionary = {}
 
 func give_points(player_id: int, points: int):
