@@ -15,7 +15,7 @@ albedo_color = Color(0.658824, 0.211765, 0.27451, 1)
 
 [node name="Punch" instance=ExtResource("1_lp11l")]
 script = ExtResource("2_p86ai")
-cooldown = 1.0
+cooldown = 0.2
 
 [node name="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.00215)
@@ -26,7 +26,7 @@ mesh = SubResource("SphereMesh_x1jew")
 [node name="Hitbox" parent="." index="2" instance=ExtResource("2_o7ffo")]
 monitoring = false
 monitorable = false
-knockback_strength = 400
+knockback_strength = 500
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0035)
