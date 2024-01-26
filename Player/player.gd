@@ -10,37 +10,56 @@ const RotationSpeed := 0.2
 @export var max_speed := self.OriginalSpeed
 @export var acceleration := self.OriginalAcc
 @export var jump_impulse := self.OriginalJumpImpulse
+@export var dummy := true
 
 var direction := Vector2.ZERO
+var current_weapon : Weapon
 
 @onready var model = $ModelNode
 @onready var ground_cast = $GroundCast
+@onready var hurtbox = $Hurtbox
+@onready var weapon_hand = $ModelNode/WeaponHand
+
+
+func _ready():
+	self.hurtbox.player = self
+	self.update_weapon()
+	
 
 func _physics_process(delta):
 	# Get input
-	self.direction.x = - MultiplayerInput.get_action_strength(self.player_id, "Left") \
-						+ MultiplayerInput.get_action_strength(self.player_id, "Right")
-	self.direction.y = - MultiplayerInput.get_action_strength(self.player_id, "Forward") \
-						+ MultiplayerInput.get_action_strength(self.player_id, "Backward")
+	if not self.dummy:
+		self.direction.x = - MultiplayerInput.get_action_strength(self.player_id, "Left") \
+							+ MultiplayerInput.get_action_strength(self.player_id, "Right")
+		self.direction.y = - MultiplayerInput.get_action_strength(self.player_id, "Forward") \
+							+ MultiplayerInput.get_action_strength(self.player_id, "Backward")
 
-	# Add impuls if not to fast
-	var horizontal_velocity = Vector2(self.linear_velocity.x, self.linear_velocity.z)
-	if horizontal_velocity.length() < self.max_speed:
-		self.direction = self.direction.normalized()
-		self.apply_central_impulse(acceleration * Vector3(self.direction.x, 0.0, self.direction.y))
-	
-	# Jump
-	if MultiplayerInput.is_action_just_pressed(self.player_id, "Jump"):
-		self.ground_cast.force_raycast_update()
-		if self.ground_cast.is_colliding():
-			self.apply_central_impulse(jump_impulse * Vector3(0.0, 1.0, 0.0))
+		# Add impuls if not to fast
+		var horizontal_velocity = Vector2(self.linear_velocity.x, self.linear_velocity.z)
+		if horizontal_velocity.length() < self.max_speed:
+			self.direction = self.direction.normalized()
+			self.apply_central_impulse(acceleration * Vector3(self.direction.x, 0.0, self.direction.y))
+		
+		# Jump
+		if MultiplayerInput.is_action_just_pressed(self.player_id, "Jump"):
+			self.ground_cast.force_raycast_update()
+			if self.ground_cast.is_colliding():
+				self.apply_central_impulse(jump_impulse * Vector3(0.0, 1.0, 0.0))
+
+		# Attack
+		if MultiplayerInput.is_action_just_pressed(self.player_id, "Punch"):
+			self.current_weapon.use_weapon()
 
 	# Rotate model
 	self.rotate_model()
 
 func rotate_model():
 	var look_direction = Vector2(self.linear_velocity.x, -self.linear_velocity.z)
-	if not look_direction == Vector2.ZERO:
+	if look_direction.length_squared() > 0.01:
 		self.model.rotation.y = lerp_angle(self.model.rotation.y, look_direction.angle() + PI/2.0, 
 											self.RotationSpeed)
 
+
+func update_weapon():
+	self.current_weapon = self.weapon_hand.get_children()[0]
+	self.current_weapon.update_owner(self.player_id)
