@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://uopngikihi5a"]
+
+[ext_resource type="FontFile" uid="uid://lby1wjlub1an" path="res://Assets/BlackHanSans-Regular.ttf" id="1_2nh1a"]
+
+[resource]
+base_font = ExtResource("1_2nh1a")
