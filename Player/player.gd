@@ -14,6 +14,7 @@ const RotationSpeed := 0.2
 
 var direction := Vector2.ZERO
 var current_weapon : Weapon
+var can_reset := false
 
 @onready var model = $ModelNode
 @onready var ground_cast = $GroundCast
@@ -21,8 +22,12 @@ var current_weapon : Weapon
 @onready var weapon_hand = $ModelNode/WeaponHand
 
 
+signal got_hit # self id any enemy id that hit this player
+signal player_did_fall 
+
 func _ready():
 	self.hurtbox.player = self
+	self.hurtbox.connect("got_hit", self.hitbox_got_hit)
 	self.update_weapon()
 	
 
@@ -53,6 +58,10 @@ func _physics_process(delta):
 	# Rotate model
 	self.rotate_model()
 
+	if self.global_position.y < -5:
+		pass
+
+
 func rotate_model():
 	var look_direction = Vector2(self.linear_velocity.x, -self.linear_velocity.z)
 	if look_direction.length_squared() > 0.01:
@@ -63,3 +72,7 @@ func rotate_model():
 func update_weapon():
 	self.current_weapon = self.weapon_hand.get_children()[0]
 	self.current_weapon.update_owner(self.player_id)
+
+
+func hitbox_got_hit(enemy_id):
+	self.emit_signal("got_hit", self.player_id, enemy_id)
