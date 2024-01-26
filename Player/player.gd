@@ -31,6 +31,7 @@ signal got_hit # self id any enemy id that hit this player
 signal player_did_fall 
 
 func _ready():
+	GameManager.players[player_id] = self
 	self.hurtbox.player = self
 	self.hurtbox.connect("got_hit", self.hitbox_got_hit)
 	self.update_weapon()
