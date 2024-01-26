@@ -17,13 +17,17 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GameManager="*res://AutoLoad/GameManager.gd"
 MultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
 <<<<<<<HEADMultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
-GameManager="*res://AutoLoad/GameManager.gd"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/multiplayer_input/plugin.cfg")
+
+[gui]
+
+theme/custom_font="res://Assets/BlackHans.tres"
 
 [input]
 
