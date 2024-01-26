@@ -52,7 +52,7 @@ func _physics_process(delta):
 				self.apply_central_impulse(jump_impulse * Vector3(0.0, 1.0, 0.0))
 
 		# Attack
-		if MultiplayerInput.is_action_just_pressed(self.player_id, "Punch"):
+		if MultiplayerInput.is_action_pressed(self.player_id, "Punch"):
 			self.current_weapon.use_weapon()
 
 		# Reset if stuck (maybe remove later)

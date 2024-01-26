@@ -14,7 +14,7 @@ func use_weapon():
 
 
 func update_owner(value):
-	self.onwner_id = value
+	self.owner_id = value
 
 
 func _on_cooldown_timer_timeout():
