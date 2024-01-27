@@ -27,7 +27,7 @@ grow_vertical = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_bottom = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -222,16 +222,16 @@ fov = 60.0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="Barbarian" parent="." instance=ExtResource("6_k36vc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, -2.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, -2.7, 0)
 
 [node name="Mage" parent="." instance=ExtResource("5_eondh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, -2.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, -2.7, 0)
 
 [node name="Rogue_Hooded" parent="." instance=ExtResource("6_7d25h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2, -2.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2, -2.7, 0)
 
 [node name="Knight" parent="." instance=ExtResource("7_ebao4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, -2.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, -2.7, 0)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

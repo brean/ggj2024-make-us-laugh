@@ -2,17 +2,45 @@ extends Control
 
 var max_points = 10
 
-var joined = [false,false,false,false]
+var joined = [false,false,false,false] 
+var focused_button
+var play_button
+var point_button
+var quit_button
 
 func _ready():
-	$MarginContainer/VBoxContainer/HBoxContainer/Play.grab_focus()
+	play_button = $MarginContainer/VBoxContainer/HBoxContainer/Play
+	point_button = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button
+	quit_button = $MarginContainer/VBoxContainer/Quit
+	focused_button = play_button
+	focused_button.grab_focus()
 	$Rogue_Hooded.set_visible(false)
 	$Mage.set_visible(false)
 	$Knight.set_visible(false)
 	$Barbarian.set_visible(false)
 	
 func _process(delta):
-	print(Input.get_connected_joypads());
+	if MultiplayerInput.is_action_just_pressed(0, "ui_left"):
+		if(focused_button == point_button):
+			focused_button = play_button
+			focused_button.grab_focus()
+	if MultiplayerInput.is_action_just_pressed(0, "ui_right"):
+		if(focused_button == play_button):
+			focused_button = point_button
+			focused_button.grab_focus()
+	if MultiplayerInput.is_action_just_pressed(0, "ui_up"):
+		if(focused_button == quit_button):
+			focused_button = play_button
+			focused_button.grab_focus()
+	if MultiplayerInput.is_action_just_pressed(0, "ui_down"):
+		if(focused_button == play_button || focused_button == point_button):
+			focused_button = quit_button
+			focused_button.grab_focus()
+	if MultiplayerInput.is_action_just_pressed(0, "Jump"):
+		if(focused_button == play_button):_on_play_pressed()
+		if(focused_button == point_button):_on_button_pressed()
+		if(focused_button == quit_button):_on_quit_pressed()
+	
 	if(MultiplayerInput.handled_devices[0] && !joined[0]):
 		joined[0] = true;
 		$Rogue_Hooded.set_visible(true)
@@ -65,8 +93,14 @@ func _process(delta):
 	elif($Barbarian.animation_player.get_current_animation() != "Cheer"):
 		$Barbarian.animation_player.play("Idle")	
 
+	if(MultiplayerInput.handled_devices[3] && !MultiplayerInput.handled_devices[4]):
+		play_button.disabled = false
+	else:
+		play_button.disabled = true
+	
+	
 func _on_play_pressed():
-	if(Input.get_connected_joypads().size() > 1):
+	if(Input.get_connected_joypads().size() == 3):
 		get_tree().change_scene_to_file("res://battle_scene.tscn")
 
 
@@ -79,4 +113,3 @@ func _on_button_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
-
