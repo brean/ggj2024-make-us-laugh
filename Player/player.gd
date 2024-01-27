@@ -77,8 +77,8 @@ func _physics_process(_delta):
 	# Attack
 	if MultiplayerInput.is_action_pressed(self.player_id, "Punch"):
 		if not self.current_weapon.on_cooldown:
-			self.current_weapon.use_weapon()
 			self.change_state(PlayerStates.ATTACK)
+			self.current_weapon.use_weapon()
 
 	# Reset if stuck (maybe remove later)
 	if MultiplayerInput.is_action_just_pressed(self.player_id, "Reset") and self.can_reset:
@@ -188,6 +188,8 @@ func input_movement(max_velo, acc):
 	return current_speed
 
 func attack_state():
+	self.char_model.animation_player.speed_scale = 4.0
+	self.char_model.animation_player.play("Throw")
 	if not self.current_weapon.block_player_movement:
 		self.change_state(PlayerStates.MOVE)
 
