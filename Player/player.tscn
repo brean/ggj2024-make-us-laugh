@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://3nt1gsmetmi3"]
+[gd_scene load_steps=22 format=3 uid="uid://3nt1gsmetmi3"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_j7un2"]
 [ext_resource type="PackedScene" uid="uid://bqhq0org0h7hc" path="res://Player/HitHurtBox/hurtbox.tscn" id="2_d61p2"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://btu2qnuwc3g3o" path="res://Player/Models/symbol_placeholder.png" id="5_w30we"]
 [ext_resource type="AudioStream" uid="uid://ccg45oihsf5x2" path="res://Assets/sound/env/water_pop_0.wav" id="10_t05yd"]
 [ext_resource type="AudioStream" uid="uid://cebyd8iau3fpu" path="res://Assets/sound/env/water_pop_1.wav" id="11_slegh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pbxbd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iyf8o"]
 
@@ -95,6 +97,7 @@ _data = {
 collision_layer = 2
 collision_mask = 3
 mass = 40.0
+physics_material_override = SubResource("PhysicsMaterial_pbxbd")
 can_sleep = false
 lock_rotation = true
 script = ExtResource("1_j7un2")

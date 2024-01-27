@@ -282,6 +282,7 @@ libraries = {
 playback_default_blend_time = 0.1
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1.3, 0)
 
 [node name="ChargeTimer" type="Timer" parent="."]
 wait_time = 4.0

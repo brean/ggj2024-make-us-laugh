@@ -23,8 +23,7 @@ sky_material = SubResource("ProceduralSkyMaterial_x8cwy")
 [sub_resource type="Environment" id="Environment_00kde"]
 background_mode = 2
 sky = SubResource("Sky_ksave")
-fog_light_energy = 2.68
-fog_density = 0.3995
+fog_aerial_perspective = 1.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_c3kht"]
 
