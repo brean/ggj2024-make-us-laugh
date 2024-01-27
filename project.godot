@@ -21,6 +21,10 @@ MultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
 <<<<<<<HEADMultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
 GameManager="*res://AutoLoad/GameManager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/multiplayer_input/plugin.cfg")

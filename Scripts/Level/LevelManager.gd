@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 var tile_scenes = []
@@ -75,7 +76,8 @@ func _ready():
 	preload_tiles()
 	tile_creation()
 	reset_tiles()
-	set_tiles_as_falling()
+	if not Engine.is_editor_hint():
+		set_tiles_as_falling()
 
 func let_tiles_fall(delta):
 	for tile in falling_tiles:
@@ -86,6 +88,8 @@ func wiggle(delta):
 		tile.wiggle()
 
 func _process(delta):
+	if Engine.is_editor_hint():
+		return
 	var cur_time = Time.get_ticks_msec()
 	if cur_time - last_tile_reset > wiggle_sec * 1000:
 		# wiggle time is up, lets fall!
