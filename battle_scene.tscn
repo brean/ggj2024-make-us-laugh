@@ -11,8 +11,8 @@
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x8cwy"]
 sky_top_color = Color(0.352941, 0.654902, 0.968627, 1)
 sky_horizon_color = Color(0.729412, 0.913725, 0.941176, 1)
-ground_bottom_color = Color(0.25098, 0.466667, 0.792157, 1)
-ground_horizon_color = Color(0.658824, 0.741176, 0.882353, 1)
+ground_bottom_color = Color(0.101961, 0.345098, 0.886275, 1)
+ground_horizon_color = Color(0.0745098, 0.541176, 0.792157, 1)
 
 [sub_resource type="Sky" id="Sky_ksave"]
 sky_material = SubResource("ProceduralSkyMaterial_x8cwy")
@@ -26,8 +26,8 @@ fog_density = 0.3995
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_c3kht"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xh4hp"]
-width = 64
-height = 64
+width = 128
+height = 128
 seamless = true
 seamless_blend_skirt = 1.0
 noise = SubResource("FastNoiseLite_c3kht")
@@ -55,7 +55,7 @@ shader_parameter/noise1 = SubResource("NoiseTexture2D_xh4hp")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_j1yf7")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_12pd0"]
-size = Vector2(100, 100)
+size = Vector2(500, 500)
 subdivide_width = 32
 subdivide_depth = 32
 
