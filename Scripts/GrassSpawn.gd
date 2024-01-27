@@ -1,4 +1,3 @@
-@tool
 extends MultiMeshInstance3D
 
 var multi_mesh = MultiMesh.new()
