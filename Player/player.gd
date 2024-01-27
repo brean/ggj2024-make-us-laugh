@@ -41,7 +41,9 @@ var char_model : CharacterModel
 @onready var ground_cast = $GroundCast
 @onready var hurtbox = $Hurtbox
 @onready var weapon_hand = $ModelNode/WeaponHand
-@onready var game_symbol = $GameSymbol
+@onready var game_symbol = $GameSymbol:
+	get:
+		return game_symbol
 
 ### Particles
 @onready var jump_trail_particles = $Particles/JumpTrail
@@ -76,6 +78,7 @@ func _physics_process(_delta):
 		if not surpress_player_fall_signal:
 			self.emit_signal("player_did_fall", self.player_id)
 			surpress_player_fall_signal = true
+			falling_in_water_sound.play()
 	else:
 		surpress_player_fall_signal = false
 	
