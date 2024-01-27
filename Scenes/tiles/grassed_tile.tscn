@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dyxk8uladnk0m"]
 
-[ext_resource type="ArrayMesh" uid="uid://ds6m1datdxcf" path="res://Assets/BaseTiles/tile_base_ground.res" id="1_urfjj"]
+[ext_resource type="ArrayMesh" uid="uid://ds6m1datdxcf" path="res://Assets/tile_base_ground.res" id="1_urfjj"]
 [ext_resource type="ArrayMesh" uid="uid://cw0vxfuumcw53" path="res://Assets/grass/grass.res" id="2_2dsv4"]
 [ext_resource type="PackedScene" uid="uid://swpxeo0rmwfy" path="res://Assets/BaseTiles/tile_base.glb" id="3_tcgta"]
 
@@ -23,4 +23,3 @@ cast_shadow = 0
 multimesh = SubResource("MultiMesh_43djl")
 
 [node name="tile_base" parent="." instance=ExtResource("3_tcgta")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

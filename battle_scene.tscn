@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://caefj76lpbcl3"]
+[gd_scene load_steps=14 format=3 uid="uid://caefj76lpbcl3"]
 
 [ext_resource type="PackedScene" uid="uid://3nt1gsmetmi3" path="res://Player/player.tscn" id="1_rysm8"]
 [ext_resource type="PackedScene" uid="uid://dpd7gr332dte2" path="res://Scenes/UI/ui.tscn" id="1_s85fw"]
 [ext_resource type="PackedScene" uid="uid://chtkpqwflii5j" path="res://GameModeController/game_mode_controller.tscn" id="2_x7cyb"]
-[ext_resource type="PackedScene" uid="uid://dyxbmhq4eceq0" path="res://GameMode/chase_game_mode.tscn" id="3_agjdt"]
 [ext_resource type="Shader" path="res://Shader/water.gdshader" id="5_d4asp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x8cwy"]
@@ -98,7 +97,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 player_id = -1
 
 [node name="GameModeController" parent="." instance=ExtResource("2_x7cyb")]
-game_modes = Array[PackedScene]([ExtResource("3_agjdt")])
+delay_between_modes = 0.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.373678, 0)

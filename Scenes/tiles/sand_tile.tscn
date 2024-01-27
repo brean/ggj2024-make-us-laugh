@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwj5mdw0qkf3f"]
+
+[ext_resource type="PackedScene" uid="uid://baepg17nnrhgn" path="res://Assets/BaseTiles/tile_base_sand.glb" id="1_klyf2"]
+
+[node name="SandTile" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00764787, -2.38419e-07, -0.000320315)
+
+[node name="tile_base_sand" parent="." instance=ExtResource("1_klyf2")]
