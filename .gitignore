@@ -1,3 +1,6 @@
+# Blender temp files
+*.blend1
+
 # Godot 4+ specific ignores
 .godot/
 
