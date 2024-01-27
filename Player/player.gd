@@ -31,6 +31,9 @@ var current_weapon : Weapon
 var can_reset := false
 var start_state := true
 
+# resetting falling players will be disabled during some events.
+# this ensures that a fall-signal only gets send once.
+var surpress_player_fall_signal := false
 
 var char_model : CharacterModel
 
@@ -38,6 +41,7 @@ var char_model : CharacterModel
 @onready var ground_cast = $GroundCast
 @onready var hurtbox = $Hurtbox
 @onready var weapon_hand = $ModelNode/WeaponHand
+@onready var game_symbol = $GameSymbol
 
 ### Particles
 @onready var jump_trail_particles = $Particles/JumpTrail
@@ -58,6 +62,7 @@ func _ready():
 	self.char_model = new_char_model
 	$ModelNode/Model.queue_free()
 
+	self.game_symbol.visible = false
 
 func _physics_process(_delta):
 	match self.current_state:
@@ -92,9 +97,14 @@ func _physics_process(_delta):
 	self.rotate_model()
 
 	if self.global_position.y < -5:
-		self.reset_player()
-		self.emit_signal("player_did_fall", self.player_id)
-
+		if not GameManager.flags["prevent_player_reset"]:
+			self.reset_player()
+		
+		if not surpress_player_fall_signal:
+			self.emit_signal("player_did_fall", self.player_id)
+			surpress_player_fall_signal = true
+	else:
+		surpress_player_fall_signal = false
 
 func rotate_model():
 	var look_direction = Vector2(self.linear_velocity.x, -self.linear_velocity.z)
