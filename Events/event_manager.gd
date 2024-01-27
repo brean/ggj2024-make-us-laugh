@@ -8,7 +8,8 @@ const EventList = [ preload("res://Events/canon_event.tscn"),
 					preload("res://Events/cam_left_event.tscn"), 
 					preload("res://Events/turn_cam_event.tscn"), 
 					preload("res://Events/teleport_event.tscn"), 
-					preload("res://Events/black_hole_event.tscn")
+					preload("res://Events/black_hole_event.tscn"),
+					preload("res://Events/banana_event.tscn")
 					]
 
 var EventNodes := []

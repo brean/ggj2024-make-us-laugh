@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcja4hldmrmxn"]
+
+[ext_resource type="PackedScene" uid="uid://ctiapher1jga0" path="res://Assets/banana.glb" id="1_82spr"]
+[ext_resource type="Script" path="res://Events/NatureObstacles/banana.gd" id="1_htawv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f8jsk"]
+radius = 0.9
+
+[sub_resource type="Animation" id="Animation_0nx51"]
+resource_name = "shrink"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(0.01, 0.01, 0.01)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_php7t"]
+_data = {
+"shrink": SubResource("Animation_0nx51")
+}
+
+[node name="Banana" type="Area3D"]
+collision_layer = 0
+collision_mask = 10
+script = ExtResource("1_htawv")
+
+[node name="banana" parent="." instance=ExtResource("1_82spr")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.341264, 0)
+shape = SubResource("SphereShape3D_f8jsk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_php7t")
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.2, 0)
+hit_from_inside = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

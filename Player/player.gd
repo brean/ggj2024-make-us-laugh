@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name Player
 
 const ModelList = [preload("res://Player/Models/rogue_hooded.tscn"), 
 					preload("res://Player/Models/mage.tscn"), 
