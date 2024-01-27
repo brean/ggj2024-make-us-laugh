@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dibyjm3ln2whq"]
+
+[ext_resource type="Script" path="res://Events/Projectiles/canon.gd" id="1_ytsxd"]
+
+[node name="Canon" type="Node3D"]
+script = ExtResource("1_ytsxd")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -131,7 +131,7 @@ func idle_state():
 							+ MultiplayerInput.get_action_strength(self.player_id, "Right")
 	self.direction.y = - MultiplayerInput.get_action_strength(self.player_id, "Forward") \
 							+ MultiplayerInput.get_action_strength(self.player_id, "Backward")
-	if not self.direction == Vector2.ZERO:
+	if not self.direction == Vector2.ZERO or self.linear_velocity.length_squared() > self.IdleThreshold:
 		self.change_state(PlayerStates.MOVE)
 	elif not self.ground_cast.is_colliding():
 		self.change_state(PlayerStates.FALL)
@@ -188,10 +188,10 @@ func input_movement(max_velo, acc):
 	return current_speed
 
 func attack_state():
-	self.char_model.animation_player.speed_scale = 4.0
+	self.char_model.animation_player.speed_scale = 3.5
 	self.char_model.animation_player.play("Throw")
 	if not self.current_weapon.block_player_movement:
-		self.change_state(PlayerStates.MOVE)
+		self.change_state(PlayerStates.IDLE)
 
 
 func fall_state():
