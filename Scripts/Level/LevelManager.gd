@@ -31,7 +31,7 @@ func hex_to_pos(row, col):
 
 func tile_creation():
 	var LevelTile = load("res://Scripts/Level/LevelTile.gd")
-	var MAX_RADIUS = 18
+	var MAX_RADIUS = 15
 	for x in range(-MAX_RADIUS, MAX_RADIUS):
 		for y in range(-MAX_RADIUS, MAX_RADIUS):
 			var pos = hex_to_pos(x, y)
