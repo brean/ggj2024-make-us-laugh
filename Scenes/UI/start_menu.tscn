@@ -1,0 +1,122 @@
+[gd_scene load_steps=2 format=3 uid="uid://clower2u7cw10"]
+
+[ext_resource type="Theme" uid="uid://cfu2ekpmrjkr4" path="res://Scenes/UI/theme.tres" id="1_6setb"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 75)
+layout_mode = 2
+theme = ExtResource("1_6setb")
+text = "PLAY"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 75)
+layout_mode = 2
+theme = ExtResource("1_6setb")
+text = "QUIT"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("1_6setb")
+theme_override_colors/font_color = Color(0.403922, 0.0588235, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.202333, 0.03, 0.5, 1)
+theme_override_colors/font_outline_color = Color(0.202333, 0.03, 0.5, 1)
+theme_override_font_sizes/font_size = 30
+text = "PLAYER 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("1_6setb")
+theme_override_colors/font_color = Color(0.403922, 0.0588235, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.202333, 0.03, 0.5, 1)
+theme_override_colors/font_outline_color = Color(0.202333, 0.03, 0.5, 1)
+theme_override_font_sizes/font_size = 30
+text = "PLAYER 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer3"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("1_6setb")
+theme_override_colors/font_color = Color(0.403922, 0.0588235, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.202333, 0.03, 0.5, 1)
+theme_override_colors/font_outline_color = Color(0.202333, 0.03, 0.5, 1)
+theme_override_font_sizes/font_size = 30
+text = "PLAYER 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer4"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("1_6setb")
+theme_override_colors/font_color = Color(0.403922, 0.0588235, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.202333, 0.03, 0.5, 1)
+theme_override_colors/font_outline_color = Color(0.202333, 0.03, 0.5, 1)
+theme_override_font_sizes/font_size = 30
+text = "PLAYER 1"
+horizontal_alignment = 1
+vertical_alignment = 1
