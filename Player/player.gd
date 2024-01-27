@@ -199,3 +199,7 @@ func fall_state():
 	self.input_movement(self.max_speed, self.acceleration)
 	if self.ground_cast.is_colliding():
 		self.change_state(PlayerStates.MOVE)
+
+func reset_speed_mods():
+	max_speed = OriginalSpeed
+	acceleration = OriginalAcc
