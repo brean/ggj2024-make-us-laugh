@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdk43jgk5dmjv"]
+[gd_scene load_steps=10 format=3 uid="uid://cxp10salva2jv"]
 
 [ext_resource type="Script" path="res://Scripts/RotatingBarMode/rotating_bar_mode_manager.gd" id="1_bca5x"]
 [ext_resource type="Shader" path="res://Shader/water.gdshader" id="1_o17py"]

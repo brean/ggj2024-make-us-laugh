@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://caefj76lpbcl3"]
+[gd_scene load_steps=22 format=3 uid="uid://caefj76lpbcl3"]
 
 [ext_resource type="PackedScene" uid="uid://3nt1gsmetmi3" path="res://Player/player.tscn" id="1_rysm8"]
 [ext_resource type="PackedScene" uid="uid://dpd7gr332dte2" path="res://Scenes/UI/ui.tscn" id="1_s85fw"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://b5cooh5mnaoum" path="res://Scenes/Level.tscn" id="8_6kgbl"]
 [ext_resource type="PackedScene" uid="uid://l66osl76isls" path="res://Events/NatureObstacles/tornado.tscn" id="8_l8nrt"]
 [ext_resource type="PackedScene" uid="uid://bwtjgbkexbjfc" path="res://Scenes/env.tscn" id="9_o0xnw"]
+[ext_resource type="PackedScene" uid="uid://i3yxdhfx28be" path="res://Assets/RotatingBarMode/rotating_bar.tscn" id="11_1oysp"]
+[ext_resource type="Script" path="res://Assets/RotatingBarMode/rotating_bar.gd" id="12_02msi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x8cwy"]
 sky_top_color = Color(0.352941, 0.654902, 0.968627, 1)
@@ -138,3 +140,9 @@ visible = false
 visible = false
 
 [node name="Env" parent="." instance=ExtResource("9_o0xnw")]
+
+[node name="BarPath" parent="." instance=ExtResource("11_1oysp")]
+script = ExtResource("12_02msi")
+metadata/position_min = Vector2(-15, -15)
+metadata/position_max = Vector2(15, 15)
+metadata/world_y = 1.5
