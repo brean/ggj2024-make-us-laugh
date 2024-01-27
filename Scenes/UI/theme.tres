@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bk0pifhpk6rm2"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ccoli46wbftk5"]
 
-[ext_resource type="FontVariation" uid="uid://uopngikihi5a" path="res://Assets/BlackHans.tres" id="1_s6onp"]
+[ext_resource type="FontVariation" path="res://Assets/BlackHans.tres" id="1_s6onp"]
 
 [resource]
 default_font = ExtResource("1_s6onp")
