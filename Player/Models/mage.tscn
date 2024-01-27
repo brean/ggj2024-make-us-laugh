@@ -84,3 +84,6 @@ material_override = ExtResource("3_dpjgb")
 
 [node name="Mage_LegRight" parent="Rig/Skeleton3D" index="11"]
 material_override = ExtResource("3_dpjgb")
+
+[node name="AnimationPlayer" parent="." index="1"]
+playback_default_blend_time = 0.1
