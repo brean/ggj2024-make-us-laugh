@@ -13,19 +13,19 @@ func _ready():
 	self.multimesh = multi_mesh
 
 	for i in range(multi_mesh.instance_count):
-		var transform = Transform3D()
+		var _transform = Transform3D()
 		# Randomly position each instance within a given range
 		var r = randf_range(0.2, max_radius)
 
 		var theta = randf_range(-3.1415, 3.1415)
 		var x = r * cos(theta)
 		var z = r * sin(theta)
-		transform.origin = Vector3(x, 0, z)
-		transform.basis = Basis(Vector3(0, 1, 0), randf_range(-3.1415, 3.1415))
+		_transform.origin = Vector3(x, 0, z)
+		_transform.basis = Basis(Vector3(0, 1, 0), randf_range(-3.1415, 3.1415))
 		# transform.rotated(Vector3(0, 1, 0), randf_range(-3.1415, 3.1415))
 
 		# Add each transform to the MultiMesh
-		multi_mesh.set_instance_transform(i, transform)
+		multi_mesh.set_instance_transform(i, _transform)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
