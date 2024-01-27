@@ -3,8 +3,10 @@ extends RigidBody3D
 @onready var elements = [
 	[$tomato, $CollisionSphere],
 	[$burger, $CollisionSphere],
-	[$CanonBallMesh, $CollisionSphere],
 	[$fridge, $CollisionBox],
+	[$carrot, $CollisionCylinder],
+	[$mustard, $CollisionCylinder],
+	[$stew, $CollisionSphere],
 ]
 
 func random_element():
