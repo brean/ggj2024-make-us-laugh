@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://bdk43jgk5dmjv"]
+
+[ext_resource type="Script" path="res://Scripts/RotatingBarMode/rotating_bar_mode_manager.gd" id="1_bca5x"]
+[ext_resource type="Shader" path="res://Shader/water.gdshader" id="1_o17py"]
+[ext_resource type="PackedScene" uid="uid://i3yxdhfx28be" path="res://Assets/RotatingBarMode/rotating_bar.tscn" id="3_bijnd"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c3kht"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xh4hp"]
+width = 64
+height = 64
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_c3kht")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_41ham"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j1yf7"]
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_41ham")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g3bmt"]
+render_priority = 0
+shader = ExtResource("1_o17py")
+shader_parameter/speed = 0.5
+shader_parameter/color = Color(0, 0.431373, 0.988235, 1)
+shader_parameter/edge_color = Color(0.741176, 0.92549, 0.992157, 1)
+shader_parameter/edge_scale = 2.0
+shader_parameter/near = 0.1
+shader_parameter/far = 100.0
+shader_parameter/wave_strength = Vector2(0.2, 0.3)
+shader_parameter/wave_frequncy = Vector2(10, 8)
+shader_parameter/time_factor = Vector2(0.2, 0.4)
+shader_parameter/noise1 = SubResource("NoiseTexture2D_xh4hp")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_j1yf7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_05xt5"]
+size = Vector2(100, 100)
+
+[node name="RotatingBarMode" type="Node3D"]
+script = ExtResource("1_bca5x")
+
+[node name="WaterPlane" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_g3bmt")
+gi_mode = 0
+mesh = SubResource("PlaneMesh_05xt5")
+
+[node name="MainLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 9, 50)
+layers = 2
+light_color = Color(1, 0.913725, 0.839216, 1)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 8, 9)
+fov = 80.0
+
+[node name="TilesParent" type="Node" parent="."]
+
+[node name="BarPath" parent="." instance=ExtResource("3_bijnd")]
