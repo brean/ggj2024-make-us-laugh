@@ -2,6 +2,14 @@ extends Node3D
 
 var tile_scenes = []
 var tiles = []
+var falling_tiles = []
+var last_tile_reset = Time.get_ticks_msec()
+
+# let the blocks fall with a speed multiplied by update delta
+var falling_speed = 8
+
+# reset tiles after x seconds
+var reset_tiles_sec = 3
 
 func hex_to_pos(row, col):
 	# calculate x and y position in meter based on position in the grid
@@ -16,12 +24,14 @@ func hex_to_pos(row, col):
 	return [x, y]
 
 
-func tile_creation():
+func preload_tiles():
 	tile_scenes.append(preload("res://Scenes/tiles/grassed_tile_max.tscn"))
 	tile_scenes.append(preload("res://Scenes/tiles/grassed_tile_mid.tscn"))
 	tile_scenes.append(preload("res://Scenes/tiles/grassed_tile_min.tscn"))
 	tile_scenes.append(preload("res://Scenes/tiles/sand_tile.tscn"))
-	
+
+
+func tile_creation():
 	var MAX_RADIUS = 18
 	for x in range(-MAX_RADIUS, MAX_RADIUS):
 		for y in range(-MAX_RADIUS, MAX_RADIUS):
@@ -50,12 +60,29 @@ func reset_tiles():
 		# position.y = randi() % 3
 		position.y = 0
 		tile.position = position
+	last_tile_reset = Time.get_ticks_msec()
 
+
+func set_tiles_as_falling(num_tiles=16):
+	falling_tiles = []
+	for i in range(num_tiles):
+		var tile = tiles[(randi() % tiles.size()) - 1]
+		falling_tiles.append(tile)
 
 func _ready():
+	preload_tiles()
 	tile_creation()
 	reset_tiles()
+	set_tiles_as_falling()
 			
 
 func _process(delta):
-	pass
+	for tile in falling_tiles:
+		var position = tile.position
+		# position.y = randi() % 3
+		position.y -= falling_speed * delta
+		tile.position = position
+	var cur_time = Time.get_ticks_msec()
+	if cur_time - last_tile_reset > reset_tiles_sec * 1000:
+		set_tiles_as_falling()
+		reset_tiles()
