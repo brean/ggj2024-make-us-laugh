@@ -19,6 +19,7 @@ func use_weapon():
 		self.set_hitbox_active(true)
 		$MeshInstance3D.visible = true
 		self.attack_timer.start(self.attack_time)
+		self.on_cooldown = true
 
 
 func _on_cooldown_timer_timeout():

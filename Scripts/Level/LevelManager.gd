@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 var tile_scenes = []
@@ -8,8 +9,10 @@ var last_tile_reset = Time.get_ticks_msec()
 # let the blocks fall with a speed multiplied by update delta
 var falling_speed = 8
 
+# seconds the tiles wiggle before they fall
+var wiggle_sec = 1
 # reset tiles after x seconds
-var reset_tiles_sec = 3
+var reset_tiles_sec = 4
 
 func hex_to_pos(row, col):
 	# calculate x and y position in meter based on position in the grid
@@ -32,34 +35,34 @@ func preload_tiles():
 
 
 func tile_creation():
+	var LevelTile = load("res://Scripts/Level/LevelTile.gd")
 	var MAX_RADIUS = 18
 	for x in range(-MAX_RADIUS, MAX_RADIUS):
 		for y in range(-MAX_RADIUS, MAX_RADIUS):
 			var pos = hex_to_pos(x, y)
 			var dist = sqrt(pos[0]**2 + pos[1]**2)
-			var tile = tile_scenes[0]
+			var tile_scene = tile_scenes[0]
 			if dist > MAX_RADIUS:
 				continue
 			elif dist > MAX_RADIUS-2:
-				tile = tile_scenes[3]
+				tile_scene = tile_scenes[3]
 			elif dist > MAX_RADIUS-4:
-				tile = tile_scenes[2]
+				tile_scene = tile_scenes[2]
 			elif dist > MAX_RADIUS-7:
-				tile = tile_scenes[1]
+				tile_scene = tile_scenes[1]
 
 			
-			var instance = tile.instantiate()
-			instance.position = Vector3(pos[0], 0, pos[1])
-			add_child(instance)
-			tiles.append(instance)
+			var tile_inst = tile_scene.instantiate()
+			tile_inst.position = Vector3(pos[0], 0, pos[1])
+			add_child(tile_inst)
+
+			var tile = LevelTile.new(pos[0], pos[1], tile_inst)
+			tiles.append(tile)
 
 
 func reset_tiles():
 	for tile in tiles:
-		var position = tile.position
-		# position.y = randi() % 3
-		position.y = 0
-		tile.position = position
+		tile.reset_position()
 	last_tile_reset = Time.get_ticks_msec()
 
 
@@ -73,16 +76,27 @@ func _ready():
 	preload_tiles()
 	tile_creation()
 	reset_tiles()
-	set_tiles_as_falling()
-			
+	if not Engine.is_editor_hint():
+		set_tiles_as_falling()
+
+func let_tiles_fall(delta):
+	for tile in falling_tiles:
+		tile.fall(falling_speed * delta)
+
+func wiggle(delta):
+	for tile in falling_tiles:
+		tile.wiggle()
 
 func _process(delta):
-	for tile in falling_tiles:
-		var position = tile.position
-		# position.y = randi() % 3
-		position.y -= falling_speed * delta
-		tile.position = position
+	if Engine.is_editor_hint():
+		return
 	var cur_time = Time.get_ticks_msec()
+	if cur_time - last_tile_reset > wiggle_sec * 1000:
+		# wiggle time is up, lets fall!
+		let_tiles_fall(delta)
+	else:
+		wiggle(delta)
+	
 	if cur_time - last_tile_reset > reset_tiles_sec * 1000:
-		set_tiles_as_falling()
 		reset_tiles()
+		set_tiles_as_falling()
