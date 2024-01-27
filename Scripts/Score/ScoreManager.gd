@@ -5,6 +5,7 @@ extends Node
 func _ready():
 	GameManager.points_updated.connect(update_score_label)
 	GameManager.game_mode_updated.connect(on_game_mode_updated)
+	GameManager.game_mode_exited.connect(clear_announcement_label)
 	
 func update_score_label(player_id, points):
 	var label = get_node("Control/MarginContainer/VBoxContainer/HBoxContainer/Score_p" + str(player_id + 2))
@@ -13,8 +14,6 @@ func update_score_label(player_id, points):
 
 func on_game_mode_updated(game_mode: GameMode):
 	update_announcement_label(game_mode.display_name)
-	#await get_tree().create_timer(announcement_duration).timeout
-	#clear_announcement_label()
 
 func update_announcement_label(text):
 	var label = $GameAnnouncementTextAnchor/Label

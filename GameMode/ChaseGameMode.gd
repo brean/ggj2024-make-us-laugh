@@ -1,5 +1,8 @@
 extends GameMode
 
+@export var catch_reward: int = 1
+@export var survival_reward: int = 2
+
 var chasing_player_id: int
 var chased_player_ids: Array = []
 var caught_player_ids: Array = []
@@ -19,8 +22,7 @@ func on_chased_player_touched(self_id: int, enemy_id: int):
 	if not self_id in caught_player_ids and enemy_id == chasing_player_id:
 		# player caught
 		caught_player_ids.append(self_id)
-		GameManager.give_points(self_id, -1 * points_penalty)
-		GameManager.give_points(chasing_player_id, points_reward)
+		GameManager.give_points(chasing_player_id, catch_reward)
 	
 	var chase_over = true
 	for id in chased_player_ids:
@@ -29,3 +31,9 @@ func on_chased_player_touched(self_id: int, enemy_id: int):
 			break
 			
 	if chase_over: on_timeout()
+
+func on_timeout():
+	for player_id in chased_player_ids:
+		if player_id not in caught_player_ids:
+			GameManager.give_points(player_id, survival_reward)
+	super.on_timeout()
