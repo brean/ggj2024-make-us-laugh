@@ -1,0 +1,43 @@
+extends Node3D
+
+const EventList = [ preload("res://Events/canon_event.tscn"), 
+					preload("res://Events/gravity_event.tscn"), 
+					preload("res://Events/change_controlls.tscn"), 
+					preload("res://Events/speed_event.tscn"), 
+					preload("res://Events/slow_event.tscn"), 
+					preload("res://Events/cam_left_event.tscn"), 
+					preload("res://Events/turn_cam_event.tscn")]
+
+var EventNodes := []
+var event_idx := 0
+
+@export var wait_time_scale = 2.0
+
+@onready var wait_timer = $WaitTimer
+@onready var event_timer = $EventTimer
+@onready var label = $CanvasLayer/VBoxContainer/Label
+
+signal activate_canons
+signal rotate_cam
+signal cam_to_the_side
+
+func _ready():
+	self.label.visible = false
+	for event in EventList:
+		var new_event = event.instantiate()
+		self.add_child(new_event)
+		self.EventNodes.append(new_event)
+
+
+func _on_wait_timer_timeout():
+	self.event_idx = randi_range(0, len(self.EventList)-1)
+	self.EventNodes[self.event_idx].activate_event()
+	self.label.text = self.EventNodes[self.event_idx].event_name
+	self.label.visible = true
+	self.event_timer.start(self.EventNodes[self.event_idx].event_time)
+
+
+func _on_event_timer_timeout():
+	self.label.visible = false
+	self.wait_timer.start(randf_range(3.0, self.wait_time_scale))
+	self.EventNodes[self.event_idx].deactivate_event()

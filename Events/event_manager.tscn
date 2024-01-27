@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2grtvuunp2ug"]
+
+[ext_resource type="Script" path="res://Events/event_manager.gd" id="1_spayv"]
+[ext_resource type="Theme" uid="uid://b14angt2f0dy2" path="res://Scenes/UI/theme.tres" id="2_lccka"]
+
+[node name="EventManager" type="Node3D"]
+script = ExtResource("1_spayv")
+
+[node name="EventTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(200, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("2_lccka")
+theme_override_font_sizes/font_size = 20
+text = "Test"
+autowrap_mode = 3
+
+[connection signal="timeout" from="EventTimer" to="." method="_on_event_timer_timeout"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

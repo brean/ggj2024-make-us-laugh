@@ -8,14 +8,10 @@ var chasing_player_id: int
 var chased_player_ids: Array = []
 var caught_player_ids: Array = []
 
-func _ready():
-	super._ready()
+func start():
 	chasing_player_id = GameManager.players.keys().pick_random()
 	chased_player_ids = Array(GameManager.players.keys())
 	chased_player_ids.erase(chasing_player_id)
-	print("chasing: ", chasing_player_id, " chased: ", chased_player_ids)
-
-func start():
 	for player_id in chased_player_ids:
 		GameManager.players[player_id].got_hit.connect(on_chased_player_touched)
 	
@@ -41,6 +37,6 @@ func on_timeout():
 		if player_id not in caught_player_ids:
 			GameManager.give_points(player_id, survival_reward)
 	
-	GameManager.players[chasing_player_id].reset_speed_mods()
+	GameManager.players[chasing_player_id].reset_modifiers()
 	
 	super.on_timeout()

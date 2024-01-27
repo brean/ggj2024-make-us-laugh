@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://chtkpqwflii5j"]
+[gd_scene load_steps=4 format=3 uid="uid://chtkpqwflii5j"]
 
 [ext_resource type="Script" path="res://GameModeController/GameModeController.gd" id="1_g0n4h"]
 [ext_resource type="PackedScene" uid="uid://dyxbmhq4eceq0" path="res://GameMode/chase_game_mode.tscn" id="2_nit1l"]
+[ext_resource type="PackedScene" uid="uid://nilxn3jti2xw" path="res://GameMode/last_one_standing_game_mode.tscn" id="3_clecw"]
 
 [node name="GameModeController" type="Node3D"]
 script = ExtResource("1_g0n4h")
-game_modes = Array[PackedScene]([ExtResource("2_nit1l")])
+game_modes = Array[PackedScene]([ExtResource("2_nit1l"), ExtResource("3_clecw")])

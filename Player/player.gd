@@ -10,6 +10,7 @@ const OriginalAcc := 14.5
 const OriginalJumpImpulse := 250.0
 const RotationSpeed := 0.2
 const IdleThreshold := 0.01
+const OriginalKnockbackModifier := 1
 
 enum PlayerStates {IDLE, MOVE, JUMP, FALL, ATTACK, DUMMY}
 
@@ -19,14 +20,17 @@ enum PlayerStates {IDLE, MOVE, JUMP, FALL, ATTACK, DUMMY}
 @export var acceleration := self.OriginalAcc
 @export var jump_impulse := self.OriginalJumpImpulse
 @export var current_state : PlayerStates = self.PlayerStates.IDLE
+@export var knockback_mod : float = 1
 
 var direction := Vector2.ZERO
 var old_velocity_xz := Vector2.ZERO
+var direction_rot := 0.0
 
 var current_weapon : Weapon
 
 var can_reset := false
 var start_state := true
+
 
 var char_model : CharacterModel
 
@@ -178,6 +182,8 @@ func input_movement(max_velo, acc):
 	self.direction.y = - MultiplayerInput.get_action_strength(self.player_id, "Forward") \
 							+ MultiplayerInput.get_action_strength(self.player_id, "Backward")
 
+	self.direction = self.direction.rotated(self.direction_rot)
+
 	# Add impuls if not to fast
 	var horizontal_velocity = Vector2(self.linear_velocity.x, self.linear_velocity.z)
 	var current_speed = horizontal_velocity.length() 
@@ -200,6 +206,7 @@ func fall_state():
 	if self.ground_cast.is_colliding():
 		self.change_state(PlayerStates.MOVE)
 
-func reset_speed_mods():
+func reset_modifiers():
 	max_speed = OriginalSpeed
 	acceleration = OriginalAcc
+	knockback_mod = OriginalKnockbackModifier
