@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://kjy5sdqy0r01"]
+
+[ext_resource type="PackedScene" uid="uid://c6x1astolfqli" path="res://Events/event.tscn" id="1_itu1k"]
+[ext_resource type="Script" path="res://Events/skeleton_event.gd" id="2_34ar0"]
+
+[node name="SkeletonEvent" instance=ExtResource("1_itu1k")]
+script = ExtResource("2_34ar0")
+spawn_height = 10.0
+spawn_range = 10.0
+event_name = "It's raining... Dudes"
