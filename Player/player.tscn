@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://3nt1gsmetmi3"]
+[gd_scene load_steps=18 format=3 uid="uid://3nt1gsmetmi3"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_j7un2"]
 [ext_resource type="PackedScene" uid="uid://bqhq0org0h7hc" path="res://Player/HitHurtBox/hurtbox.tscn" id="2_d61p2"]
 [ext_resource type="PackedScene" uid="uid://l4im14mvdbg8" path="res://Player/Weapons/punch.tscn" id="2_iva54"]
 [ext_resource type="PackedScene" uid="uid://ql6hnx4e8g7f" path="res://Player/jump_trail.tscn" id="4_n6bac"]
+[ext_resource type="Texture2D" uid="uid://btu2qnuwc3g3o" path="res://Player/Models/symbol_placeholder.png" id="5_w30we"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xqhjr"]
 
@@ -42,6 +43,44 @@ damping_min = 0.2
 damping_max = 0.5
 scale_curve = SubResource("CurveTexture_4g622")
 color_ramp = SubResource("GradientTexture1D_3qj0y")
+
+[sub_resource type="Animation" id="Animation_mdkc1"]
+resource_name = "Idle_Symbol"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameSymbol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2, 0), Vector3(0, 1.8, 0), Vector3(0, 2.1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rmae1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameSymbol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_16fb3"]
+_data = {
+"Idle_Symbol": SubResource("Animation_mdkc1"),
+"RESET": SubResource("Animation_rmae1")
+}
 
 [node name="Player" type="RigidBody3D"]
 collision_layer = 2
@@ -87,5 +126,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 lifetime = 1.0
 explosiveness = 0.0
 process_material = SubResource("ParticleProcessMaterial_674qm")
+
+[node name="GameSymbol" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+modulate = Color(0.764706, 0.0156863, 0.203922, 1)
+pixel_size = 0.03
+billboard = 2
+texture = ExtResource("5_w30we")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_16fb3")
+}
+autoplay = "Idle_Symbol"
 
 [editable path="Hurtbox"]

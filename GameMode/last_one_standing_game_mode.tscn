@@ -5,3 +5,4 @@
 [node name="LastOneStandingGameMode" type="Node3D"]
 script = ExtResource("1_0o606")
 display_name = "Be the last one standing!"
+duration = 10.0

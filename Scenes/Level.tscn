@@ -4,3 +4,4 @@
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_26v4n")
+max_grass = 256
