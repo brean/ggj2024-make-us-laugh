@@ -96,6 +96,7 @@ player_id = -1
 
 [node name="Level" parent="." instance=ExtResource("4_r7mju")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.396437, 0)
+max_grass = 256
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, -3.01379, 0)
