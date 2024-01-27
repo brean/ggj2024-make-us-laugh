@@ -1,11 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://clower2u7cw10"]
+[gd_scene load_steps=14 format=3 uid="uid://clower2u7cw10"]
 
 [ext_resource type="Theme" uid="uid://b14angt2f0dy2" path="res://Scenes/UI/theme.tres" id="1_6setb"]
 [ext_resource type="Script" path="res://Scenes/UI/start_menu.gd" id="1_6u6f0"]
+[ext_resource type="Shader" path="res://Shader/water.gdshader" id="3_w2p68"]
 [ext_resource type="PackedScene" uid="uid://bqu8er6diex6b" path="res://Player/Models/mage.tscn" id="5_eondh"]
 [ext_resource type="PackedScene" uid="uid://g3wn08pp0pt3" path="res://Player/Models/rogue_hooded.tscn" id="6_7d25h"]
 [ext_resource type="PackedScene" uid="uid://c7w44x7vfm1tf" path="res://Player/Models/barbarian.tscn" id="6_k36vc"]
 [ext_resource type="PackedScene" uid="uid://5puqrljgmpcm" path="res://Player/Models/knight.tscn" id="7_ebao4"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7fwnn"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xh4hp"]
+width = 128
+height = 128
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_7fwnn")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e4jwo"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j1yf7"]
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_e4jwo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2bxd"]
+render_priority = 0
+shader = ExtResource("3_w2p68")
+shader_parameter/speed = 0.05
+shader_parameter/color = Color(0, 0.431373, 0.988235, 1)
+shader_parameter/edge_color = Color(0.741176, 0.92549, 0.992157, 1)
+shader_parameter/edge_scale = 2.0
+shader_parameter/near = 0.1
+shader_parameter/far = 100.0
+shader_parameter/wave_strength = Vector2(0.2, 0.3)
+shader_parameter/wave_frequncy = Vector2(10, 8)
+shader_parameter/time_factor = Vector2(0.2, 0.4)
+shader_parameter/noise1 = SubResource("NoiseTexture2D_xh4hp")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_j1yf7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ffccv"]
+size = Vector2(500, 500)
+subdivide_width = 32
+subdivide_depth = 32
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -214,6 +251,11 @@ theme_override_font_sizes/font_size = 30
 text = "PLAYER 4"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MarginContainer"]
+transform = Transform3D(0.1, 0, 0, 0, -0.0258819, -0.0965926, 0, 0.0965926, -0.0258819, 0, -0.373678, -1.58743)
+material_override = SubResource("ShaderMaterial_a2bxd")
+mesh = SubResource("PlaneMesh_ffccv")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.1582)
