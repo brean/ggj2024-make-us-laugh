@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://chtkpqwflii5j" path="res://GameModeController/game_mode_controller.tscn" id="2_x7cyb"]
 [ext_resource type="Shader" path="res://Shader/water.gdshader" id="5_d4asp"]
 [ext_resource type="PackedScene" uid="uid://dibyjm3ln2whq" path="res://Events/Projectiles/canon.tscn" id="5_w2ils"]
-[ext_resource type="PackedScene" uid="uid://c16brtnnyua3u" path="res://game_camera.tscn" id="6_5n46w"]
+[ext_resource type="PackedScene" uid="uid://ckwk76kn3l42o" path="res://game_camera.tscn" id="6_5n46w"]
 [ext_resource type="PackedScene" uid="uid://lpetv7k47vdh" path="res://Events/NatureObstacles/black_hole.tscn" id="7_utd21"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x8cwy"]

@@ -40,7 +40,7 @@ func _ready():
 
 func _on_wait_timer_timeout():
 	self.event_idx = []
-	self.event_idx.append(randi_range(0, len(self.EventList)-1))
+	self.event_idx.append(-1)#randi_range(0, len(self.EventList)-1))
 	if GameManager.current_max >= GameManager.max_points/2.0:
 		var additional_event = randi_range(0, len(self.EventList)-1)
 		if additional_event == self.event_idx[0]:
