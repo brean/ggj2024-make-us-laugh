@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://l4im14mvdbg8"]
 
 [ext_resource type="PackedScene" uid="uid://byla65wkvuqbj" path="res://Player/Weapons/weapon.tscn" id="1_lp11l"]
-[ext_resource type="PackedScene" uid="uid://juu16uw5o7so" path="res://Player/HitHurtBox/hitbox.tscn" id="2_o7ffo"]
+[ext_resource type="PackedScene" path="res://Player/HitHurtBox/hitbox.tscn" id="2_o7ffo"]
 [ext_resource type="Script" path="res://Player/Weapons/punch.gd" id="2_p86ai"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bf01"]
