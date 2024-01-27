@@ -19,10 +19,9 @@ var last_tile_reset = Time.get_ticks_msec()
 
 func hex_to_pos(row, col):
 	# calculate x and y position in meter based on position in the grid
-	var size = 2.31 / 2.0  # dimensions measured in Blender
 	var vertical_spacing = 1.65
 	var horizontal_spacing = 2.0
-	var horizontal_offset = 0.5 * vertical_spacing if row % 2 != 0 else 0 
+	var horizontal_offset = 0.5 * vertical_spacing if row % 2 != 0 else 0.0
 
 	var x = col * horizontal_spacing + horizontal_offset
 	var y = row * vertical_spacing
@@ -45,9 +44,9 @@ func tile_creation():
 				tile_scene = sand_tile
 				grass_instances = 0
 			elif dist > MAX_RADIUS-4:
-				grass_instances = max(max_grass/2, 1)
+				grass_instances = max(max_grass/2., 1)
 			elif dist > MAX_RADIUS-7:
-				grass_instances = max(max_grass/4, 1)
+				grass_instances = max(max_grass/4., 1)
 
 			var tile_inst = tile_scene.instantiate()
 			if grass_instances > 0:
@@ -81,7 +80,7 @@ func let_tiles_fall(delta):
 	for tile in falling_tiles:
 		tile.fall(falling_speed * delta)
 
-func wiggle(delta):
+func wiggle():
 	for tile in falling_tiles:
 		tile.wiggle()
 
@@ -93,7 +92,7 @@ func _process(delta):
 		# wiggle time is up, lets fall!
 		let_tiles_fall(delta)
 	else:
-		wiggle(delta)
+		wiggle()
 	
 	if cur_time - last_tile_reset > reset_tiles_sec * 1000:
 		reset_tiles()
