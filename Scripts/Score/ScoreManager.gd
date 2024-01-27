@@ -24,6 +24,5 @@ func update_announcement_label(text):
 	anim_player.play("bounce")
 
 func clear_announcement_label():
-	var label = $GameAnnouncementTextAnchor/Label
 	var anim_player = $GameAnnouncementTextAnchor/AnimationPlayer
 	anim_player.play("disappear")

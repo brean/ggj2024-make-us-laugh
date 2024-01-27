@@ -5,3 +5,5 @@
 
 [node name="BlackHoleEvent" instance=ExtResource("1_vqjls")]
 script = ExtResource("2_dnckj")
+event_time = 12.5
+event_name = "Extending my Horizon"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckwk76kn3l42o"]
+[gd_scene load_steps=6 format=3 uid="uid://c16brtnnyua3u"]
 
 [ext_resource type="Script" path="res://game_camera.gd" id="1_n60gf"]
 
@@ -85,7 +85,7 @@ _data = {
 script = ExtResource("1_n60gf")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-fov = 40.0
+fov = 30.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
