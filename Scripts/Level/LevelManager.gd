@@ -8,13 +8,14 @@ var falling_tiles = []
 var last_tile_reset = Time.get_ticks_msec()
 
 # let the blocks fall with a speed multiplied by update delta
-var falling_speed = 8
-var MAX_GRASS = 256
+@export var num_falling_tiles = 20
+@export var falling_speed = 8
+@export var max_grass = 256
 
 # seconds the tiles wiggle before they fall
-var wiggle_sec = 1
+@export var wiggle_sec = 1
 # reset tiles after x seconds
-var reset_tiles_sec = 4
+@export var reset_tiles_sec = 4
 
 func hex_to_pos(row, col):
 	# calculate x and y position in meter based on position in the grid
@@ -37,16 +38,16 @@ func tile_creation():
 			var pos = hex_to_pos(x, y)
 			var dist = sqrt(pos[0]**2 + pos[1]**2)
 			var tile_scene = grass_tile
-			var grass_instances = MAX_GRASS
+			var grass_instances = max_grass
 			if dist > MAX_RADIUS:
 				continue
 			elif dist > MAX_RADIUS-2:
 				tile_scene = sand_tile
 				grass_instances = 0
 			elif dist > MAX_RADIUS-4:
-				grass_instances = MAX_GRASS/2
+				grass_instances = max_grass/2
 			elif dist > MAX_RADIUS-7:
-				grass_instances = MAX_GRASS/4
+				grass_instances = max_grass/4
 
 			var tile_inst = tile_scene.instantiate()
 			if grass_instances > 0:
@@ -64,7 +65,7 @@ func reset_tiles():
 	last_tile_reset = Time.get_ticks_msec()
 
 
-func set_tiles_as_falling(num_tiles=16):
+func set_tiles_as_falling(num_tiles):
 	falling_tiles = []
 	for i in range(num_tiles):
 		var tile = tiles[(randi() % tiles.size()) - 1]
@@ -74,7 +75,7 @@ func _ready():
 	tile_creation()
 	reset_tiles()
 	if not Engine.is_editor_hint():
-		set_tiles_as_falling()
+		set_tiles_as_falling(num_falling_tiles)
 
 func let_tiles_fall(delta):
 	for tile in falling_tiles:
@@ -96,4 +97,4 @@ func _process(delta):
 	
 	if cur_time - last_tile_reset > reset_tiles_sec * 1000:
 		reset_tiles()
-		set_tiles_as_falling()
+		set_tiles_as_falling(num_falling_tiles)
