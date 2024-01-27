@@ -1,11 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://caefj76lpbcl3"]
+[gd_scene load_steps=17 format=3 uid="uid://caefj76lpbcl3"]
 
 [ext_resource type="PackedScene" uid="uid://3nt1gsmetmi3" path="res://Player/player.tscn" id="1_rysm8"]
 [ext_resource type="PackedScene" uid="uid://dpd7gr332dte2" path="res://Scenes/UI/ui.tscn" id="1_s85fw"]
 [ext_resource type="PackedScene" uid="uid://chtkpqwflii5j" path="res://GameModeController/game_mode_controller.tscn" id="2_x7cyb"]
 [ext_resource type="Shader" path="res://Shader/water.gdshader" id="5_d4asp"]
 [ext_resource type="PackedScene" uid="uid://dibyjm3ln2whq" path="res://Events/Projectiles/canon.tscn" id="5_w2ils"]
-[ext_resource type="PackedScene" uid="uid://ckwk76kn3l42o" path="res://game_camera.tscn" id="6_5n46w"]
+[ext_resource type="PackedScene" uid="uid://c16brtnnyua3u" path="res://game_camera.tscn" id="6_5n46w"]
+[ext_resource type="PackedScene" uid="uid://lpetv7k47vdh" path="res://Events/NatureObstacles/black_hole.tscn" id="7_utd21"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x8cwy"]
 sky_top_color = Color(0.352941, 0.654902, 0.968627, 1)
@@ -127,3 +128,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.07295, 1.7902, 0)
 
 [node name="Canon3" parent="Canons" instance=ExtResource("5_w2ils")]
 transform = Transform3D(-0.331519, 0, -0.943449, 0, 1, 0, 0.943449, 0, -0.331519, 0, 1.58683, 6.83206)
+
+[node name="BlackHole" parent="." instance=ExtResource("7_utd21")]
+visible = false
