@@ -28,9 +28,9 @@ func hex_to_pos(row, col):
 
 
 func preload_tiles():
-	tile_scenes.append(preload("res://Scenes/tiles/grassed_tile_max.tscn"))
-	tile_scenes.append(preload("res://Scenes/tiles/grassed_tile_mid.tscn"))
-	tile_scenes.append(preload("res://Scenes/tiles/grassed_tile_min.tscn"))
+	tile_scenes.append(preload("res://Scenes/tiles/grassed_tile.tscn"))
+	tile_scenes.append(preload("res://Scenes/tiles/grassed_tile.tscn"))
+	tile_scenes.append(preload("res://Scenes/tiles/grassed_tile.tscn"))
 	tile_scenes.append(preload("res://Scenes/tiles/sand_tile.tscn"))
 
 

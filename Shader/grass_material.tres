@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d4hrjcdrnand3"]
+
+[ext_resource type="Shader" path="res://Shader/grass.gdshader" id="1_guhe1"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_guhe1")
+shader_parameter/color = Color(0.552941, 0.823529, 0.717647, 1)
+shader_parameter/color2 = Color(0.701961, 0.956863, 0.690196, 1)
+shader_parameter/noiseScale = 20.0
