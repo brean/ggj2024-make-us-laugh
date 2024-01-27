@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://c77vj7u6h5ykt"]
+
+[sub_resource type="Curve" id="Curve_75sp0"]
+min_value = -2.0
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r7fwb"]
+curve = SubResource("Curve_75sp0")
+
+[sub_resource type="Curve" id="Curve_qmjiy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.131868), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4x7ue"]
+curve = SubResource("Curve_qmjiy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lyw6g"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+orbit_velocity_min = 0.145
+orbit_velocity_max = 0.145
+orbit_velocity_curve = SubResource("CurveTexture_r7fwb")
+radial_velocity_min = 0.3
+radial_velocity_max = 0.3
+gravity = Vector3(0, 0.2, 0)
+scale_curve = SubResource("CurveTexture_4x7ue")
+color = Color(0.403922, 0.239216, 0.533333, 1)
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n25jv"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_e0ys3"]
+material = SubResource("StandardMaterial3D_n25jv")
+radius = 0.2
+height = 0.4
+radial_segments = 8
+rings = 8
+
+[node name="TeleportParticles" type="GPUParticles3D"]
+emitting = false
+amount = 64
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_lyw6g")
+draw_pass_1 = SubResource("SphereMesh_e0ys3")

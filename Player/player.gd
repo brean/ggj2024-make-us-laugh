@@ -65,6 +65,17 @@ func _ready():
 	self.game_symbol.visible = false
 
 func _physics_process(_delta):
+	if self.global_position.y < GameManager.ResetHeight:
+		if not GameManager.flags["prevent_player_reset"]:
+			self.reset_player()
+		
+		if not surpress_player_fall_signal:
+			self.emit_signal("player_did_fall", self.player_id)
+			surpress_player_fall_signal = true
+	else:
+		surpress_player_fall_signal = false
+	
+	
 	match self.current_state:
 		PlayerStates.IDLE:
 			self.idle_state()
@@ -96,16 +107,6 @@ func _physics_process(_delta):
 	# Rotate model
 	self.rotate_model()
 
-	if self.global_position.y < -5:
-		if not GameManager.flags["prevent_player_reset"]:
-			self.reset_player()
-		
-		if not surpress_player_fall_signal:
-			self.emit_signal("player_did_fall", self.player_id)
-			surpress_player_fall_signal = true
-	else:
-		surpress_player_fall_signal = false
-
 func rotate_model():
 	var look_direction = Vector2(self.linear_velocity.x, -self.linear_velocity.z)
 	if look_direction.length_squared() > self.IdleThreshold:
@@ -123,7 +124,7 @@ func hitbox_got_hit(enemy_id):
 
 
 func reset_player():
-	self.global_position = Vector3(0, 5.0, 0)
+	self.global_position = Vector3(randf_range(-5, 5), 5.0, randf_range(-5, 5))
 	self.linear_velocity = Vector3(0, 0, 0)
 
 

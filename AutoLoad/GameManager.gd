@@ -1,8 +1,13 @@
 extends Node
 
+const ResetHeight = -5.0
+
 signal points_updated(player_id: int, points: int)
 signal game_mode_updated(game_mode: GameMode)
 signal game_mode_exited
+
+signal start_game
+signal end_game
 
 var players: Dictionary = {}
 var points_per_player: Dictionary = {}

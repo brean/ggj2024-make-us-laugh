@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://nvuvupl8a5p"]
+
+[ext_resource type="PackedScene" uid="uid://c6x1astolfqli" path="res://Events/event.tscn" id="1_03ty1"]
+[ext_resource type="Script" path="res://Events/teleport_event.gd" id="2_jyxm5"]
+[ext_resource type="PackedScene" uid="uid://c77vj7u6h5ykt" path="res://Events/Graphics/teleport_particles.tscn" id="3_rpvev"]
+
+[node name="TeleportEvent" instance=ExtResource("1_03ty1")]
+script = ExtResource("2_jyxm5")
+event_time = 2.0
+event_name = "Where am I?"
+
+[node name="TeleportParticles" parent="." index="0" instance=ExtResource("3_rpvev")]
+
+[node name="TeleportParticles2" parent="." index="1" instance=ExtResource("3_rpvev")]
+
+[node name="TeleportParticles3" parent="." index="2" instance=ExtResource("3_rpvev")]
+
+[node name="TeleportParticles4" parent="." index="3" instance=ExtResource("3_rpvev")]
