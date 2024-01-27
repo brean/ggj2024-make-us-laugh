@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwcvubqikjt37"]
+
+[ext_resource type="PackedScene" uid="uid://c6x1astolfqli" path="res://Events/event.tscn" id="1_qi2bk"]
+[ext_resource type="Script" path="res://Events/tornado_event.gd" id="2_gmfbt"]
+
+[node name="TornadoEvent" instance=ExtResource("1_qi2bk")]
+script = ExtResource("2_gmfbt")
+event_time = 12.0
+event_name = "TORNADO"

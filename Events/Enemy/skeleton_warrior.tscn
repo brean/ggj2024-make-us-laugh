@@ -1,0 +1,299 @@
+[gd_scene load_steps=15 format=3 uid="uid://3l7qyrocmgvi"]
+
+[ext_resource type="PackedScene" uid="uid://b6ygh0i0ossr6" path="res://Assets/characters/Skeletons/character_skeleton_minion.gltf" id="1_2iv3r"]
+[ext_resource type="Script" path="res://Events/Enemy/skeleton_warrior.gd" id="1_5faee"]
+[ext_resource type="PackedScene" uid="uid://ql6hnx4e8g7f" path="res://Player/jump_trail.tscn" id="3_q84la"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ng1al"]
+
+[sub_resource type="Animation" id="Animation_47mye"]
+resource_name = "Fall"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_armLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.10732, -1.08729, 2.17433), Vector3(-1.31013, 0.632735, 0.393422)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_armRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.858865, 1.16696, -2.30467), Vector3(-1.2985, -0.0532841, -1.00756)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.34323, 0.0586008, 0.172597), Vector3(0.335607, -0.0938403, -0.278353)]
+}
+
+[sub_resource type="Animation" id="Animation_iria8"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_head:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.523599, 0), Vector3(0, -0.523599, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_armLeft:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.436332, 0, 0), Vector3(-0.436332, 0, 0), Vector3(0.436332, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_armRight:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.436332, 0, 0), Vector3(0.436332, 0, 0), Vector3(-0.436332, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ssqxh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_armLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_armRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.704536, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_armRight:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.204048, 0.633556, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("character_skeleton_minion:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.85, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rm7dw"]
+resource_name = "Run"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_armLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.49517, 0, 0), Vector3(-0.895598, 0, 0), Vector3(-1.74447, 0, 0), Vector3(-0.609417, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_armRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.54631, 0, 0), Vector3(-0.606711, 0, 0), Vector3(-1.5708, 0, 0), Vector3(-0.493466, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.181776, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("character_skeleton_minion/character_skeleton_minion_body/character_skeleton_minion_head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.704536, 0), Vector3(0, 0.803244, -0.0174048), Vector3(0, 0.704536, 0), Vector3(0, 0.606515, 0.0172839)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_li20r"]
+_data = {
+"Fall": SubResource("Animation_47mye"),
+"Idle": SubResource("Animation_iria8"),
+"RESET": SubResource("Animation_ssqxh"),
+"Run": SubResource("Animation_rm7dw")
+}
+
+[sub_resource type="Gradient" id="Gradient_2twnb"]
+offsets = PackedFloat32Array(0, 0.506173, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3qj0y"]
+gradient = SubResource("Gradient_2twnb")
+
+[sub_resource type="Curve" id="Curve_vix5p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.994595, 0.418182), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4g622"]
+curve = SubResource("Curve_vix5p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lm38d"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 0, -1)
+spread = 50.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0.1, 0)
+radial_accel_max = 0.5
+damping_min = 0.2
+damping_max = 0.5
+scale_curve = SubResource("CurveTexture_4g622")
+color_ramp = SubResource("GradientTexture1D_3qj0y")
+
+[node name="SkeletonWarrior" type="RigidBody3D"]
+collision_layer = 9
+collision_mask = 3
+mass = 60.0
+can_sleep = false
+lock_rotation = true
+script = ExtResource("1_5faee")
+
+[node name="character_skeleton_minion" parent="." instance=ExtResource("1_2iv3r")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, -0.85, 0)
+
+[node name="character_skeleton_minion_armLeft" parent="character_skeleton_minion/character_skeleton_minion_body" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.204048, 0.633557, 0)
+
+[node name="character_skeleton_minion_armRight" parent="character_skeleton_minion/character_skeleton_minion_body" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.204048, 0.633556, 0)
+
+[node name="character_skeleton_minion_head" parent="character_skeleton_minion/character_skeleton_minion_body" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.704536, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ng1al")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_li20r")
+}
+playback_default_blend_time = 0.1
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1.3, 0)
+
+[node name="ChargeTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="RunTrail" parent="." instance=ExtResource("3_q84la")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+lifetime = 1.0
+explosiveness = 0.0
+process_material = SubResource("ParticleProcessMaterial_lm38d")
+
+[connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
+
+[editable path="character_skeleton_minion"]

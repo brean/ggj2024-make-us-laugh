@@ -8,7 +8,10 @@ const EventList = [ preload("res://Events/canon_event.tscn"),
 					preload("res://Events/cam_left_event.tscn"), 
 					preload("res://Events/turn_cam_event.tscn"), 
 					preload("res://Events/teleport_event.tscn"), 
-					preload("res://Events/black_hole_event.tscn"),
+					preload("res://Events/black_hole_event.tscn"), 
+					preload("res://Events/tornado_event.tscn"), 
+					preload("res://Events/skeleton_event.tscn"),
+					preload("res://Events/bar_event.tscn"),
 					preload("res://Events/banana_event.tscn")
 					]
 
@@ -25,6 +28,7 @@ var event_idx := []
 signal activate_canons
 signal activate_black_hole
 signal activate_tornado
+signal activate_bar
 
 signal rotate_cam
 signal cam_to_the_side
@@ -49,16 +53,33 @@ func _on_wait_timer_timeout():
 			additional_event += 1
 		self.event_idx.append(additional_event)
 	
+	if GameManager.current_max >= GameManager.max_points*0.8:
+		var additional_event = randi_range(0, len(self.EventList)-1)
+		if additional_event == self.event_idx[0]:
+			additional_event += 1
+		if additional_event == self.event_idx[1]:
+			additional_event += 1
+		if additional_event == self.event_idx[0]:
+			additional_event += 1
+		self.event_idx.append(additional_event)
+	
 	var event_name = ""
 	var start_event = true
+	var event_time = 0
 	for e_idx in self.event_idx:
+		var duration = self.EventNodes[e_idx].event_time
 		if not start_event:
 			event_name += "\n + \n"
 		self.EventNodes[e_idx].activate_event()
-		self.event_timer.start(self.EventNodes[e_idx].event_time)
+		
+		# takes longest time
+		if self.EventNodes[e_idx].event_time > event_time:
+			event_time = self.EventNodes[e_idx].event_time
 		
 		event_name += self.EventNodes[e_idx].event_name
 		start_event = false
+	
+	self.event_timer.start(event_time)
 	
 	self.label.text = event_name 
 	self.label.visible = true

@@ -105,7 +105,6 @@ one_shot = true
 [node name="WaitTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
-autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

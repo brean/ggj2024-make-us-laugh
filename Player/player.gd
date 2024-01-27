@@ -132,6 +132,7 @@ func hitbox_got_hit(enemy_id):
 
 
 func reset_player():
+	GameManager.give_points(self.player_id, -1)
 	self.global_position = Vector3(randf_range(-5, 5), 5.0, randf_range(-5, 5))
 	self.linear_velocity = Vector3(0, 0, 0)
 
@@ -146,7 +147,7 @@ func change_state(new_state):
 			return
 	self.current_state = new_state
 	self.start_state = true
-
+	self.physics_material_override.friction = 1.0
 
 func idle_state():
 	self.char_model.animation_player.play("Idle")
@@ -180,6 +181,7 @@ func move_state():
 
 
 func jump_state():
+	self.physics_material_override.friction = 0.0
 	self.char_model.animation_player.play("Jump_Idle")
 	if self.ground_cast.is_colliding() and self.linear_velocity.y < 1.0 and not self.start_state:
 		self.change_state(PlayerStates.MOVE)
@@ -192,7 +194,7 @@ func jump_state():
 		self.start_state = false
 	
 	self.old_velocity_xz = Vector2(self.linear_velocity.x, self.linear_velocity.z)
-	self.input_movement(self.max_speed, 2.0*self.acceleration)
+	self.input_movement(0.8*self.max_speed, 2.0*self.acceleration)
 
 
 func input_movement(max_velo, acc):
@@ -220,6 +222,7 @@ func attack_state():
 
 
 func fall_state():
+	self.physics_material_override.friction = 0.0
 	self.char_model.animation_player.play("Jump_Idle")
 	self.input_movement(self.max_speed, self.acceleration)
 	if self.ground_cast.is_colliding():
