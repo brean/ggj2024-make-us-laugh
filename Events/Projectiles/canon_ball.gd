@@ -6,11 +6,15 @@ var elements = [
 	[$fridge, $CollisionBox],
 ]
 
+func disable_all():
+	for elem in elements:
+		elem[0].disabled = true
+		elem[1].disabled = true
+
 func random_element():
-	$CollisionSphere.disabled = true
-	$CollisionBox.disabled = true
+	disable_all()
 	var this_elem = elements[randi() % elements.size()]
-	this_elem[0].visible = true;
+	this_elem[0].disabled = false;
 	this_elem[1].disabled = false;
 
 func _on_timer_timeout():
