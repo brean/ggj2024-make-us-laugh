@@ -10,7 +10,8 @@ const EventList = [ preload("res://Events/canon_event.tscn"),
 					preload("res://Events/teleport_event.tscn"), 
 					preload("res://Events/black_hole_event.tscn"), 
 					preload("res://Events/tornado_event.tscn"), 
-					preload("res://Events/skeleton_event.tscn")]
+					preload("res://Events/skeleton_event.tscn"),
+					preload("res://Events/bar_event.tscn")]
 
 var EventNodes := []
 var event_idx := []
@@ -25,6 +26,7 @@ var event_idx := []
 signal activate_canons
 signal activate_black_hole
 signal activate_tornado
+signal activate_bar
 
 signal rotate_cam
 signal cam_to_the_side
@@ -63,6 +65,8 @@ func _on_wait_timer_timeout():
 	var start_event = true
 	var event_time = 0
 	for e_idx in self.event_idx:
+		var duration = self.EventNodes[e_idx].event_time
+		print("activate event " + event_name + " for " + duration)
 		if not start_event:
 			event_name += "\n + \n"
 		self.EventNodes[e_idx].activate_event()
