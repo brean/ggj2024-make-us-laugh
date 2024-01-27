@@ -97,7 +97,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 player_id = -1
 
 [node name="GameModeController" parent="." instance=ExtResource("2_x7cyb")]
-delay_between_modes = 0.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.373678, 0)

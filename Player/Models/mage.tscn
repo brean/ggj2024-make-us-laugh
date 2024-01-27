@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqu8er6diex6b"]
+[gd_scene load_steps=4 format=3 uid="uid://bqu8er6diex6b"]
 
 [ext_resource type="PackedScene" uid="uid://cl4ww3twlw4ch" path="res://Assets/characters/Mage.glb" id="1_6d8eq"]
 [ext_resource type="Script" path="res://Player/Models/CharModel.gd" id="2_4scl7"]
+[ext_resource type="Material" uid="uid://cg8iclxws3qkv" path="res://Player/Models/mage_material.tres" id="3_dpjgb"]
 
 [node name="Mage" instance=ExtResource("1_6d8eq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -60,5 +61,26 @@ visible = false
 [node name="Mage_Hat" parent="Rig/Skeleton3D" index="4"]
 transform = Transform3D(0.99972, -0.00612019, 0.0228409, 1.39341e-09, 0.965926, 0.258819, -0.0236466, -0.258747, 0.965656, -7.48419e-09, 1.7705, -1.02479e-07)
 
+[node name="Mage_Hat" parent="Rig/Skeleton3D/Mage_Hat" index="0"]
+material_override = ExtResource("3_dpjgb")
+
 [node name="Mage_Cape" parent="Rig/Skeleton3D" index="5"]
 transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.44077e-10, -0.0862353, 1.8939e-15, 0.996275, -1.2997e-08, 1.20227, -1.01951e-07)
+
+[node name="Mage_ArmLeft" parent="Rig/Skeleton3D" index="6"]
+material_override = ExtResource("3_dpjgb")
+
+[node name="Mage_ArmRight" parent="Rig/Skeleton3D" index="7"]
+material_override = ExtResource("3_dpjgb")
+
+[node name="Mage_Body" parent="Rig/Skeleton3D" index="8"]
+material_override = ExtResource("3_dpjgb")
+
+[node name="Mage_Head" parent="Rig/Skeleton3D" index="9"]
+material_override = ExtResource("3_dpjgb")
+
+[node name="Mage_LegLeft" parent="Rig/Skeleton3D" index="10"]
+material_override = ExtResource("3_dpjgb")
+
+[node name="Mage_LegRight" parent="Rig/Skeleton3D" index="11"]
+material_override = ExtResource("3_dpjgb")

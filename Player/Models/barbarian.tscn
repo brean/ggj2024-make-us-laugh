@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7w44x7vfm1tf"]
+[gd_scene load_steps=3 format=3 uid="uid://c7w44x7vfm1tf"]
 
 [ext_resource type="PackedScene" uid="uid://38bqpqslt2lv" path="res://Assets/characters/Barbarian.glb" id="1_2dycl"]
+[ext_resource type="Script" path="res://Player/Models/CharModel.gd" id="2_38lm4"]
 
 [node name="Barbarian" instance=ExtResource("1_2dycl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("2_38lm4")
 
 [node name="1H_Axe_Offhand" parent="Rig/Skeleton3D" index="0"]
 transform = Transform3D(-0.999999, -9.51134e-08, 1.11502e-07, 1.04677e-07, -5.60721e-07, 0.999999, -2.43372e-08, 0.999999, 5.63844e-07, 0.883132, 1.04926, 0.0333082)
@@ -26,7 +28,7 @@ transform = Transform3D(0.999999, 9.88405e-08, -4.98676e-07, -4.35653e-07, -8.58
 visible = false
 
 [node name="Barbarian_Hat" parent="Rig/Skeleton3D" index="5"]
-transform = Transform3D(1, -2.20965e-22, 1.69407e-21, 2.20965e-22, 1, 0, -1.69407e-21, 3.58732e-43, 1, 0, 1.21587, -1.39099e-07)
+transform = Transform3D(1, -2.20965e-22, 1.69407e-21, 2.20965e-22, 1, 0, -1.69407e-21, 0, 1, 0, 1.21587, -1.39099e-07)
 
 [node name="Barbarian_Cape" parent="Rig/Skeleton3D" index="6"]
-transform = Transform3D(1, 1.25214e-21, 0, -1.25214e-21, 1, 7.17465e-43, 0, 0, 1, -1.90735e-06, 1.21587, -1.39099e-07)
+transform = Transform3D(1, 1.25214e-21, 0, -1.25214e-21, 1, 0, 0, 0, 1, -1.90735e-06, 1.21587, -1.39099e-07)

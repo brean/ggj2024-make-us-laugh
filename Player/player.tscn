@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Player/player.gd" id="1_j7un2"]
 [ext_resource type="PackedScene" uid="uid://bqhq0org0h7hc" path="res://Player/HitHurtBox/hurtbox.tscn" id="2_d61p2"]
 [ext_resource type="PackedScene" uid="uid://l4im14mvdbg8" path="res://Player/Weapons/punch.tscn" id="2_iva54"]
-[ext_resource type="PackedScene" uid="uid://ql6hnx4e8g7f" path="res://Player/Materials/jump_trail.tscn" id="4_n6bac"]
+[ext_resource type="PackedScene" uid="uid://ql6hnx4e8g7f" path="res://Player/jump_trail.tscn" id="4_n6bac"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_345q3"]
 

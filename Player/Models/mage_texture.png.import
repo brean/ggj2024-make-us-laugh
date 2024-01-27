@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4k4i6wkyiom"
-path.s3tc="res://.godot/imported/rogue_texture.png-5fca1937af39352fe83b5d666c9df496.s3tc.ctex"
+uid="uid://glth1nl7w0ik"
+path.s3tc="res://.godot/imported/mage_texture.png-e7cd8a05e2fa125183fe0998363d4e36.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/characters/rogue_texture.png"
-dest_files=["res://.godot/imported/rogue_texture.png-5fca1937af39352fe83b5d666c9df496.s3tc.ctex"]
+source_file="res://Player/Models/mage_texture.png"
+dest_files=["res://.godot/imported/mage_texture.png-e7cd8a05e2fa125183fe0998363d4e36.s3tc.ctex"]
 
 [params]
 

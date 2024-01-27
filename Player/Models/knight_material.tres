@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://df6ppfq8i6ibn"]
+
+[ext_resource type="Texture2D" uid="uid://fxjhnlfqa4gv" path="res://Assets/characters/Knight_knight_texture.png" id="1_2s70x"]
+
+[resource]
+resource_name = "knight_texture"
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_2s70x")
+roughness = 0.5

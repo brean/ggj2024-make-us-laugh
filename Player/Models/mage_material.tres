@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cg8iclxws3qkv"]
+
+[ext_resource type="Texture2D" uid="uid://glth1nl7w0ik" path="res://Player/Models/mage_texture.png" id="1_ufana"]
+
+[resource]
+resource_name = "mage_texture"
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_ufana")
