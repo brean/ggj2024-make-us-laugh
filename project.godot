@@ -13,6 +13,7 @@ config_version=5
 config/name="GlobalGameJam2024"
 run/main_scene="res://MainScene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -24,6 +25,7 @@ EventManager="*res://Events/event_manager.tscn"
 
 [display]
 
+window/size/initial_position_type=0
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
@@ -90,3 +92,7 @@ Pause={
 3d_physics/layer_1="Ground"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="PlayerHitbox"
+
+[rendering]
+
+anti_aliasing/quality/screen_space_aa=1
