@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://l4im14mvdbg8"]
+[gd_scene load_steps=10 format=3 uid="uid://l4im14mvdbg8"]
 
 [ext_resource type="PackedScene" uid="uid://byla65wkvuqbj" path="res://Player/Weapons/weapon.tscn" id="1_lp11l"]
 [ext_resource type="PackedScene" path="res://Player/HitHurtBox/hitbox.tscn" id="2_o7ffo"]
 [ext_resource type="Script" path="res://Player/Weapons/punch.gd" id="2_p86ai"]
+[ext_resource type="AudioStream" uid="uid://clgme6sjfdf2" path="res://Assets/sound/player/punch_0.wav" id="4_kwfij"]
+[ext_resource type="AudioStream" uid="uid://dm75760b7p5ii" path="res://Assets/sound/player/punch_1.wav" id="5_ylb4t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bf01"]
 diffuse_mode = 3
@@ -10,6 +12,13 @@ specular_mode = 1
 albedo_color = Color(0.658824, 0.211765, 0.27451, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_x1jew"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_14ikx"]
+streams_count = 2
+stream_0/stream = ExtResource("4_kwfij")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_ylb4t")
+stream_1/weight = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wy11b"]
 radius = 0.7
@@ -29,7 +38,11 @@ monitoring = false
 monitorable = false
 knockback_strength = 400
 
-[node name="CollisionShape3D" parent="Hitbox" index="0"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Hitbox" index="0"]
+stream = SubResource("AudioStreamRandomizer_14ikx")
+volume_db = 10.0
+
+[node name="CollisionShape3D" parent="Hitbox" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0035)
 shape = SubResource("SphereShape3D_wy11b")
 
