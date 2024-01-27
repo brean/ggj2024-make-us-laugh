@@ -3,6 +3,7 @@ extends RigidBody3D
 @onready var elements = [
 	[$tomato, $CollisionSphere],
 	[$burger, $CollisionSphere],
+	[$CanonBallMesh, $CollisionSphere],
 	[$fridge, $CollisionBox],
 ]
 
