@@ -7,6 +7,11 @@ signal game_mode_exited
 var players: Dictionary = {}
 var points_per_player: Dictionary = {}
 
+var flags: Dictionary = {
+	# used during some events to prevent players from respawning
+	"prevent_player_reset": false
+}
+
 func give_points(player_id: int, points: int):
 	
 	if not points_per_player.has(player_id):
