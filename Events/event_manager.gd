@@ -10,7 +10,7 @@ const EventList = [ preload("res://Events/canon_event.tscn"),
 					preload("res://Events/teleport_event.tscn")]
 
 var EventNodes := []
-var event_idx := 0
+var event_idx := []
 
 @export var wait_time_scale = 2.0
 
@@ -35,11 +35,26 @@ func _ready():
 
 
 func _on_wait_timer_timeout():
-	self.event_idx = randi_range(0, len(self.EventList)-1)
-	self.EventNodes[self.event_idx].activate_event()
-	self.event_timer.start(self.EventNodes[self.event_idx].event_time)
+	self.event_idx = []
+	self.event_idx.append(randi_range(0, len(self.EventList)-1))
+	if GameManager.current_max >= GameManager.max_points/2.0:
+		var additional_event = randi_range(0, len(self.EventList)-1)
+		if additional_event == self.event_idx[0]:
+			additional_event += 1
+		self.event_idx.append(additional_event)
 	
-	self.label.text = self.EventNodes[self.event_idx].event_name
+	var event_name = ""
+	var start_event = true
+	for e_idx in self.event_idx:
+		if not start_event:
+			event_name += "\n + \n"
+		self.EventNodes[e_idx].activate_event()
+		self.event_timer.start(self.EventNodes[e_idx].event_time)
+		
+		event_name += self.EventNodes[e_idx].event_name
+		start_event = false
+	
+	self.label.text = event_name 
 	self.label.visible = true
 	self.animation_player.play("TextAppear")
 
@@ -47,17 +62,20 @@ func _on_wait_timer_timeout():
 func _on_event_timer_timeout():
 	self.label.visible = false
 	self.wait_timer.start(randf_range(3.0, self.wait_time_scale))
-	self.EventNodes[self.event_idx].deactivate_event()
+	for e_idx in self.event_idx:
+		self.EventNodes[e_idx].deactivate_event()
 
 
 func start_events():
 	self.wait_timer.start(self.wait_time_scale)
 
+
 func stop_events():
 	self.wait_timer.stop()
 	self.event_timer.stop()
 	self.label.visible = false
-	self.EventNodes[self.event_idx].deactivate_event()
+	for e_idx in self.event_idx:
+		self.EventNodes[self.e_idx].deactivate_event()
 
 
 func to_idle():

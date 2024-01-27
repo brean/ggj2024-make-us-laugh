@@ -12,6 +12,9 @@ signal end_game
 var players: Dictionary = {}
 var points_per_player: Dictionary = {}
 
+var max_points := 10
+var current_max := 0
+
 var flags: Dictionary = {
 	# used during some events to prevent players from respawning
 	"prevent_player_reset": false
@@ -24,3 +27,5 @@ func give_points(player_id: int, points: int):
 	
 	points_per_player[player_id] += points
 	points_updated.emit(player_id, points_per_player[player_id])
+	
+	current_max = points_per_player.values().max()

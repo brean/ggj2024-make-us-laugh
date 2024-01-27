@@ -47,6 +47,10 @@ var char_model : CharacterModel
 @onready var jump_trail_particles = $Particles/JumpTrail
 @onready var run_trail = $Particles/RunTrail
 
+### Sound
+@onready var falling_in_water_sound = $FallingInWaterSound
+
+
 signal got_hit # self id any enemy id that hit this player
 signal player_did_fall 
 

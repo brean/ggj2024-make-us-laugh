@@ -5,6 +5,7 @@ const InvTime := 1.0
 var player = null
 
 @onready var invisible_timer = $InvisibleTimer
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $HurtSound
 
 signal got_hit(int)
 
@@ -18,6 +19,7 @@ func hit(knockback : Vector3, enemy_id):
 	self.set_deferred("monitoring", false)
 	self.set_deferred("monitorable", false)
 	self.invisible_timer.start(self.InvTime)
+	self.audio_stream_player_3d.play()
 	self.emit_signal("got_hit", enemy_id)
 
 
