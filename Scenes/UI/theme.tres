@@ -1,7 +1,7 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b14angt2f0dy2"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cfu2ekpmrjkr4"]
 
 [ext_resource type="FontVariation" uid="uid://degrs2ja8d81b" path="res://Assets/BlackHans.tres" id="1_s6onp"]
-[ext_resource type="StyleBox" path="res://Scenes/UI/buttonStyleBox.tres" id="1_yfftv"]
+[ext_resource type="StyleBox" uid="uid://d0jwb4oy82dmy" path="res://Scenes/UI/buttonStyleBox.tres" id="1_yfftv"]
 
 [resource]
 default_font = ExtResource("1_s6onp")
