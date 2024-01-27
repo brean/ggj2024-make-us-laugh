@@ -1,3 +1,4 @@
+[gd_scene load_steps=19 format=3 uid="uid://caefj76lpbcl3"]
 [gd_scene load_steps=18 format=3 uid="uid://caefj76lpbcl3"]
 
 [ext_resource type="PackedScene" uid="uid://3nt1gsmetmi3" path="res://Player/player.tscn" id="1_rysm8"]
@@ -5,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://chtkpqwflii5j" path="res://GameModeController/game_mode_controller.tscn" id="2_x7cyb"]
 [ext_resource type="Shader" path="res://Shader/water.gdshader" id="5_d4asp"]
 [ext_resource type="PackedScene" uid="uid://dibyjm3ln2whq" path="res://Events/Projectiles/canon.tscn" id="5_w2ils"]
-[ext_resource type="PackedScene" uid="uid://ckwk76kn3l42o" path="res://game_camera.tscn" id="6_5n46w"]
+[ext_resource type="PackedScene" uid="uid://c16brtnnyua3u" path="res://game_camera.tscn" id="6_5n46w"]
 [ext_resource type="PackedScene" uid="uid://lpetv7k47vdh" path="res://Events/NatureObstacles/black_hole.tscn" id="7_utd21"]
 [ext_resource type="PackedScene" uid="uid://l66osl76isls" path="res://Events/NatureObstacles/tornado.tscn" id="8_l8nrt"]
+[ext_resource type="PackedScene" uid="uid://b5cooh5mnaoum" path="res://Scenes/Level.tscn" id="8_6kgbl"]
+[ext_resource type="PackedScene" uid="uid://bwtjgbkexbjfc" path="res://Scenes/env.tscn" id="9_o0xnw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x8cwy"]
 sky_top_color = Color(0.352941, 0.654902, 0.968627, 1)
@@ -71,12 +74,6 @@ shadow_enabled = true
 
 [node name="UI" parent="." instance=ExtResource("1_s85fw")]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.419474, 0, -0.803345)
-use_collision = true
-collision_mask = 0
-size = Vector3(32.4853, 1, 24.9026)
-
 [node name="Player" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6116, 2, -9.21939)
 
@@ -103,7 +100,7 @@ material_override = SubResource("ShaderMaterial_g3bmt")
 mesh = SubResource("PlaneMesh_12pd0")
 
 [node name="GameCamera" parent="." instance=ExtResource("6_5n46w")]
-transform = Transform3D(1, 0, 0, 0, 0.803005, 0.595973, 0, -0.595973, 0.803005, 0, 20.4068, 27.8921)
+transform = Transform3D(1, 0, 0, 0, 0.803005, 0.595973, 0, -0.595973, 0.803005, 0, 30, 40)
 
 [node name="Canons" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -129,8 +126,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.07295, 1.7902, 0)
 [node name="Canon3" parent="Canons" instance=ExtResource("5_w2ils")]
 transform = Transform3D(-0.331519, 0, -0.943449, 0, 1, 0, 0.943449, 0, -0.331519, 0, 1.58683, 6.83206)
 
+[node name="Level" parent="." instance=ExtResource("8_6kgbl")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.5, 0)
+falling_speed = 2
+max_grass = 128
+reset_tiles_sec = 5
+
 [node name="BlackHole" parent="." instance=ExtResource("7_utd21")]
 visible = false
 
 [node name="Tornado" parent="." instance=ExtResource("8_l8nrt")]
 visible = false
+
+[node name="Tornado" parent="." instance=ExtResource("8_l8nrt")]
+visible = false
+
+
+[node name="Env" parent="." instance=ExtResource("9_o0xnw")]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://uu0e85gs1kfw"]
+
+[ext_resource type="PackedScene" uid="uid://dfjsdevlid4hq" path="res://Assets/feather/feather.glb" id="1_pdnc3"]
+
+[node name="Feather" type="Node3D"]
+
+[node name="feather" parent="." instance=ExtResource("1_pdnc3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.00582345, -0.0105224, 0.457281)
