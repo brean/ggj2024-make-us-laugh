@@ -3,19 +3,19 @@ class_name GameMode
 
 signal finished
 
-@export var duration: float
+@export var display_name: String
+@export var duration: float = 5
+@export var points_reward: int = 1
+@export var points_penalty: int = 1
 
 var time_passed: float = 0
 
 func _ready():
-	pass
-
-func _process(delta):
-	time_passed += delta
+	get_tree().create_timer(duration).timeout.connect(on_timeout)
 	
-	if time_passed >= duration:
-		timeout()
-	
-func timeout():
+func on_timeout():
 	finished.emit()
 	queue_free()
+
+func start():
+	pass # override for each game mode
