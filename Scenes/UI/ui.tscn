@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpd7gr332dte2"]
+[gd_scene load_steps=3 format=3 uid="uid://dpd7gr332dte2"]
 
 [ext_resource type="Script" path="res://Scripts/Score/ScoreManager.gd" id="1_5xrsp"]
+[ext_resource type="Theme" uid="uid://bk0pifhpk6rm2" path="res://Scenes/UI/theme.tres" id="2_7qod2"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_5xrsp")
@@ -37,8 +38,10 @@ size_flags_horizontal = 4
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.352941, 0.117647, 0.878431, 1)
-theme_override_font_sizes/font_size = 70
+theme = ExtResource("2_7qod2")
+theme_override_colors/font_color = Color(0.4, 0.054902, 0.996078, 1)
+theme_override_colors/font_shadow_color = Color(0.202333, 0.03, 0.5, 1)
+theme_override_colors/font_outline_color = Color(0.202333, 0.03, 0.5, 1)
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -47,8 +50,10 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.878431, 0.282353, 0.113725, 1)
-theme_override_font_sizes/font_size = 70
+theme = ExtResource("2_7qod2")
+theme_override_colors/font_color = Color(0.988235, 0.415686, 0.227451, 1)
+theme_override_colors/font_shadow_color = Color(0.5, 0.21125, 0.115, 1)
+theme_override_colors/font_outline_color = Color(0.5, 0.21125, 0.115, 1)
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -57,8 +62,10 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.113725, 0.878431, 0.654902, 1)
-theme_override_font_sizes/font_size = 70
+theme = ExtResource("2_7qod2")
+theme_override_colors/font_color = Color(0.227451, 0.988235, 0.803922, 1)
+theme_override_colors/font_shadow_color = Color(0.115, 0.5, 0.40375, 1)
+theme_override_colors/font_outline_color = Color(0.115, 0.5, 0.40375, 1)
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -67,8 +74,10 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.878431, 0.831373, 0.113725, 1)
-theme_override_font_sizes/font_size = 70
+theme = ExtResource("2_7qod2")
+theme_override_colors/font_color = Color(1, 0.956863, 0.0588235, 1)
+theme_override_colors/font_shadow_color = Color(0.5, 0.4765, 0.03, 1)
+theme_override_colors/font_outline_color = Color(0.5, 0.4765, 0.03, 1)
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
