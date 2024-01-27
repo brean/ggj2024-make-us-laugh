@@ -58,7 +58,7 @@ height = 0.2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xhtap"]
 height = 4.0
-radius = 15.0
+radius = 20.0
 
 [sub_resource type="Animation" id="Animation_5x5n2"]
 resource_name = "MoveAround"
@@ -103,16 +103,20 @@ _data = {
 script = ExtResource("1_uynvb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 material_override = SubResource("ShaderMaterial_1085h")
 mesh = SubResource("SphereMesh_tspaj")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 amount = 128
 lifetime = 3.0
+visibility_aabb = AABB(-23.3324, -15.0668, -22.0663, 46.6648, 30.1336, 44.1325)
 process_material = SubResource("ParticleProcessMaterial_sss11")
 draw_pass_1 = SubResource("SphereMesh_2rb7o")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 collision_layer = 0
 collision_mask = 2
 

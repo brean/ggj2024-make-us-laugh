@@ -1,6 +1,6 @@
 extends Node3D
 
-const Force := 5.0
+const Force := 425.0
 
 var player_list := []
 
@@ -18,8 +18,8 @@ func activate_hole(set_on):
 
 func _physics_process(delta):
 	for player in self.player_list:
-		var dir = player.global_position.direction(self.global_position)
-		player.apply_central_force(delta * dir * self.Force)
+		var dir = player.global_position.direction_to(self.global_position)
+		player.apply_central_force(dir * self.Force)
 
 
 func _on_area_3d_body_entered(body):
