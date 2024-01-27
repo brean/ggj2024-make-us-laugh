@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dpd7gr332dte2"]
 
 [ext_resource type="Script" path="res://Scripts/Score/ScoreManager.gd" id="1_5xrsp"]
-[ext_resource type="Theme" uid="uid://cfu2ekpmrjkr4" path="res://Scenes/UI/theme.tres" id="2_7qod2"]
+[ext_resource type="Theme" uid="uid://b14angt2f0dy2" path="res://Scenes/UI/theme.tres" id="2_7qod2"]
 [ext_resource type="Script" path="res://Scenes/UI/score_label.gd" id="3_g634s"]
 
 [sub_resource type="Animation" id="Animation_kmdc3"]

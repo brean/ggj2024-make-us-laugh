@@ -15,8 +15,10 @@ func start():
 	for player_id in chased_player_ids:
 		GameManager.players[player_id].got_hit.connect(on_chased_player_touched)
 	
-	GameManager.players[chasing_player_id].max_speed *= chasing_speed_boost
-	GameManager.players[chasing_player_id].acceleration *= chasing_speed_boost
+	var chasing_player = GameManager.players[chasing_player_id]
+	chasing_player.max_speed *= chasing_speed_boost
+	chasing_player.acceleration *= chasing_speed_boost
+	chasing_player.game_symbol.visible = true
 	
 func on_chased_player_touched(self_id: int, enemy_id: int):
 	if not self_id in caught_player_ids and enemy_id == chasing_player_id:
@@ -37,6 +39,8 @@ func on_timeout():
 		if player_id not in caught_player_ids:
 			GameManager.give_points(player_id, survival_reward)
 	
-	GameManager.players[chasing_player_id].reset_modifiers()
+	var chasing_player = GameManager.players[chasing_player_id]
+	chasing_player.reset_modifiers()
+	chasing_player.game_symbol.visible = false
 	
 	super.on_timeout()

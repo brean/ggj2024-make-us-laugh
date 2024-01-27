@@ -8,7 +8,9 @@ func _ready():
 	GameManager.game_mode_exited.connect(clear_announcement_label)
 	
 func update_score_label(player_id, points):
-	var label = get_node("Control/MarginContainer/VBoxContainer/HBoxContainer/Score_p" + str(player_id + 2))
+	if player_id < 0:
+		player_id = 0
+	var label = get_node("Control/MarginContainer/VBoxContainer/HBoxContainer/Score_p" + str(player_id + 1))
 	label.play_bounce()
 	label.text = str(points)
 

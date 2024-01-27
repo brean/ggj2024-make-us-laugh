@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Events/Projectiles/canon_ball.gd" id="1_bx2op"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tige7"]
-bounce = 0.5
+bounce = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_46o6m"]
 

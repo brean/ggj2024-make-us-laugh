@@ -12,7 +12,6 @@ func _ready():
 	self.set_hitbox_active(false)
 	self.hitbox.connect("hit_something", punched_something)
 
-
 func use_weapon():
 	if not self.on_cooldown and not self.attack_timer.time_left > 0:
 		self.set_hitbox_active(true)

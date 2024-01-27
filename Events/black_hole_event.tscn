@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqtyq0p8ltx6j"]
+
+[ext_resource type="PackedScene" uid="uid://c6x1astolfqli" path="res://Events/event.tscn" id="1_vqjls"]
+[ext_resource type="Script" path="res://Events/black_hole_event.gd" id="2_dnckj"]
+
+[node name="BlackHoleEvent" instance=ExtResource("1_vqjls")]
+script = ExtResource("2_dnckj")
