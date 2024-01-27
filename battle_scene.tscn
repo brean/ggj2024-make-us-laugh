@@ -103,7 +103,7 @@ material_override = SubResource("ShaderMaterial_g3bmt")
 mesh = SubResource("PlaneMesh_12pd0")
 
 [node name="GameCamera" parent="." instance=ExtResource("6_5n46w")]
-transform = Transform3D(1, 0, 0, 0, 0.803005, 0.595973, 0, -0.595973, 0.803005, 0, 8.2326, 17.3458)
+transform = Transform3D(1, 0, 0, 0, 0.803005, 0.595973, 0, -0.595973, 0.803005, 0, 20.4068, 27.8921)
 
 [node name="Canons" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
