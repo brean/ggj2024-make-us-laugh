@@ -54,10 +54,12 @@ func _on_wait_timer_timeout():
 	var event_name = ""
 	var start_event = true
 	for e_idx in self.event_idx:
+		var duration = self.EventNodes[e_idx].event_time
+		print("activate event " + event_name + " for " + duration)
 		if not start_event:
 			event_name += "\n + \n"
 		self.EventNodes[e_idx].activate_event()
-		self.event_timer.start(self.EventNodes[e_idx].event_time)
+		self.event_timer.start(duration)
 		
 		event_name += self.EventNodes[e_idx].event_name
 		start_event = false
