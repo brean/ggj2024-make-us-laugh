@@ -1,17 +1,17 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5cooh5mnaoum"]
 
-[ext_resource type="Script" path="res://Scripts/LevelCreation/LevelCreation.gd" id="1_xfome"]
+[ext_resource type="Script" path="res://Scripts/Level/LevelManager.gd" id="1_26v4n"]
 
 [node name="Level" type="Node3D"]
 
 [node name="Node3D" type="Node3D" parent="."]
-script = ExtResource("1_xfome")
+script = ExtResource("1_26v4n")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.75346, 0.657494, 0, -0.657494, 0.75346, 0.00379348, 5.77052, -0.0165119)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 16.732, 0)
+transform = Transform3D(1, 0, 0, 0, 0.449085, 0.893489, 0, -0.893489, 0.449085, 0, 14.0181, 7.79604)
 projection = 1
 fov = 37.573
-size = 68.8667
+size = 50.0
