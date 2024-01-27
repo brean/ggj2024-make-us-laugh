@@ -1,12 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://3nt1gsmetmi3"]
+[gd_scene load_steps=22 format=3 uid="uid://3nt1gsmetmi3"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_j7un2"]
 [ext_resource type="PackedScene" uid="uid://bqhq0org0h7hc" path="res://Player/HitHurtBox/hurtbox.tscn" id="2_d61p2"]
 [ext_resource type="PackedScene" uid="uid://l4im14mvdbg8" path="res://Player/Weapons/punch.tscn" id="2_iva54"]
-[ext_resource type="PackedScene" path="res://Player/jump_trail.tscn" id="4_n6bac"]
+[ext_resource type="PackedScene" uid="uid://ql6hnx4e8g7f" path="res://Player/jump_trail.tscn" id="4_n6bac"]
 [ext_resource type="Texture2D" uid="uid://btu2qnuwc3g3o" path="res://Player/Models/symbol_placeholder.png" id="5_w30we"]
 [ext_resource type="AudioStream" uid="uid://ccg45oihsf5x2" path="res://Assets/sound/env/water_pop_0.wav" id="10_t05yd"]
 [ext_resource type="AudioStream" uid="uid://cebyd8iau3fpu" path="res://Assets/sound/env/water_pop_1.wav" id="11_slegh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pbxbd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iyf8o"]
 
@@ -22,14 +24,14 @@ radius = 0.4
 offsets = PackedFloat32Array(0, 0.506173, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_3qj0y"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jdqp5"]
 gradient = SubResource("Gradient_3dbhf")
 
 [sub_resource type="Curve" id="Curve_548yb"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.994595, 0.418182), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_4g622"]
+[sub_resource type="CurveTexture" id="CurveTexture_kqsay"]
 curve = SubResource("Curve_548yb")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_674qm"]
@@ -43,8 +45,8 @@ gravity = Vector3(0, 0.1, 0)
 radial_accel_max = 0.5
 damping_min = 0.2
 damping_max = 0.5
-scale_curve = SubResource("CurveTexture_4g622")
-color_ramp = SubResource("GradientTexture1D_3qj0y")
+scale_curve = SubResource("CurveTexture_kqsay")
+color_ramp = SubResource("GradientTexture1D_jdqp5")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6ws73"]
 streams_count = 2
@@ -95,6 +97,7 @@ _data = {
 collision_layer = 2
 collision_mask = 3
 mass = 40.0
+physics_material_override = SubResource("PhysicsMaterial_pbxbd")
 can_sleep = false
 lock_rotation = true
 script = ExtResource("1_j7un2")
