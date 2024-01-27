@@ -11,7 +11,9 @@ const EventList = [ preload("res://Events/canon_event.tscn"),
 					preload("res://Events/black_hole_event.tscn"), 
 					preload("res://Events/tornado_event.tscn"), 
 					preload("res://Events/skeleton_event.tscn"),
-					preload("res://Events/bar_event.tscn")]
+					preload("res://Events/bar_event.tscn"),
+					preload("res://Events/banana_event.tscn")
+					]
 
 var EventNodes := []
 var event_idx := []
