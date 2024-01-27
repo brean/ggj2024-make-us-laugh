@@ -38,6 +38,7 @@ var char_model : CharacterModel
 @onready var ground_cast = $GroundCast
 @onready var hurtbox = $Hurtbox
 @onready var weapon_hand = $ModelNode/WeaponHand
+@onready var game_symbol = $GameSymbol
 
 ### Particles
 @onready var jump_trail_particles = $Particles/JumpTrail
@@ -58,6 +59,7 @@ func _ready():
 	self.char_model = new_char_model
 	$ModelNode/Model.queue_free()
 
+	self.game_symbol.visible = false
 
 func _physics_process(_delta):
 	match self.current_state:
