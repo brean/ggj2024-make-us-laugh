@@ -82,7 +82,6 @@ current_state = 5
 [node name="Player2" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8127, 2, -9.65634)
 player_id = 1
-current_state = 5
 
 [node name="Player3" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2275, 2, 8.3127)

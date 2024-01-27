@@ -67,7 +67,6 @@ func _on_wait_timer_timeout():
 	var start_event = true
 	var event_time = 0
 	for e_idx in self.event_idx:
-		var duration = self.EventNodes[e_idx].event_time
 		if not start_event:
 			event_name += "\n + \n"
 		self.EventNodes[e_idx].activate_event()
