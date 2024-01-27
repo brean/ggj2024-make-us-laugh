@@ -100,7 +100,8 @@ func _process(delta):
 	
 	
 func _on_play_pressed():
-	if(Input.get_connected_joypads().size() == 3):
+	if(Input.get_connected_joypads().size() >= 0):
+		GameManager.max_points = max_points
 		get_tree().change_scene_to_file("res://battle_scene.tscn")
 
 
