@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://clower2u7cw10"]
+[gd_scene load_steps=8 format=3 uid="uid://clower2u7cw10"]
 
 [ext_resource type="Theme" uid="uid://cfu2ekpmrjkr4" path="res://Scenes/UI/theme.tres" id="1_6setb"]
 [ext_resource type="Script" path="res://Scenes/UI/start_menu.gd" id="1_6u6f0"]
 [ext_resource type="Script" path="res://Scripts/start_UI.gd" id="2_d2ysd"]
+[ext_resource type="PackedScene" uid="uid://bqu8er6diex6b" path="res://Player/Models/mage.tscn" id="5_eondh"]
+[ext_resource type="PackedScene" uid="uid://g3wn08pp0pt3" path="res://Player/Models/rogue_hooded.tscn" id="6_7d25h"]
+[ext_resource type="PackedScene" uid="uid://c7w44x7vfm1tf" path="res://Player/Models/barbarian.tscn" id="6_k36vc"]
+[ext_resource type="PackedScene" uid="uid://5puqrljgmpcm" path="res://Player/Models/knight.tscn" id="7_ebao4"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -21,14 +25,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 0
 alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
@@ -43,6 +47,10 @@ size_flags_vertical = 3
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 75)
 layout_mode = 2
+focus_neighbor_left = NodePath("../VBoxContainer/Button")
+focus_neighbor_top = NodePath("../../Quit")
+focus_neighbor_right = NodePath("../VBoxContainer/Button")
+focus_neighbor_bottom = NodePath("../../Quit")
 theme = ExtResource("1_6setb")
 theme_override_font_sizes/font_size = 55
 text = "PLAY"
@@ -69,6 +77,10 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 75)
 layout_mode = 2
 size_flags_vertical = 4
+focus_neighbor_left = NodePath("../../Play")
+focus_neighbor_top = NodePath("../../../Quit")
+focus_neighbor_right = NodePath("../../Play")
+focus_neighbor_bottom = NodePath("../../../Quit")
 theme = ExtResource("1_6setb")
 text = "10"
 
@@ -80,6 +92,8 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 75)
 layout_mode = 2
 size_flags_vertical = 0
+focus_neighbor_top = NodePath("../HBoxContainer/Play")
+focus_neighbor_bottom = NodePath("../HBoxContainer/Play")
 theme = ExtResource("1_6setb")
 text = "QUIT"
 
@@ -201,6 +215,24 @@ theme_override_font_sizes/font_size = 30
 text = "PLAYER 4"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.1582)
+fov = 60.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="Barbarian" parent="." instance=ExtResource("6_k36vc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, -2.7, 0)
+
+[node name="Mage" parent="." instance=ExtResource("5_eondh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, -2.7, 0)
+
+[node name="Rogue_Hooded" parent="." instance=ExtResource("6_7d25h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2, -2.7, 0)
+
+[node name="Knight" parent="." instance=ExtResource("7_ebao4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, -2.7, 0)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
