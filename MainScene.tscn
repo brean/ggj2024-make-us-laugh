@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://iwj1gr05hi6e"]
 
-[ext_resource type="PackedScene" uid="uid://dyxk8uladnk0m" path="res://Scenes/tiles/grassed_tile.tscn" id="1_c74s8"]
+[ext_resource type="PackedScene" uid="uid://ciu6jipe5moa6" path="res://Scenes/tiles/grassed_tile.tscn" id="1_c74s8"]
 
 [node name="Node3D" type="Node3D"]
 
