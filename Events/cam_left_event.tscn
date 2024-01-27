@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6jma6qy57oaf"]
+
+[ext_resource type="PackedScene" uid="uid://c6x1astolfqli" path="res://Events/event.tscn" id="1_kvpyu"]
+[ext_resource type="Script" path="res://Events/cam_left_event.gd" id="2_6uig2"]
+
+[node name="CamLeftEvent" instance=ExtResource("1_kvpyu")]
+script = ExtResource("2_6uig2")
+event_time = 7.5
+event_name = "Whats over there?"

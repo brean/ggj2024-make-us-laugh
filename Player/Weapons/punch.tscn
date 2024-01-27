@@ -12,6 +12,7 @@ albedo_color = Color(0.658824, 0.211765, 0.27451, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_x1jew"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wy11b"]
+radius = 0.7
 
 [node name="Punch" instance=ExtResource("1_lp11l")]
 script = ExtResource("2_p86ai")

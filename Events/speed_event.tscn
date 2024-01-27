@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmggk46bvxhnq"]
+
+[ext_resource type="PackedScene" uid="uid://c6x1astolfqli" path="res://Events/event.tscn" id="1_xcgdv"]
+[ext_resource type="Script" path="res://Events/speed_event.gd" id="2_7h333"]
+
+[node name="SpeedEvent" instance=ExtResource("1_xcgdv")]
+script = ExtResource("2_7h333")
+event_time = 5.0
+event_name = "Gonna go fast"

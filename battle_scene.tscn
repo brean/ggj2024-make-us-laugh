@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://caefj76lpbcl3"]
+[gd_scene load_steps=16 format=3 uid="uid://caefj76lpbcl3"]
 
 [ext_resource type="PackedScene" uid="uid://3nt1gsmetmi3" path="res://Player/player.tscn" id="1_rysm8"]
 [ext_resource type="PackedScene" uid="uid://dpd7gr332dte2" path="res://Scenes/UI/ui.tscn" id="1_s85fw"]
 [ext_resource type="PackedScene" uid="uid://chtkpqwflii5j" path="res://GameModeController/game_mode_controller.tscn" id="2_x7cyb"]
 [ext_resource type="Shader" path="res://Shader/water.gdshader" id="5_d4asp"]
 [ext_resource type="PackedScene" uid="uid://dibyjm3ln2whq" path="res://Events/Projectiles/canon.tscn" id="5_w2ils"]
+[ext_resource type="PackedScene" uid="uid://c16brtnnyua3u" path="res://game_camera.tscn" id="6_5n46w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x8cwy"]
 sky_top_color = Color(0.352941, 0.654902, 0.968627, 1)
@@ -74,10 +75,6 @@ use_collision = true
 collision_mask = 0
 size = Vector3(32.4853, 1, 24.9026)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.850738, 0.52559, 0, -0.52559, 0.850738, 0.872195, 7.86511, 14.7793)
-current = true
-
 [node name="Player" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82714, 2, 0)
 current_state = 5
@@ -93,11 +90,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.373678, 0)
 material_override = SubResource("ShaderMaterial_g3bmt")
 mesh = SubResource("PlaneMesh_12pd0")
 
-[node name="Canon" parent="." instance=ExtResource("5_w2ils")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5966, 2.03834, -5.44053)
+[node name="GameCamera" parent="." instance=ExtResource("6_5n46w")]
+transform = Transform3D(1, 0, 0, 0, 0.803005, 0.595973, 0, -0.595973, 0.803005, 0, 8.2326, 17.3458)
 
-[node name="Canon2" parent="." instance=ExtResource("5_w2ils")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5966, 2.03834, 0.532013)
+[node name="Canons" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Canon3" parent="." instance=ExtResource("5_w2ils")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5966, 2.80851, 6.24089)
+[node name="Canon" parent="Canons" instance=ExtResource("5_w2ils")]
+transform = Transform3D(0.844449, 0, 0.535635, 0, 1, 0, -0.535635, 0, 0.844449, 6.70592, 1.78536, 0)
+
+[node name="Canon4" parent="Canons" instance=ExtResource("5_w2ils")]
+transform = Transform3D(0.844449, 0, 0.535635, 0, 1, 0, -0.535635, 0, 0.844449, -0.287409, 1.78536, 0)
+
+[node name="Canon5" parent="Canons" instance=ExtResource("5_w2ils")]
+transform = Transform3D(0.761652, 0, -0.647987, 0, 1, 0, 0.647987, 0, 0.761652, -0.287409, 1.78536, -4.63066)
+
+[node name="Canon6" parent="Canons" instance=ExtResource("5_w2ils")]
+transform = Transform3D(0.761652, 0, -0.647987, 0, 1, 0, 0.647987, 0, 0.761652, 10.1816, 1.78536, 6.44878)
+
+[node name="Canon7" parent="Canons" instance=ExtResource("5_w2ils")]
+transform = Transform3D(-0.31386, 0, 0.949469, 0, 1, 0, -0.949469, 0, -0.31386, -9.86367, 1.78536, 6.44878)
+
+[node name="Canon2" parent="Canons" instance=ExtResource("5_w2ils")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.07295, 1.7902, 0)
+
+[node name="Canon3" parent="Canons" instance=ExtResource("5_w2ils")]
+transform = Transform3D(-0.331519, 0, -0.943449, 0, 1, 0, 0.943449, 0, -0.331519, 0, 1.58683, 6.83206)

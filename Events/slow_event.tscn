@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0w4frtsqhphb"]
+
+[ext_resource type="PackedScene" uid="uid://c6x1astolfqli" path="res://Events/event.tscn" id="1_ycc4c"]
+[ext_resource type="Script" path="res://Events/slow_event.gd" id="2_2tojh"]
+
+[node name="SlowEvent" instance=ExtResource("1_ycc4c")]
+script = ExtResource("2_2tojh")
+event_time = 6.0
+event_name = "Sand in your Shoe"
