@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://nilxn3jti2xw"]
+
+[ext_resource type="Script" path="res://GameMode/LastOneStandingGameMode.gd" id="1_0o606"]
+
+[node name="LastOneStandingGameMode" type="Node3D"]
+script = ExtResource("1_0o606")
+display_name = "Be the last one standing!"

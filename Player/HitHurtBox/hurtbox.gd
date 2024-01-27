@@ -13,7 +13,8 @@ func get_id():
 
 
 func hit(knockback : Vector3, enemy_id):
-	self.player.apply_central_impulse(knockback)
+	var knockback_mod = player.knockback_mod # get knockback modifier from player
+	self.player.apply_central_impulse(knockback * knockback_mod)
 	self.set_deferred("monitoring", false)
 	self.set_deferred("monitorable", false)
 	self.invisible_timer.start(self.InvTime)

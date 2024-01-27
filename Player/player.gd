@@ -10,6 +10,7 @@ const OriginalAcc := 14.5
 const OriginalJumpImpulse := 250.0
 const RotationSpeed := 0.2
 const IdleThreshold := 0.01
+const OriginalKnockbackModifier := 1
 
 enum PlayerStates {IDLE, MOVE, JUMP, FALL, ATTACK, DUMMY}
 
@@ -19,6 +20,7 @@ enum PlayerStates {IDLE, MOVE, JUMP, FALL, ATTACK, DUMMY}
 @export var acceleration := self.OriginalAcc
 @export var jump_impulse := self.OriginalJumpImpulse
 @export var current_state : PlayerStates = self.PlayerStates.IDLE
+@export var knockback_mod : float = 1
 
 var direction := Vector2.ZERO
 var old_velocity_xz := Vector2.ZERO
@@ -203,3 +205,8 @@ func fall_state():
 	self.input_movement(self.max_speed, self.acceleration)
 	if self.ground_cast.is_colliding():
 		self.change_state(PlayerStates.MOVE)
+
+func reset_modifiers():
+	max_speed = OriginalSpeed
+	acceleration = OriginalAcc
+	knockback_mod = OriginalKnockbackModifier
