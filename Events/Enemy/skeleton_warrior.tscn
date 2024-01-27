@@ -255,7 +255,7 @@ color_ramp = SubResource("GradientTexture1D_3qj0y")
 [node name="SkeletonWarrior" type="RigidBody3D"]
 collision_layer = 9
 collision_mask = 3
-mass = 40.0
+mass = 60.0
 can_sleep = false
 lock_rotation = true
 script = ExtResource("1_5faee")

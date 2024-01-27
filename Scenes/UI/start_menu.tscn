@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://clower2u7cw10"]
 
-[ext_resource type="Theme" uid="uid://cfu2ekpmrjkr4" path="res://Scenes/UI/theme.tres" id="1_6setb"]
+[ext_resource type="Theme" uid="uid://b14angt2f0dy2" path="res://Scenes/UI/theme.tres" id="1_6setb"]
 [ext_resource type="Script" path="res://Scenes/UI/start_menu.gd" id="1_6u6f0"]
 [ext_resource type="PackedScene" uid="uid://bqu8er6diex6b" path="res://Player/Models/mage.tscn" id="5_eondh"]
 [ext_resource type="PackedScene" uid="uid://g3wn08pp0pt3" path="res://Player/Models/rogue_hooded.tscn" id="6_7d25h"]
