@@ -11,8 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://n5hfrv24ipeh" path="res://Assets/sound/player/hurt_4.wav" id="8_gji15"]
 [ext_resource type="AudioStream" uid="uid://ccg45oihsf5x2" path="res://Assets/sound/env/water_pop_0.wav" id="10_t05yd"]
 [ext_resource type="AudioStream" uid="uid://cebyd8iau3fpu" path="res://Assets/sound/env/water_pop_1.wav" id="11_slegh"]
+[ext_resource type="Texture2D" uid="uid://btu2qnuwc3g3o" path="res://Player/Models/symbol_placeholder.png" id="5_w30we"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_xqhjr"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iyf8o"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sp42m"]
 
@@ -69,6 +70,43 @@ stream_0/stream = ExtResource("10_t05yd")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("11_slegh")
 stream_1/weight = 1.0
+[sub_resource type="Animation" id="Animation_mdkc1"]
+resource_name = "Idle_Symbol"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameSymbol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2, 0), Vector3(0, 1.8, 0), Vector3(0, 2.1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rmae1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameSymbol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_16fb3"]
+_data = {
+"Idle_Symbol": SubResource("Animation_mdkc1"),
+"RESET": SubResource("Animation_rmae1")
+}
 
 [node name="Player" type="RigidBody3D"]
 collision_layer = 2
@@ -79,7 +117,7 @@ lock_rotation = true
 script = ExtResource("1_j7un2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CylinderShape3D_xqhjr")
+shape = SubResource("CapsuleShape3D_iyf8o")
 
 [node name="GroundCast" type="RayCast3D" parent="."]
 target_position = Vector3(0, -1.1, 0)
@@ -120,5 +158,17 @@ process_material = SubResource("ParticleProcessMaterial_674qm")
 
 [node name="FallingInWaterSound" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_6ws73")
+[node name="GameSymbol" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+modulate = Color(0.764706, 0.0156863, 0.203922, 1)
+pixel_size = 0.03
+billboard = 2
+texture = ExtResource("5_w30we")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_16fb3")
+}
+autoplay = "Idle_Symbol"
 
 [editable path="Hurtbox"]
