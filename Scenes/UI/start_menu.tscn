@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://clower2u7cw10"]
+[gd_scene load_steps=7 format=3 uid="uid://clower2u7cw10"]
 
 [ext_resource type="Theme" uid="uid://cfu2ekpmrjkr4" path="res://Scenes/UI/theme.tres" id="1_6setb"]
 [ext_resource type="Script" path="res://Scenes/UI/start_menu.gd" id="1_6u6f0"]
-[ext_resource type="Script" path="res://Scripts/start_UI.gd" id="2_d2ysd"]
 [ext_resource type="PackedScene" uid="uid://bqu8er6diex6b" path="res://Player/Models/mage.tscn" id="5_eondh"]
 [ext_resource type="PackedScene" uid="uid://g3wn08pp0pt3" path="res://Player/Models/rogue_hooded.tscn" id="6_7d25h"]
 [ext_resource type="PackedScene" uid="uid://c7w44x7vfm1tf" path="res://Player/Models/barbarian.tscn" id="6_k36vc"]
@@ -15,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 1
 script = ExtResource("1_6u6f0")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -102,7 +102,6 @@ custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-script = ExtResource("2_d2ysd")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(280, 0)
