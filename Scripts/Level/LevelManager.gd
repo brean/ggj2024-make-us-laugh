@@ -9,7 +9,7 @@ var last_tile_reset = Time.get_ticks_msec()
 
 # let the blocks fall with a speed multiplied by update delta
 @export var num_falling_tiles = 20
-@export var falling_speed = 8
+@export var falling_speed = 2
 @export var max_grass = 256
 
 # seconds the tiles wiggle before they fall

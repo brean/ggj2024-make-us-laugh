@@ -126,7 +126,9 @@ transform = Transform3D(-0.331519, 0, -0.943449, 0, 1, 0, 0.943449, 0, -0.331519
 
 [node name="Level" parent="." instance=ExtResource("8_6kgbl")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.5, 0)
+falling_speed = 2
 max_grass = 128
+reset_tiles_sec = 5
 
 [node name="BlackHole" parent="." instance=ExtResource("7_utd21")]
 visible = false
