@@ -10,6 +10,7 @@ func _ready():
 
 func _on_spawn_timer_timeout():
 	var new_ball = self.CanonBall.instantiate()
+	new_ball.random_element()
 	self.add_child(new_ball)
 	new_ball.global_position = self.spawn_position.global_position
 	new_ball.linear_velocity = \

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://br40h4n1w3u6m"]
+
+[ext_resource type="Script" path="res://Events/banana_event.gd" id="1_jsel0"]
+
+[node name="BananaEvent" type="Node3D"]
+script = ExtResource("1_jsel0")
+event_name = "Banana-Rain"

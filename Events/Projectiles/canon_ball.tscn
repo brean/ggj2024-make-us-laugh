@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci5cly3kqn3e4"]
+[gd_scene load_steps=10 format=3 uid="uid://ci5cly3kqn3e4"]
 
 [ext_resource type="Script" path="res://Events/Projectiles/canon_ball.gd" id="1_bx2op"]
+[ext_resource type="PackedScene" path="res://Events/Projectiles/tomato.glb" id="2_afdu4"]
+[ext_resource type="PackedScene" uid="uid://dmcdbwnmnh5ym" path="res://Events/Projectiles/burger.glb" id="3_y34mm"]
+[ext_resource type="PackedScene" uid="uid://vlv26pb52od7" path="res://Events/Projectiles/fridge.glb" id="4_ayuhg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tige7"]
 bounce = 1.0
@@ -14,6 +17,9 @@ albedo_color = Color(0.384314, 0.34902, 0.572549, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ud35c"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ci10s"]
+size = Vector3(2.02576, 2.36816, 1.98218)
+
 [node name="CanonBall" type="RigidBody3D"]
 top_level = true
 collision_layer = 9
@@ -24,10 +30,12 @@ gravity_scale = 0.05
 linear_velocity = Vector3(20, 0, 0)
 script = ExtResource("1_bx2op")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionSphere" type="CollisionShape3D" parent="."]
+visible = false
 shape = SubResource("SphereShape3D_46o6m")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 material_override = SubResource("StandardMaterial3D_mvttj")
 mesh = SubResource("SphereMesh_ud35c")
 
@@ -35,5 +43,22 @@ mesh = SubResource("SphereMesh_ud35c")
 wait_time = 5.0
 one_shot = true
 autostart = true
+
+[node name="tomato" parent="." instance=ExtResource("2_afdu4")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -0.0268899, -0.294344, 0.0260628)
+visible = false
+
+[node name="CollisionBox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0918579, 0.241699, -0.0609131)
+visible = false
+shape = SubResource("BoxShape3D_ci10s")
+
+[node name="burger" parent="." instance=ExtResource("3_y34mm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.370511, 0)
+visible = false
+
+[node name="fridge" parent="." instance=ExtResource("4_ayuhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114047, -1.09076, -0.0937016)
+visible = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
