@@ -45,9 +45,9 @@ func tile_creation():
 				tile_scene = sand_tile
 				grass_instances = 0
 			elif dist > MAX_RADIUS-4:
-				grass_instances = Math.max(max_grass/2, 1)
+				grass_instances = max(max_grass/2, 1)
 			elif dist > MAX_RADIUS-7:
-				grass_instances = Math.max(max_grass/4, 1)
+				grass_instances = max(max_grass/4, 1)
 
 			var tile_inst = tile_scene.instantiate()
 			if grass_instances > 0:
