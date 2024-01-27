@@ -77,7 +77,6 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6116, 2, -9.21939)
-current_state = 5
 
 [node name="Player2" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8127, 2, -9.65634)
@@ -148,7 +147,7 @@ metadata/position_max = Vector2(15, 15)
 metadata/world_y = 1.5
 
 [node name="PlayerPhantomCamera3D" type="Node3D" parent="."]
-transform = Transform3D(0.999949, 0, 0, 0, 0.939566, 0.341994, 0, -0.341974, 0.93962, 0, -30, 30)
+transform = Transform3D(0.999949, 0, 0, 0, 0.939566, 0.341994, 0, -0.341974, 0.93962, 0.600551, 19.0997, 46.3092)
 script = ExtResource("13_w8cea")
 priority_override = false
 priority = 5
