@@ -3,6 +3,8 @@ extends "res://Events/event.gd"
 @onready var particle_list = [$TeleportParticles, $TeleportParticles2, 
 								$TeleportParticles3, $TeleportParticles4]
 
+@onready var teleport_sound = $TeleportSound
+
 func activate_event():
 	var position_array = []
 	var player_okay = []
@@ -26,6 +28,7 @@ func activate_event():
 			counter += 1
 		idx += 1
 	
+	teleport_sound.play()
 
 func deactivate_event():
 	pass
