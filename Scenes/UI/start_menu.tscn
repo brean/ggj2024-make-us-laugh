@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://clower2u7cw10"]
+[gd_scene load_steps=3 format=3 uid="uid://clower2u7cw10"]
 
 [ext_resource type="Theme" uid="uid://cfu2ekpmrjkr4" path="res://Scenes/UI/theme.tres" id="1_6setb"]
+[ext_resource type="Script" path="res://Scripts/start_UI.gd" id="2_d2ysd"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -17,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
@@ -45,19 +46,31 @@ theme = ExtResource("1_6setb")
 text = "QUIT"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+script = ExtResource("2_d2ysd")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
-size_flags_vertical = 8
+
+[node name="connect_status" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_6setb")
+theme_override_font_sizes/font_size = 19
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 8
 theme = ExtResource("1_6setb")
 theme_override_colors/font_color = Color(0.403922, 0.0588235, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.202333, 0.03, 0.5, 1)
@@ -70,53 +83,83 @@ vertical_alignment = 1
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
-size_flags_vertical = 8
+
+[node name="connect_status" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_6setb")
+theme_override_font_sizes/font_size = 19
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer2"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 8
 theme = ExtResource("1_6setb")
-theme_override_colors/font_color = Color(0.403922, 0.0588235, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.202333, 0.03, 0.5, 1)
-theme_override_colors/font_outline_color = Color(0.202333, 0.03, 0.5, 1)
+theme_override_colors/font_color = Color(1, 0.290196, 0.0588235, 1)
+theme_override_colors/font_shadow_color = Color(0.5, 0.1475, 0.03, 1)
+theme_override_colors/font_outline_color = Color(0.5, 0.1475, 0.03, 1)
 theme_override_font_sizes/font_size = 30
-text = "PLAYER 1"
+text = "PLAYER 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
-size_flags_vertical = 8
+
+[node name="connect_status" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer3"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_6setb")
+theme_override_font_sizes/font_size = 19
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer3"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 8
 theme = ExtResource("1_6setb")
-theme_override_colors/font_color = Color(0.403922, 0.0588235, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.202333, 0.03, 0.5, 1)
-theme_override_colors/font_outline_color = Color(0.202333, 0.03, 0.5, 1)
+theme_override_colors/font_color = Color(0.0588235, 1, 0.772549, 1)
+theme_override_colors/font_shadow_color = Color(0.03, 0.5, 0.3825, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.5, 0.3825, 1)
 theme_override_font_sizes/font_size = 30
-text = "PLAYER 1"
+text = "PLAYER 3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
-size_flags_vertical = 8
+
+[node name="connect_status" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer4"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_6setb")
+theme_override_font_sizes/font_size = 19
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer4"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 8
 theme = ExtResource("1_6setb")
-theme_override_colors/font_color = Color(0.403922, 0.0588235, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.202333, 0.03, 0.5, 1)
-theme_override_colors/font_outline_color = Color(0.202333, 0.03, 0.5, 1)
+theme_override_colors/font_color = Color(1, 0.956863, 0.0588235, 1)
+theme_override_colors/font_shadow_color = Color(0.5, 0.4765, 0.03, 1)
+theme_override_colors/font_outline_color = Color(0.5, 0.4765, 0.03, 1)
 theme_override_font_sizes/font_size = 30
-text = "PLAYER 1"
+text = "PLAYER 4"
 horizontal_alignment = 1
 vertical_alignment = 1
