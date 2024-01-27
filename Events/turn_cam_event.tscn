@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxdeqtv7q8ohc"]
+
+[ext_resource type="PackedScene" uid="uid://c6x1astolfqli" path="res://Events/event.tscn" id="1_orne3"]
+[ext_resource type="Script" path="res://Events/turn_cam_event.gd" id="2_vkb0a"]
+
+[node name="TurnCamEvent" instance=ExtResource("1_orne3")]
+script = ExtResource("2_vkb0a")
+event_time = 6.0
+event_name = "Going to Australia"

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1ab0hejkqw8x"]
+
+[ext_resource type="PackedScene" uid="uid://c6x1astolfqli" path="res://Events/event.tscn" id="1_8c422"]
+[ext_resource type="Script" path="res://Events/canon_event.gd" id="2_x7biw"]
+
+[node name="CanonEvent" instance=ExtResource("1_8c422")]
+script = ExtResource("2_x7biw")
+event_time = 16.0
+event_name = "PIRATES!!!"

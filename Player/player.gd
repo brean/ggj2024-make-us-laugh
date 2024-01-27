@@ -24,6 +24,7 @@ enum PlayerStates {IDLE, MOVE, JUMP, FALL, ATTACK, DUMMY}
 
 var direction := Vector2.ZERO
 var old_velocity_xz := Vector2.ZERO
+var direction_rot := 0.0
 
 var current_weapon : Weapon
 
@@ -188,6 +189,8 @@ func input_movement(max_velo, acc):
 							+ MultiplayerInput.get_action_strength(self.player_id, "Right")
 	self.direction.y = - MultiplayerInput.get_action_strength(self.player_id, "Forward") \
 							+ MultiplayerInput.get_action_strength(self.player_id, "Backward")
+
+	self.direction = self.direction.rotated(self.direction_rot)
 
 	# Add impuls if not to fast
 	var horizontal_velocity = Vector2(self.linear_velocity.x, self.linear_velocity.z)

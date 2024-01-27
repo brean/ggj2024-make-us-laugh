@@ -15,6 +15,7 @@ albedo_color = Color(0.384314, 0.34902, 0.572549, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_ud35c"]
 
 [node name="CanonBall" type="RigidBody3D"]
+top_level = true
 collision_mask = 3
 mass = 80.0
 physics_material_override = SubResource("PhysicsMaterial_tige7")
