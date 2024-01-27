@@ -5,6 +5,7 @@ class_name Weapon
 @export var cooldown := 3.0
 
 var on_cooldown := false
+var block_player_movement := false
 
 @onready var cooldown_timer = $CooldownTimer
 

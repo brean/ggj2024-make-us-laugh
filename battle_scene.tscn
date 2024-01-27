@@ -91,11 +91,11 @@ transform = Transform3D(1, 0, 0, 0, 0.850738, 0.52559, 0, -0.52559, 0.850738, 0.
 
 [node name="Player" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82714, 2, 0)
+current_state = 5
 
 [node name="Player2" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 player_id = -1
-dummy = false
 
 [node name="GameModeController" parent="." instance=ExtResource("2_x7cyb")]
 game_modes = Array[PackedScene]([ExtResource("3_agjdt")])

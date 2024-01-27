@@ -1,70 +1,88 @@
 extends RigidBody3D
 
-const MaterialList = [preload("res://Player/Materials/player_blue.tres"), 
-					  preload("res://Player/Materials/player_red.tres"), 
-					  preload("res://Player/Materials/player_green.tres"), 
-					  preload("res://Player/Materials/player_yellow.tres")]
+const ModelList = [preload("res://Player/Models/rogue_hooded.tscn"), 
+					preload("res://Player/Models/mage.tscn"), 
+					preload("res://Player/Models/knight.tscn"), 
+					preload("res://Player/Models/barbarian.tscn")]
 
 const OriginalSpeed := 5.5
 const OriginalAcc := 14.5
 const OriginalJumpImpulse := 250.0
 const RotationSpeed := 0.2
+const IdleThreshold := 0.01
+
+enum PlayerStates {IDLE, MOVE, JUMP, FALL, ATTACK, DUMMY}
 
 @export var player_id := 0
 
 @export var max_speed := self.OriginalSpeed
 @export var acceleration := self.OriginalAcc
 @export var jump_impulse := self.OriginalJumpImpulse
-@export var dummy := true
+@export var current_state : PlayerStates = self.PlayerStates.IDLE
 
 var direction := Vector2.ZERO
+var old_velocity_xz := Vector2.ZERO
+
 var current_weapon : Weapon
+
 var can_reset := false
+var start_state := true
+
+var char_model : CharacterModel
 
 @onready var model = $ModelNode
 @onready var ground_cast = $GroundCast
 @onready var hurtbox = $Hurtbox
 @onready var weapon_hand = $ModelNode/WeaponHand
 
+### Particles
+@onready var jump_trail_particles = $Particles/JumpTrail
+@onready var run_trail = $Particles/RunTrail
 
 signal got_hit # self id any enemy id that hit this player
 signal player_did_fall 
 
+
 func _ready():
-	GameManager.players[player_id] = self
+	GameManager.players[self.player_id] = self
 	self.hurtbox.player = self
 	self.hurtbox.connect("got_hit", self.hitbox_got_hit)
 	self.update_weapon()
-	$ModelNode/Model.material_override = self.MaterialList[self.player_id]
+	
+	var new_char_model = self.ModelList[self.player_id].instantiate()
+	self.model.add_child(new_char_model)
+	self.char_model = new_char_model
+	$ModelNode/Model.queue_free()
 
-func _physics_process(delta):
-	# Get input
-	if not self.dummy:
-		self.direction.x = - MultiplayerInput.get_action_strength(self.player_id, "Left") \
-							+ MultiplayerInput.get_action_strength(self.player_id, "Right")
-		self.direction.y = - MultiplayerInput.get_action_strength(self.player_id, "Forward") \
-							+ MultiplayerInput.get_action_strength(self.player_id, "Backward")
 
-		# Add impuls if not to fast
-		var horizontal_velocity = Vector2(self.linear_velocity.x, self.linear_velocity.z)
-		if horizontal_velocity.length() < self.max_speed:
-			var input_strength = self.direction.length()
-			self.direction = min(1.0, input_strength) * self.direction.normalized()
-			self.apply_central_impulse(acceleration * Vector3(self.direction.x, 0.0, self.direction.y))
-		
-		# Jump
-		if MultiplayerInput.is_action_just_pressed(self.player_id, "Jump"):
-			self.ground_cast.force_raycast_update()
-			if self.ground_cast.is_colliding():
-				self.apply_central_impulse(jump_impulse * Vector3(0.0, 1.0, 0.0))
+func _physics_process(_delta):
+	match self.current_state:
+		PlayerStates.IDLE:
+			self.idle_state()
+		PlayerStates.MOVE:
+			self.move_state()
+		PlayerStates.JUMP:
+			self.jump_state()
+		PlayerStates.ATTACK:
+			self.attack_state()
+		PlayerStates.FALL:
+			self.fall_state()
+		PlayerStates.DUMMY:
+			return # nothing to do here
+	
+	# Jump
+	if MultiplayerInput.is_action_just_pressed(self.player_id, "Jump"):
+		self.change_state(PlayerStates.JUMP)
 
-		# Attack
-		if MultiplayerInput.is_action_pressed(self.player_id, "Punch"):
+	# Attack
+	if MultiplayerInput.is_action_pressed(self.player_id, "Punch"):
+		if not self.current_weapon.on_cooldown:
 			self.current_weapon.use_weapon()
+			self.change_state(PlayerStates.ATTACK)
 
-		# Reset if stuck (maybe remove later)
-		if MultiplayerInput.is_action_just_pressed(self.player_id, "Reset") and self.can_reset:
-			self.reset_player()
+	# Reset if stuck (maybe remove later)
+	if MultiplayerInput.is_action_just_pressed(self.player_id, "Reset") and self.can_reset:
+		self.reset_player()
 
 	# Rotate model
 	self.rotate_model()
@@ -76,7 +94,7 @@ func _physics_process(delta):
 
 func rotate_model():
 	var look_direction = Vector2(self.linear_velocity.x, -self.linear_velocity.z)
-	if look_direction.length_squared() > 0.01:
+	if look_direction.length_squared() > self.IdleThreshold:
 		self.model.rotation.y = lerp_angle(self.model.rotation.y, look_direction.angle() + PI/2.0, 
 											self.RotationSpeed)
 
@@ -93,3 +111,89 @@ func hitbox_got_hit(enemy_id):
 func reset_player():
 	self.global_position = Vector3(0, 5.0, 0)
 	self.linear_velocity = Vector3(0, 0, 0)
+
+
+func change_state(new_state):
+	self.char_model.animation_player.speed_scale = 1.0
+	if self.current_weapon.block_player_movement:
+		return
+	if new_state == PlayerStates.JUMP:
+		self.ground_cast.force_raycast_update()
+		if not self.ground_cast.is_colliding():
+			return
+	self.current_state = new_state
+	self.start_state = true
+
+
+func idle_state():
+	self.char_model.animation_player.play("Idle")
+	self.direction.x = - MultiplayerInput.get_action_strength(self.player_id, "Left") \
+							+ MultiplayerInput.get_action_strength(self.player_id, "Right")
+	self.direction.y = - MultiplayerInput.get_action_strength(self.player_id, "Forward") \
+							+ MultiplayerInput.get_action_strength(self.player_id, "Backward")
+	if not self.direction == Vector2.ZERO:
+		self.change_state(PlayerStates.MOVE)
+	elif not self.ground_cast.is_colliding():
+		self.change_state(PlayerStates.FALL)
+
+
+func move_state():
+	self.char_model.animation_player.play("Walking_A")
+	if self.start_state:
+		self.run_trail.restart()
+		self.start_state = false
+	
+	if self.ground_cast.is_colliding():
+		self.linear_velocity.y = 0.0
+		var current_speed = self.input_movement(self.max_speed, self.acceleration)
+		self.char_model.animation_player.speed_scale = min(3.0, 1.5*current_speed/self.max_speed)
+	else:
+		self.change_state(PlayerStates.FALL)
+		return
+	
+	if self.direction == Vector2.ZERO and self.linear_velocity.length_squared() < self.IdleThreshold:
+		self.linear_velocity = Vector3.ZERO
+		self.change_state(PlayerStates.IDLE)
+
+
+func jump_state():
+	self.char_model.animation_player.play("Jump_Idle")
+	if self.ground_cast.is_colliding() and self.linear_velocity.y < 1.0 and not self.start_state:
+		self.change_state(PlayerStates.MOVE)
+		self.linear_velocity.x = 0.5*self.old_velocity_xz.x
+		self.linear_velocity.z = 0.5*self.old_velocity_xz.y
+		
+	if self.start_state:
+		self.jump_trail_particles.emitting = true
+		self.apply_central_impulse(jump_impulse * Vector3(0.0, 1.0, 0.0))
+		self.start_state = false
+	
+	self.old_velocity_xz = Vector2(self.linear_velocity.x, self.linear_velocity.z)
+	self.input_movement(self.max_speed, 2.0*self.acceleration)
+
+
+func input_movement(max_velo, acc):
+	self.direction.x = - MultiplayerInput.get_action_strength(self.player_id, "Left") \
+							+ MultiplayerInput.get_action_strength(self.player_id, "Right")
+	self.direction.y = - MultiplayerInput.get_action_strength(self.player_id, "Forward") \
+							+ MultiplayerInput.get_action_strength(self.player_id, "Backward")
+
+	# Add impuls if not to fast
+	var horizontal_velocity = Vector2(self.linear_velocity.x, self.linear_velocity.z)
+	var current_speed = horizontal_velocity.length() 
+	if current_speed < max_velo:
+		var input_strength = self.direction.length()
+		self.direction = min(1.0, input_strength) * self.direction.normalized()
+		self.apply_central_impulse(acc * Vector3(self.direction.x, 0.0, self.direction.y))
+	return current_speed
+
+func attack_state():
+	if not self.current_weapon.block_player_movement:
+		self.change_state(PlayerStates.MOVE)
+
+
+func fall_state():
+	self.char_model.animation_player.play("Jump_Idle")
+	self.input_movement(self.max_speed, self.acceleration)
+	if self.ground_cast.is_colliding():
+		self.change_state(PlayerStates.MOVE)

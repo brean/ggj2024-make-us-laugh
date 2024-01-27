@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://5puqrljgmpcm"]
+
+[ext_resource type="PackedScene" uid="uid://db2frihk7a6cu" path="res://Assets/characters/Knight.glb" id="1_5qp3g"]
+[ext_resource type="Script" path="res://Player/Models/CharModel.gd" id="2_w101k"]
+
+[node name="Knight" instance=ExtResource("1_5qp3g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("2_w101k")
+
+[node name="1H_Sword_Offhand" parent="Rig/Skeleton3D" index="0"]
+transform = Transform3D(-0.999999, -1.09847e-07, -1.26916e-07, -1.33741e-07, -5.60721e-07, 0.999999, -3.90708e-08, 0.999999, 5.63844e-07, 0.883132, 1.04926, 0.017011)
+visible = false
+
+[node name="Badge_Shield" parent="Rig/Skeleton3D" index="1"]
+transform = Transform3D(-0.999999, 2.42533e-06, -7.94378e-07, -8.01206e-07, -7.67352e-07, 0.999999, 2.49611e-06, 0.999999, 7.70477e-07, 0.883132, 1.20515, 0.0170111)
+visible = false
+
+[node name="Rectangle_Shield" parent="Rig/Skeleton3D" index="2"]
+transform = Transform3D(-0.999999, 2.42533e-06, -7.94378e-07, -8.01206e-07, -7.67352e-07, 0.999999, 2.49611e-06, 0.999999, 7.70477e-07, 0.883132, 1.20515, 0.0170111)
+visible = false
+
+[node name="Round_Shield" parent="Rig/Skeleton3D" index="3"]
+transform = Transform3D(-0.999999, 2.42533e-06, -7.94378e-07, -8.01206e-07, -7.67352e-07, 0.999999, 2.49611e-06, 0.999999, 7.70477e-07, 0.883132, 1.20515, 0.0170111)
+visible = false
+
+[node name="Spike_Shield" parent="Rig/Skeleton3D" index="4"]
+transform = Transform3D(-0.999999, 2.42533e-06, -7.94378e-07, -8.01206e-07, -7.67352e-07, 0.999999, 2.49611e-06, 0.999999, 7.70477e-07, 0.883132, 1.20515, 0.0170111)
+visible = false
+
+[node name="1H_Sword" parent="Rig/Skeleton3D" index="5"]
+transform = Transform3D(0.999999, 1.13574e-07, -5.12362e-07, -4.49339e-07, -8.58306e-07, -0.999999, 2.05328e-08, 1, -7.42514e-07, -0.883132, 1.04926, 0.0333085)
+visible = false
+
+[node name="2H_Sword" parent="Rig/Skeleton3D" index="6"]
+transform = Transform3D(0.999999, 9.88405e-08, -4.98676e-07, -4.35653e-07, -8.58306e-07, -0.999999, 3.52662e-08, 1, -7.42514e-07, -0.883132, 1.04926, 0.0333085)
+visible = false
+
+[node name="Knight_Helmet" parent="Rig/Skeleton3D" index="7"]
+transform = Transform3D(1, -2.20965e-22, 1.69407e-21, 2.20965e-22, 1, 0, -1.69407e-21, 3.58732e-43, 1, 4.76837e-07, 1.21589, -1.08542e-07)
+visible = false
+
+[node name="Knight_Cape" parent="Rig/Skeleton3D" index="8"]
+transform = Transform3D(1, 1.25214e-21, 0, -1.25214e-21, 1, 7.17465e-43, 0, 0, 1, 0, 1.21589, -1.4066e-07)
