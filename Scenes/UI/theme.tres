@@ -1,12 +1,12 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://cfu2ekpmrjkr4"]
 
-[ext_resource type="FontVariation" uid="uid://bgcf66dooa6qb" path="res://Assets/BlackHans.tres" id="1_s6onp"]
-[ext_resource type="StyleBox" path="res://Scenes/UI/buttonStyleBox.tres" id="1_yfftv"]
+[ext_resource type="FontVariation" uid="uid://degrs2ja8d81b" path="res://Assets/BlackHans.tres" id="1_s6onp"]
+[ext_resource type="StyleBox" uid="uid://d0jwb4oy82dmy" path="res://Scenes/UI/buttonStyleBox.tres" id="1_yfftv"]
 
 [resource]
 default_font = ExtResource("1_s6onp")
 default_font_size = 6
-Button/font_sizes/font_size = 26
+Button/font_sizes/font_size = 44
 Button/styles/disabled = ExtResource("1_yfftv")
 Button/styles/focus = ExtResource("1_yfftv")
 Button/styles/hover = ExtResource("1_yfftv")
