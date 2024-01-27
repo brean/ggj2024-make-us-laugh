@@ -1,13 +1,15 @@
 @tool
 extends Node3D
 
-var tile_scenes = []
+var grass_tile = preload("res://Scenes/tiles/grassed_tile.tscn")
+var sand_tile = preload("res://Scenes/tiles/sand_tile.tscn")
 var tiles = []
 var falling_tiles = []
 var last_tile_reset = Time.get_ticks_msec()
 
 # let the blocks fall with a speed multiplied by update delta
 var falling_speed = 8
+var MAX_GRASS = 256
 
 # seconds the tiles wiggle before they fall
 var wiggle_sec = 1
@@ -27,13 +29,6 @@ func hex_to_pos(row, col):
 	return [x, y]
 
 
-func preload_tiles():
-	tile_scenes.append(preload("res://Scenes/tiles/grassed_tile.tscn"))
-	tile_scenes.append(preload("res://Scenes/tiles/grassed_tile.tscn"))
-	tile_scenes.append(preload("res://Scenes/tiles/grassed_tile.tscn"))
-	tile_scenes.append(preload("res://Scenes/tiles/sand_tile.tscn"))
-
-
 func tile_creation():
 	var LevelTile = load("res://Scripts/Level/LevelTile.gd")
 	var MAX_RADIUS = 18
@@ -41,18 +36,21 @@ func tile_creation():
 		for y in range(-MAX_RADIUS, MAX_RADIUS):
 			var pos = hex_to_pos(x, y)
 			var dist = sqrt(pos[0]**2 + pos[1]**2)
-			var tile_scene = tile_scenes[0]
+			var tile_scene = grass_tile
+			var grass_instances = MAX_GRASS
 			if dist > MAX_RADIUS:
 				continue
 			elif dist > MAX_RADIUS-2:
-				tile_scene = tile_scenes[3]
+				tile_scene = sand_tile
+				grass_instances = 0
 			elif dist > MAX_RADIUS-4:
-				tile_scene = tile_scenes[2]
+				grass_instances = MAX_GRASS/2
 			elif dist > MAX_RADIUS-7:
-				tile_scene = tile_scenes[1]
+				grass_instances = MAX_GRASS/4
 
-			
 			var tile_inst = tile_scene.instantiate()
+			if grass_instances > 0:
+				tile_inst.get_node('Grass').instance_count = grass_instances
 			tile_inst.position = Vector3(pos[0], 0, pos[1])
 			add_child(tile_inst)
 
@@ -73,7 +71,6 @@ func set_tiles_as_falling(num_tiles=16):
 		falling_tiles.append(tile)
 
 func _ready():
-	preload_tiles()
 	tile_creation()
 	reset_tiles()
 	if not Engine.is_editor_hint():
