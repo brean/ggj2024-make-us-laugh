@@ -20,6 +20,7 @@ func _ready():
 	$Barbarian.set_visible(false)
 	
 func _process(delta):
+	print(MultiplayerInput.handled_devices)
 	if MultiplayerInput.is_action_just_pressed(0, "ui_left"):
 		if(focused_button == point_button):
 			focused_button = play_button
@@ -100,7 +101,7 @@ func _process(delta):
 	
 	
 func _on_play_pressed():
-	if(Input.get_connected_joypads().size() >= 0):
+	if(Input.get_connected_joypads().size() == 1):
 		GameManager.max_points = max_points
 		GameManager.emit_signal("start_game")
 		get_tree().change_scene_to_file("res://battle_scene.tscn")

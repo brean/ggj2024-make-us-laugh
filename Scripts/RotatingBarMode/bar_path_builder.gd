@@ -1,6 +1,13 @@
 extends Path3D
 
+
+func activate_bar(set_on):
+	self.set_physics_process(set_on)
+	self.visible = set_on
+
+
 func add_points():
+	print("Adding path points")
 	var position_min : Vector2 = get_meta("position_min")
 	var position_max : Vector2 = get_meta("position_max")
 	var position_y : float = get_meta("world_y")
@@ -20,8 +27,13 @@ func add_points():
 	# left edge
 	for y in range(position_max.y, position_min.y, -1):
 		self.curve.add_point(Vector3(position_min.x, position_y, y))
+	
+	self.curve_changed.emit()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_points()
-	self.curve_changed.emit()
+	EventManager.connect("activate_bar", self.activate_bar)
+	self.visible = false
+	self.set_physics_process(false)
