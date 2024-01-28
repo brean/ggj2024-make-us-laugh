@@ -3,8 +3,6 @@ extends Area3D
 var owner_id := -1
 @export var knockback_strength := 100
 
-@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
-
 var knockback_dir := Vector3.ZERO
 
 signal hit_something 
@@ -16,4 +14,3 @@ func _on_area_entered(area):
 			self.knockback_dir = self.global_position.direction_to(area.global_position)
 		area.hit(self.knockback_strength * self.knockback_dir, self.owner_id)
 		self.knockback_dir = Vector3.ZERO
-		self.audio_stream_player_3d.play()

@@ -6,7 +6,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlhdw"]
 diffuse_mode = 3
 specular_mode = 1
-albedo_color = Color(0.309804, 0.34902, 0.835294, 1)
+albedo_color = Color(0.494118, 0.129412, 0.14902, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_1tfpb"]
 radius = 0.4
@@ -22,6 +22,7 @@ radius = 0.4
 top_level = true
 collision_layer = 0
 script = ExtResource("1_jfecc")
+speed = 20.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_tlhdw")

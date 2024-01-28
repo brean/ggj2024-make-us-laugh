@@ -33,20 +33,20 @@ visible = false
 material_override = SubResource("StandardMaterial3D_1bf01")
 mesh = SubResource("SphereMesh_x1jew")
 
-[node name="Hitbox" parent="." index="2" instance=ExtResource("2_o7ffo")]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2"]
+stream = SubResource("AudioStreamRandomizer_14ikx")
+volume_db = 10.0
+
+[node name="Hitbox" parent="." index="3" instance=ExtResource("2_o7ffo")]
 monitoring = false
 monitorable = false
 knockback_strength = 400
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Hitbox" index="0"]
-stream = SubResource("AudioStreamRandomizer_14ikx")
-volume_db = 10.0
-
-[node name="CollisionShape3D" parent="Hitbox" index="1"]
+[node name="CollisionShape3D" parent="Hitbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0035)
 shape = SubResource("SphereShape3D_wy11b")
 
-[node name="AttackTimer" type="Timer" parent="." index="3"]
+[node name="AttackTimer" type="Timer" parent="." index="4"]
 one_shot = true
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
