@@ -20,6 +20,12 @@ var flags: Dictionary = {
 	"prevent_player_reset": false
 }
 
+
+func register_player(player_object):
+	self.players[player_object.player_id] = player_object
+	self.points_per_player[player_object.player_id] = 0
+
+
 func give_points(player_id: int, points: int):
 	
 	if not points_per_player.has(player_id):

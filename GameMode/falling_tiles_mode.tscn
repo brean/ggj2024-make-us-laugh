@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfhnvlm01t3bp"]
+
+[ext_resource type="Script" path="res://GameMode/falling_tiles_mode.gd" id="1_f4ssy"]
+
+[node name="FallingTilesMode" type="Node3D"]
+script = ExtResource("1_f4ssy")
+display_name = "The floor is falling!"
+duration = 20.0

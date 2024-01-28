@@ -20,7 +20,7 @@ func _ready():
 	self.animation_player.play("Fall")
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	match self.current_state:
 		States.FALL:
 			if self.global_position.y < GameManager.ResetHeight:

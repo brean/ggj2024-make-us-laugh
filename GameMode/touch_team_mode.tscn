@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4og3b58kr41p"]
+
+[ext_resource type="Script" path="res://GameMode/touch_team_mode.gd" id="1_1wsrf"]
+
+[node name="TouchTeamMode" type="Node3D"]
+script = ExtResource("1_1wsrf")
+amount_of_points = 3
+display_name = "Touch your Partner"
+duration = 12.0

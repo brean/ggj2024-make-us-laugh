@@ -1,12 +1,18 @@
 extends GameMode
 
+const HunterImage = preload("res://GameMode/Images/Hunter.png")
+const GunWepaon = preload("res://Player/Weapons/gun.tscn")
+
+
 @export var catch_reward: int = 1
 @export var survival_reward: int = 2
-@export var chasing_speed_boost: float = 1.5
+@export var chasing_speed_boost: float = 1.3
 
 var chasing_player_id: int
 var chased_player_ids: Array = []
 var caught_player_ids: Array = []
+
+var current_gun = null
 
 func start():
 	chasing_player_id = GameManager.players.keys().pick_random()
@@ -18,7 +24,13 @@ func start():
 	var chasing_player = GameManager.players[chasing_player_id]
 	chasing_player.max_speed *= chasing_speed_boost
 	chasing_player.acceleration *= chasing_speed_boost
+	
+	self.current_gun = GunWepaon.instantiate()
+	chasing_player.weapon_hand.add_child(self.current_gun)
+	chasing_player.update_weapon()
+	
 	chasing_player.game_symbol.visible = true
+	chasing_player.game_symbol.texture = self.HunterImage
 	
 func on_chased_player_touched(self_id: int, enemy_id: int):
 	if not self_id in caught_player_ids and enemy_id == chasing_player_id:
@@ -42,5 +54,8 @@ func on_timeout():
 	var chasing_player = GameManager.players[chasing_player_id]
 	chasing_player.reset_modifiers()
 	chasing_player.game_symbol.visible = false
+	chasing_player.weapon_hand.call_deferred("remove_child", self.current_gun)
+	chasing_player.call_deferred("update_weapon")
+	self.current_gun.queue_free()
 	
 	super.on_timeout()

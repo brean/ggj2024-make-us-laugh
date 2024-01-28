@@ -68,6 +68,4 @@ void fragment(){
 	// set color:
 	
 	ALBEDO = vec3(fin) + mix(alpha.rgb, col.rgb, col.a);
-	NORMAL_MAP = min(texture(normal_map, uv_movement).rgb / 1.1, 0.5);
-	ROUGHNESS = 0.1;
 }

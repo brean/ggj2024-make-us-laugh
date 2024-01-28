@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://s0bl67s83hb6"]
+
+[ext_resource type="Script" path="res://GameMode/coin_mode.gd" id="1_1bt18"]
+
+[node name="CoinMode" type="Node3D"]
+script = ExtResource("1_1bt18")
+display_name = "It's raining Points"
+duration = 8.0

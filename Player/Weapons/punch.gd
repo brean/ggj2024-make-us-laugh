@@ -4,6 +4,7 @@ const attack_time := 0.5
 
 @onready var hitbox = $Hitbox
 @onready var attack_timer = $AttackTimer
+@onready var audio_stream_player_3d = $AudioStreamPlayer3D
 
 
 func _ready():
@@ -25,6 +26,7 @@ func _on_cooldown_timer_timeout():
 
 
 func punched_something():
+	self.audio_stream_player_3d.play()
 	self.go_to_cooldown()
 
 
