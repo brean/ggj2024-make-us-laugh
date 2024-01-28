@@ -80,9 +80,14 @@ func _ready():
 	
 	self.contact_monitor = true
 	self.max_contacts_reported = 2
-	self.body_entered.connect(self._on_body_entered)
+
 
 func _on_body_entered(body):
+	if body.name == "Bar":
+		if not self.current_state == PlayerStates.DUMMY:
+			var impulse_dir = Vector3(randf(), 1, randf()) * OriginalBarKnockbackModifier
+			apply_central_impulse(impulse_dir)
+
 	var tile = body.get_node('..')
 	if not tile.has_node('tile_base'):
 		return
@@ -138,11 +143,6 @@ func _physics_process(_delta):
 	# Rotate model
 	self.rotate_model()
 
-func _on_body_entered(body):
-	if body.name == "Bar":
-		if not self.current_state == PlayerStates.DUMMY:
-			var impulse_dir = Vector3(randf(), 1, randf()) * OriginalBarKnockbackModifier
-			apply_central_impulse(impulse_dir)
 
 func rotate_model():
 	var look_direction = Vector2(self.linear_velocity.x, -self.linear_velocity.z)
