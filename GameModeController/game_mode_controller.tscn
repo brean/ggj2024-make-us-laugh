@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://chtkpqwflii5j"]
+[gd_scene load_steps=10 format=3 uid="uid://chtkpqwflii5j"]
 
 [ext_resource type="Script" path="res://GameModeController/GameModeController.gd" id="1_g0n4h"]
 [ext_resource type="PackedScene" uid="uid://001co5gfhc6g" path="res://GameMode/shoot_mode.tscn" id="2_7couq"]
@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://dlcitnwg22v3u" path="res://GameMode/change_points_mode.tscn" id="4_1vjng"]
 [ext_resource type="PackedScene" uid="uid://b4og3b58kr41p" path="res://GameMode/touch_team_mode.tscn" id="5_liuay"]
 [ext_resource type="PackedScene" uid="uid://c5s66hpnq20bx" path="res://GameMode/stay_in_zone_mode.tscn" id="6_qrjgu"]
+[ext_resource type="PackedScene" uid="uid://cfhnvlm01t3bp" path="res://GameMode/falling_tiles_mode.tscn" id="6_cpsq3"]
 
 [node name="GameModeController" type="Node3D"]
 script = ExtResource("1_g0n4h")
 delay_between_modes = 3.0
-game_modes = Array[PackedScene]([ExtResource("4_1vjng"), ExtResource("2_nit1l"), ExtResource("2_jfcnf"), ExtResource("3_clecw"), ExtResource("2_7couq"), ExtResource("6_qrjgu"), ExtResource("5_liuay")])
+game_modes = Array[PackedScene]([ExtResource("4_1vjng"), ExtResource("2_nit1l"), ExtResource("2_jfcnf"), ExtResource("3_clecw"), ExtResource("2_7couq"), ExtResource("6_qrjgu"), ExtResource("5_liuay"), ExtResource("6_cpsq3")])
