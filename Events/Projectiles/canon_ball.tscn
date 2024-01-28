@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://ci5cly3kqn3e4"]
 
 [ext_resource type="Script" path="res://Events/Projectiles/canon_ball.gd" id="1_bx2op"]
-[ext_resource type="PackedScene" path="res://Events/Projectiles/tomato.glb" id="2_afdu4"]
+[ext_resource type="PackedScene" uid="uid://cl1ulutodcrnr" path="res://Events/Projectiles/tomato.glb" id="2_afdu4"]
 [ext_resource type="PackedScene" uid="uid://dmcdbwnmnh5ym" path="res://Events/Projectiles/burger.glb" id="3_y34mm"]
 [ext_resource type="PackedScene" uid="uid://vlv26pb52od7" path="res://Events/Projectiles/fridge.glb" id="4_ayuhg"]
 [ext_resource type="PackedScene" uid="uid://cik6d62b51gag" path="res://Events/Projectiles/mustard.glb" id="5_4ali6"]
 [ext_resource type="PackedScene" uid="uid://sl86p05cou2" path="res://Events/Projectiles/carrot.glb" id="5_eby2y"]
-[ext_resource type="PackedScene" path="res://Events/Projectiles/stew.glb" id="7_cruec"]
+[ext_resource type="PackedScene" uid="uid://c4rpftdp68683" path="res://Events/Projectiles/stew.glb" id="7_cruec"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tige7"]
 bounce = 1.0
