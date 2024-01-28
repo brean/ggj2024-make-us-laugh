@@ -18,6 +18,7 @@ var run_dir := Vector3.ZERO
 
 func _ready():
 	self.animation_player.play("Fall")
+	GameManager.connect("end_game", self.queue_free)
 
 
 func _physics_process(_delta):

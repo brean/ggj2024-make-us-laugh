@@ -6,8 +6,8 @@ const ModelList = [preload("res://Player/Models/rogue_hooded.tscn"),
 					preload("res://Player/Models/knight.tscn"), 
 					preload("res://Player/Models/barbarian.tscn")]
 
-const OriginalSpeed := 6.5
-const OriginalAcc := 15.0
+const OriginalSpeed := 6.0
+const OriginalAcc := 12.0
 const OriginalJumpImpulse := 250.0
 const RotationSpeed := 0.2
 const IdleThreshold := 0.01
