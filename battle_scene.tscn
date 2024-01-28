@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://caefj76lpbcl3"]
+[gd_scene load_steps=23 format=3 uid="uid://caefj76lpbcl3"]
 
 [ext_resource type="PackedScene" uid="uid://3nt1gsmetmi3" path="res://Player/player.tscn" id="1_rysm8"]
 [ext_resource type="PackedScene" uid="uid://dpd7gr332dte2" path="res://Scenes/UI/ui.tscn" id="1_s85fw"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bwtjgbkexbjfc" path="res://Scenes/env.tscn" id="9_o0xnw"]
 [ext_resource type="PackedScene" uid="uid://i3yxdhfx28be" path="res://Assets/RotatingBarMode/rotating_bar.tscn" id="11_1oysp"]
 [ext_resource type="Script" path="res://Assets/RotatingBarMode/rotating_bar.gd" id="12_02msi"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="13_w8cea"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x8cwy"]
 sky_top_color = Color(0.352941, 0.654902, 0.968627, 1)
@@ -80,6 +81,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6116, 2, -9.21939)
 [node name="Player2" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8127, 2, -9.65634)
 player_id = 1
+current_state = 5
 
 [node name="Player3" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2275, 2, 8.3127)
@@ -144,3 +146,23 @@ script = ExtResource("12_02msi")
 metadata/position_min = Vector2(-15, -15)
 metadata/position_max = Vector2(15, 15)
 metadata/world_y = 1.5
+
+[node name="PlayerPhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(0.999949, 0, 0, 0, 0.939566, 0.341994, 0, -0.341974, 0.93962, 0.600551, 19.0997, 46.3092)
+script = ExtResource("13_w8cea")
+priority_override = false
+priority = 5
+follow_mode = 3
+follow_group = Array[NodePath]([NodePath("../Player"), NodePath("../Player2"), NodePath("../Player3"), NodePath("../Player4")])
+follow_parameters/auto_distance = true
+follow_parameters/min_distance = 5.0
+follow_parameters/max_distance = 50.0
+follow_parameters/auto_distance_divisor = 20.0
+follow_parameters/target_offset = Vector3(0, 0, 0)
+follow_parameters/damping = true
+follow_parameters/damping_value = 5.0
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = false
+inactive_update_mode = 0
+camera_3D_resource = null

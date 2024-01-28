@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c16brtnnyua3u"]
+[gd_scene load_steps=7 format=3 uid="uid://c16brtnnyua3u"]
 
 [ext_resource type="Script" path="res://game_camera.gd" id="1_n60gf"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_82w23"]
 
 [sub_resource type="Animation" id="Animation_to6si"]
 length = 0.001
@@ -86,6 +87,9 @@ script = ExtResource("1_n60gf")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 fov = 30.0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+script = ExtResource("2_82w23")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
