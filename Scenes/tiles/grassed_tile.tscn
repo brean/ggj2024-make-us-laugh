@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://cw0vxfuumcw53" path="res://Assets/grass/grass.res" id="2_2dsv4"]
 [ext_resource type="Script" path="res://Scripts/GrassSpawn.gd" id="3_oppea"]
-[ext_resource type="PackedScene" uid="uid://swpxeo0rmwfy" path="res://Assets/BaseTiles/tile_base.glb" id="3_tcgta"]
+[ext_resource type="PackedScene" uid="uid://b12rmay6g7yfk" path="res://Scenes/tiles/tile_base_custom_layer.tscn" id="3_qbqx7"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_agecr"]
 points = PackedVector3Array(1, 0, 0.57, 0, 0, 1.15, -1, 0, 0.57, -1, 0, -0.57, 0, 0, -1.15, 1, 0, -0.57)
@@ -26,4 +26,4 @@ multimesh = SubResource("MultiMesh_idd3t")
 script = ExtResource("3_oppea")
 instance_count = 100
 
-[node name="tile_base" parent="." instance=ExtResource("3_tcgta")]
+[node name="tile_base_custom_layer" parent="." instance=ExtResource("3_qbqx7")]

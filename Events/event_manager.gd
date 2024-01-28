@@ -50,17 +50,17 @@ func _on_wait_timer_timeout():
 	if GameManager.current_max >= GameManager.max_points/2.0:
 		var additional_event = randi_range(0, len(self.EventList)-1)
 		if additional_event == self.event_idx[0]:
-			additional_event += 1
+			additional_event = (additional_event + 1) % len(self.EventList)
 		self.event_idx.append(additional_event)
 	
 	if GameManager.current_max >= GameManager.max_points*0.8:
 		var additional_event = randi_range(0, len(self.EventList)-1)
 		if additional_event == self.event_idx[0]:
-			additional_event += 1
+			additional_event = (additional_event + 1) % len(self.EventList)
 		if additional_event == self.event_idx[1]:
-			additional_event += 1
+			additional_event = (additional_event + 1) % len(self.EventList)
 		if additional_event == self.event_idx[0]:
-			additional_event += 1
+			additional_event = (additional_event + 1) % len(self.EventList)
 		self.event_idx.append(additional_event)
 	
 	var event_name = ""
