@@ -4,5 +4,6 @@
 
 [node name="TouchTeamMode" type="Node3D"]
 script = ExtResource("1_1wsrf")
+amount_of_points = 3
 display_name = "Touch your Partner"
 duration = 12.0

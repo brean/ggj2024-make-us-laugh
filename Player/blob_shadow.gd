@@ -6,7 +6,7 @@ const ColorList = [Color("660efe"), Color("fc6a3a"),
 @onready var ray_cast_3d = $RayCast3D
 @onready var decal = $Decal
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if self.ray_cast_3d.is_colliding():
 		self.decal.visible = true
 		var coll_y = ray_cast_3d.get_collision_point().y

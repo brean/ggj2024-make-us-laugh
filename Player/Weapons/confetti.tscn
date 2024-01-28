@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcho2f57ude4u"]
+
+[ext_resource type="Script" path="res://Player/Weapons/confetti.gd" id="1_exgjm"]
+
+[sub_resource type="Curve" id="Curve_31pph"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.241758), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fxluq"]
+curve = SubResource("Curve_31pph")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bm478"]
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 6.0
+initial_velocity_max = 10.0
+scale_curve = SubResource("CurveTexture_fxluq")
+color = Color(0.815686, 0.239216, 0.2, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30lod"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+billboard_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uo32x"]
+material = SubResource("StandardMaterial3D_30lod")
+size = Vector2(0.2, 0.2)
+orientation = 2
+
+[node name="Confetti" type="GPUParticles3D"]
+top_level = true
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_bm478")
+draw_pass_1 = SubResource("PlaneMesh_uo32x")
+script = ExtResource("1_exgjm")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
