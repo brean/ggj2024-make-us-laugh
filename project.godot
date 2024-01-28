@@ -25,6 +25,9 @@ EventManager="*res://Events/event_manager.tscn"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=3
 window/size/initial_position_type=0
 window/stretch/mode="canvas_items"
 
