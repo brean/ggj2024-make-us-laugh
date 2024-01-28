@@ -4,5 +4,6 @@
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_26v4n")
-falling_speed = 8
 max_grass = 1
+wiggle_random_sec = null
+wiggle_player_sec = null

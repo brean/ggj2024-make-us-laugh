@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://chtkpqwflii5j"]
 
 [ext_resource type="Script" path="res://GameModeController/GameModeController.gd" id="1_g0n4h"]
-[ext_resource type="PackedScene" uid="uid://001co5gfhc6g" path="res://GameMode/shoot_mode.tscn" id="2_7couq"]
-[ext_resource type="PackedScene" uid="uid://s0bl67s83hb6" path="res://GameMode/coin_mode.tscn" id="2_jfcnf"]
+[ext_resource type="PackedScene" path="res://GameMode/shoot_mode.tscn" id="2_7couq"]
+[ext_resource type="PackedScene" path="res://GameMode/coin_mode.tscn" id="2_jfcnf"]
 [ext_resource type="PackedScene" uid="uid://dyxbmhq4eceq0" path="res://GameMode/chase_game_mode.tscn" id="2_nit1l"]
 [ext_resource type="PackedScene" uid="uid://nilxn3jti2xw" path="res://GameMode/last_one_standing_game_mode.tscn" id="3_clecw"]
-[ext_resource type="PackedScene" uid="uid://dlcitnwg22v3u" path="res://GameMode/change_points_mode.tscn" id="4_1vjng"]
-[ext_resource type="PackedScene" uid="uid://b4og3b58kr41p" path="res://GameMode/touch_team_mode.tscn" id="5_liuay"]
-[ext_resource type="PackedScene" uid="uid://c5s66hpnq20bx" path="res://GameMode/stay_in_zone_mode.tscn" id="6_qrjgu"]
+[ext_resource type="PackedScene" uid="uid://bgw7bo5t741d8" path="res://GameMode/change_points_mode.tscn" id="4_1vjng"]
+[ext_resource type="PackedScene" path="res://GameMode/touch_team_mode.tscn" id="5_liuay"]
 [ext_resource type="PackedScene" uid="uid://cfhnvlm01t3bp" path="res://GameMode/falling_tiles_mode.tscn" id="6_cpsq3"]
+[ext_resource type="PackedScene" path="res://GameMode/stay_in_zone_mode.tscn" id="6_qrjgu"]
 
 [node name="GameModeController" type="Node3D"]
 script = ExtResource("1_g0n4h")

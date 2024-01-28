@@ -58,6 +58,7 @@ var char_model : CharacterModel
 signal got_hit # self id any enemy id that hit this player
 signal player_did_fall
 signal player_reset
+#signal player_touched_tile
 
 
 func _ready():
@@ -75,6 +76,18 @@ func _ready():
 
 	self.game_symbol.visible = false
 	$BlobShadow.set_color(self.player_id)
+	
+	self.contact_monitor = true
+	self.max_contacts_reported = 2
+	self.body_entered.connect(self._on_body_entered)
+
+func _on_body_entered(body):
+	var tile = body.get_node('..')
+	if not tile.has_node('tile_base'):
+		return
+	# player touched this tile!
+	tile.start_falling()
+	#self.player_touched_tile.emit(tile)
 
 
 func _physics_process(_delta):
