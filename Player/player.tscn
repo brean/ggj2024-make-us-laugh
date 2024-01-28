@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Player/player.gd" id="1_j7un2"]
 [ext_resource type="PackedScene" uid="uid://bqhq0org0h7hc" path="res://Player/HitHurtBox/hurtbox.tscn" id="2_d61p2"]
 [ext_resource type="PackedScene" uid="uid://l4im14mvdbg8" path="res://Player/Weapons/punch.tscn" id="2_iva54"]
-[ext_resource type="PackedScene" uid="uid://bsg2dx3kksghv" path="res://Player/touch_area.tscn" id="3_knlqu"]
-[ext_resource type="PackedScene" uid="uid://ql6hnx4e8g7f" path="res://Player/jump_trail.tscn" id="4_n6bac"]
+[ext_resource type="PackedScene" path="res://Player/touch_area.tscn" id="3_knlqu"]
+[ext_resource type="PackedScene" path="res://Player/jump_trail.tscn" id="4_n6bac"]
 [ext_resource type="Texture2D" uid="uid://btu2qnuwc3g3o" path="res://Player/Models/symbol_placeholder.png" id="5_w30we"]
-[ext_resource type="PackedScene" uid="uid://nxtrbboyyn5k" path="res://Player/blob_shadow.tscn" id="8_6wmuq"]
+[ext_resource type="PackedScene" path="res://Player/blob_shadow.tscn" id="8_6wmuq"]
 [ext_resource type="AudioStream" uid="uid://ccg45oihsf5x2" path="res://Assets/sound/env/water_pop_0.wav" id="10_t05yd"]
 [ext_resource type="AudioStream" uid="uid://cebyd8iau3fpu" path="res://Assets/sound/env/water_pop_1.wav" id="11_slegh"]
 
