@@ -84,7 +84,7 @@ func _ready():
 		reset_tiles()
 		set_tiles_as_falling(num_falling_tiles)
 
-func update_tiles_falling_randomly(delta):
+func update_tiles_falling_randomly():
 	var cur_time = Time.get_ticks_msec()
 	if cur_time - last_tile_reset > reset_tiles_sec * 1000:
 		reset_tiles()
@@ -98,9 +98,9 @@ func set_falling_mode(mode: int):
 		wiggle_time = 2.0
 	reset_tiles()
 
-func _process(delta):
+func _process(_delta):
 	if Engine.is_editor_hint():
 		return
 	if tile_falling_mode == TileFallingMode.RANDOMLY:
-		update_tiles_falling_randomly(delta)
+		update_tiles_falling_randomly()
 

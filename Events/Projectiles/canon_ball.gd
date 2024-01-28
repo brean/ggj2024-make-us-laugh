@@ -15,7 +15,6 @@ func random_element():
 	for i in range(elements.size()):
 		if i == desired:
 			continue
-		var this_elem = elements[i]
 		for elem in elements[i]:
 			if elem in removed_elems:
 				continue

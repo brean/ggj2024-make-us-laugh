@@ -16,7 +16,7 @@ func activate_hole(set_on):
 	self.visible = set_on
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	for player in self.player_list:
 		var dir = player.global_position.direction_to(self.global_position)
 		player.apply_central_force(dir * self.Force)
