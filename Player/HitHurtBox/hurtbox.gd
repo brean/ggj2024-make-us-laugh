@@ -1,6 +1,6 @@
 extends Area3D
 
-const InvTime := 1.0
+const InvTime := 0.3
 
 var player = null
 
