@@ -48,7 +48,8 @@ func _process(delta):
 	if(counter >= max):
 		$"../MarginContainer/Button".set_visible(true)
 		$"../MarginContainer/Button".grab_focus()
-		if MultiplayerInput.is_action_just_pressed(0, "Jump"):
+		if MultiplayerInput.is_action_just_pressed(
+				GameManager.main_device_idx, "Jump"):
 			_on_button_pressed()
 	
 func _increase():	

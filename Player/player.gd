@@ -55,6 +55,7 @@ var char_model : CharacterModel
 ### Sound
 @onready var falling_in_water_sound = $FallingInWaterSound
 
+var dev_idx
 
 signal got_hit # self id any enemy id that hit this player
 signal player_did_fall
@@ -64,6 +65,7 @@ signal player_reset
 
 func _ready():
 	GameManager.register_player(self)
+	dev_idx = GameManager.player_devices[self.player_id]
 	self.hurtbox.player = self
 	self.hurtbox.connect("got_hit", self.hitbox_got_hit)
 	self.update_weapon()
@@ -125,11 +127,11 @@ func _physics_process(_delta):
 			return # nothing to do here
 	
 	# Jump
-	if MultiplayerInput.is_action_just_pressed(self.player_id, "Jump"):
+	if MultiplayerInput.is_action_just_pressed(dev_idx, "Jump"):
 		self.change_state(PlayerStates.JUMP)
 
 	# Attack
-	if MultiplayerInput.is_action_pressed(self.player_id, "Punch"):
+	if MultiplayerInput.is_action_pressed(dev_idx, "Punch"):
 		if not self.current_weapon.on_cooldown:
 			#var look_direction = Vector2(self.direction.x, -self.direction.y)
 			#self.model.rotation.y =  look_direction.angle() + PI/2.0
@@ -137,7 +139,7 @@ func _physics_process(_delta):
 			self.current_weapon.use_weapon()
 
 	# Reset if stuck (maybe remove later)
-	if MultiplayerInput.is_action_just_pressed(self.player_id, "Reset") and self.can_reset:
+	if MultiplayerInput.is_action_just_pressed(dev_idx, "Reset") and self.can_reset:
 		self.reset_player()
 
 	# Rotate model
@@ -182,10 +184,10 @@ func change_state(new_state):
 
 func idle_state():
 	self.char_model.animation_player.play("Idle")
-	self.direction.x = - MultiplayerInput.get_action_strength(self.player_id, "Left") \
-							+ MultiplayerInput.get_action_strength(self.player_id, "Right")
-	self.direction.y = - MultiplayerInput.get_action_strength(self.player_id, "Forward") \
-							+ MultiplayerInput.get_action_strength(self.player_id, "Backward")
+	self.direction.x = - MultiplayerInput.get_action_strength(dev_idx, "Left") \
+							+ MultiplayerInput.get_action_strength(dev_idx, "Right")
+	self.direction.y = - MultiplayerInput.get_action_strength(dev_idx, "Forward") \
+							+ MultiplayerInput.get_action_strength(dev_idx, "Backward")
 	if not self.direction == Vector2.ZERO or self.linear_velocity.length_squared() > self.IdleThreshold:
 		self.change_state(PlayerStates.MOVE)
 	elif not self.ground_cast.is_colliding():
@@ -229,10 +231,10 @@ func jump_state():
 
 
 func input_movement(max_velo, acc):
-	self.direction.x = - MultiplayerInput.get_action_strength(self.player_id, "Left") \
-							+ MultiplayerInput.get_action_strength(self.player_id, "Right")
-	self.direction.y = - MultiplayerInput.get_action_strength(self.player_id, "Forward") \
-							+ MultiplayerInput.get_action_strength(self.player_id, "Backward")
+	self.direction.x = - MultiplayerInput.get_action_strength(dev_idx, "Left") \
+							+ MultiplayerInput.get_action_strength(dev_idx, "Right")
+	self.direction.y = - MultiplayerInput.get_action_strength(dev_idx, "Forward") \
+							+ MultiplayerInput.get_action_strength(dev_idx, "Backward")
 
 	self.direction = self.direction.rotated(self.direction_rot)
 
