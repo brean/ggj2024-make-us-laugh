@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 MultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
-<<<<<<<HEADMultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
 GameManager="*res://AutoLoad/GameManager.gd"
 EventManager="*res://Events/event_manager.tscn"
 
