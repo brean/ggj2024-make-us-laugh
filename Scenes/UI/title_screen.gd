@@ -12,16 +12,17 @@ func to_idle():
 
 
 func _process(delta):
-	if MultiplayerInput.is_action_just_pressed(0, "ui_left"):
-		self.to_start_menu()
-	if MultiplayerInput.is_action_just_pressed(0, "ui_right"):
-		self.to_start_menu()
-	if MultiplayerInput.is_action_just_pressed(0, "ui_up"):
-		self.to_start_menu()
-	if MultiplayerInput.is_action_just_pressed(0, "ui_down"):
-		self.to_start_menu()
-	if MultiplayerInput.is_action_just_pressed(0, "Jump"):
-		self.to_start_menu()
+	if MultiplayerInput.handled_devices[0]:
+		if MultiplayerInput.is_action_just_pressed(0, "ui_left"):
+			self.to_start_menu()
+		if MultiplayerInput.is_action_just_pressed(0, "ui_right"):
+			self.to_start_menu()
+		if MultiplayerInput.is_action_just_pressed(0, "ui_up"):
+			self.to_start_menu()
+		if MultiplayerInput.is_action_just_pressed(0, "ui_down"):
+			self.to_start_menu()
+		if MultiplayerInput.is_action_just_pressed(0, "Jump"):
+			self.to_start_menu()
 
 
 func to_start_menu():

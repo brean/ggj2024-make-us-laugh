@@ -54,8 +54,8 @@ func reset():
 func _on_joy_connection_changed(device: int, connected: bool):
 	if connected:
 		_create_actions_for_device(device)
-	else:
-		_delete_actions_for_device(device)
+	#else:
+	#	_delete_actions_for_device(device)
 
 func _create_actions_for_device(device: int):
 	if handled_devices[device]:
@@ -72,19 +72,20 @@ func _create_actions_for_device(device: int):
 		# only copy this event if it is relevant to joypads
 		if events.size() > 0:
 			# first add the action with the new name
-			InputMap.add_action(new_action, deadzone)
-			device_actions[device][core_action] = new_action
-			
-			# then copy all the events associated with that action
-			# this only includes events that are relevant to joypads
-			for event in events:
-				# without duplicating, all of them have a reference to the same event object
-				# which doesn't work because this has to be unique to this device
-				var new_event = event.duplicate()
-				new_event.device = device
+			if not InputMap.has_action(new_action):
+				InputMap.add_action(new_action, deadzone)
+				device_actions[device][core_action] = new_action
 				
-				# switch the device to be just this joypad
-				InputMap.action_add_event(new_action, new_event)
+				# then copy all the events associated with that action
+				# this only includes events that are relevant to joypads
+				for event in events:
+					# without duplicating, all of them have a reference to the same event object
+					# which doesn't work because this has to be unique to this device
+					var new_event = event.duplicate()
+					new_event.device = device
+					
+					# switch the device to be just this joypad
+					InputMap.action_add_event(new_action, new_event)
 
 func _delete_actions_for_device(device: int):
 	device_actions.erase(device)
@@ -150,7 +151,7 @@ func is_action_pressed(device: int, action: StringName, exact_match: bool = fals
 # returns the name of a gamepad-specific action
 func get_action_name(device: int, action: StringName) -> StringName:
 	if device >= 0:
-		assert(device_actions.has(device), "Device %s has no actions. Maybe the joypad is disconnected." % device)
+		#assert(device_actions.has(device), "Device %s has no actions. Maybe the joypad is disconnected." % device)
 		# if it says this dictionary doesn't have the key,
 		# that could mean it's an invalid action name.
 		# or it could mean that action doesn't have a joypad event assigned
