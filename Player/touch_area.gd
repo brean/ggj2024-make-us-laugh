@@ -9,6 +9,8 @@ func _ready():
 
 
 func _on_body_entered(body):
+	if body.name == "Bar":
+		return
 	if body.player_id == self.player.player_id:
 		return
 	self.emit_signal("touched_other_player", self.player.player_id, body.player_id)

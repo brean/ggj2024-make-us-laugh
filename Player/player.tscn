@@ -102,6 +102,8 @@ mass = 40.0
 physics_material_override = SubResource("PhysicsMaterial_pbxbd")
 can_sleep = false
 lock_rotation = true
+max_contacts_reported = 1
+contact_monitor = true
 script = ExtResource("1_j7un2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -163,5 +165,7 @@ libraries = {
 autoplay = "Idle_Symbol"
 
 [node name="BlobShadow" parent="." instance=ExtResource("8_6wmuq")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 
 [editable path="Hurtbox"]

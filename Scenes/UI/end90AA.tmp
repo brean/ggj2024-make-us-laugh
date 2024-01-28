@@ -1,0 +1,192 @@
+[gd_scene load_steps=22 format=3 uid="uid://ow30toxb2pi5"]
+
+[ext_resource type="Theme" uid="uid://b14angt2f0dy2" path="res://Scenes/UI/theme.tres" id="1_pc6so"]
+[ext_resource type="Script" path="res://Scenes/UI/end_menu.gd" id="1_ygks7"]
+[ext_resource type="PackedScene" uid="uid://g3wn08pp0pt3" path="res://Player/Models/rogue_hooded.tscn" id="2_nd6xa"]
+[ext_resource type="Shader" path="res://Shader/water.gdshader" id="2_u7b7w"]
+[ext_resource type="PackedScene" uid="uid://bqu8er6diex6b" path="res://Player/Models/mage.tscn" id="3_mvr8t"]
+[ext_resource type="PackedScene" uid="uid://5puqrljgmpcm" path="res://Player/Models/knight.tscn" id="4_emiu8"]
+[ext_resource type="PackedScene" uid="uid://c7w44x7vfm1tf" path="res://Player/Models/barbarian.tscn" id="5_r2gwh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6i2qk"]
+albedo_color = Color(0.403922, 0.0588235, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_eyow2"]
+material = SubResource("StandardMaterial3D_6i2qk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uc01x"]
+albedo_color = Color(1, 0.290196, 0.0588235, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_br5mb"]
+material = SubResource("StandardMaterial3D_uc01x")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53ksx"]
+albedo_color = Color(0.0588235, 1, 0.772549, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gjt3y"]
+material = SubResource("StandardMaterial3D_53ksx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtfce"]
+albedo_color = Color(1, 0.956863, 0.0588235, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8l2xk"]
+material = SubResource("StandardMaterial3D_xtfce")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8x8dg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xh4hp"]
+width = 128
+height = 128
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_8x8dg")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dpw73"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j1yf7"]
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_dpw73")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i66ja"]
+render_priority = 0
+shader = ExtResource("2_u7b7w")
+shader_parameter/speed = 0.05
+shader_parameter/color = Color(0, 0.431373, 0.988235, 1)
+shader_parameter/edge_color = Color(0.741176, 0.92549, 0.992157, 1)
+shader_parameter/edge_scale = 0.5
+shader_parameter/near = 0.1
+shader_parameter/far = 100.0
+shader_parameter/wave_strength = Vector2(0.2, 0.3)
+shader_parameter/wave_frequncy = Vector2(10, 8)
+shader_parameter/time_factor = Vector2(0.2, 0.4)
+shader_parameter/noise1 = SubResource("NoiseTexture2D_xh4hp")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_j1yf7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mkhsr"]
+size = Vector2(500, 500)
+subdivide_width = 32
+subdivide_depth = 32
+
+[node name="EndMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ygks7")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="m_p1" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, -4, -2.4, -1)
+mesh = SubResource("CylinderMesh_eyow2")
+
+[node name="Rogue_Hooded" parent="Node3D/m_p1" instance=ExtResource("2_nd6xa")]
+transform = Transform3D(0.5, 0, 0, 0, 0.4, 0, 0, 0, 0.5, 0, 1, 0)
+
+[node name="m_p2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, -1.3, -2.4, -1)
+mesh = SubResource("CylinderMesh_br5mb")
+
+[node name="Mage" parent="Node3D/m_p2" instance=ExtResource("3_mvr8t")]
+transform = Transform3D(0.5, 0, 0, 0, 0.4, 0, 0, 0, 0.5, 0, 1, 0)
+
+[node name="m_p3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, 1.3, -2.4, -1)
+mesh = SubResource("CylinderMesh_gjt3y")
+
+[node name="Knight" parent="Node3D/m_p3" instance=ExtResource("4_emiu8")]
+transform = Transform3D(0.5, 0, 0, 0, 0.4, 0, 0, 0, 0.5, 0, 1, 0)
+
+[node name="m_p4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, 4, -2.4, -1)
+mesh = SubResource("CylinderMesh_8l2xk")
+
+[node name="Barbarian" parent="Node3D/m_p4" instance=ExtResource("5_r2gwh")]
+transform = Transform3D(0.5, 0, 0, 0, 0.4, 0, 0, 0, 0.5, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.93889, 0.344217, 0, -0.344217, 0.93889, 0, 6.6096, 10)
+fov = 35.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, 0.353553, -0.353553, 0, 0.707107, 0.707107, 0.5, -0.612372, 0.612372, 0, 3.60223, 9.16007)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+material_override = SubResource("ShaderMaterial_i66ja")
+mesh = SubResource("PlaneMesh_mkhsr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(224, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_pc6so")
+theme_override_colors/font_color = Color(0.403922, 0.0588235, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.202333, 0.03, 0.5, 1)
+theme_override_colors/font_outline_color = Color(0.202333, 0.03, 0.5, 1)
+theme_override_font_sizes/font_size = 70
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(224, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_pc6so")
+theme_override_colors/font_color = Color(1, 0.290196, 0.0588235, 1)
+theme_override_colors/font_shadow_color = Color(0.5, 0.1475, 0.03, 1)
+theme_override_colors/font_outline_color = Color(0.5, 0.1475, 0.03, 1)
+theme_override_font_sizes/font_size = 70
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(224, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_pc6so")
+theme_override_colors/font_color = Color(0.0588235, 1, 0.772549, 1)
+theme_override_colors/font_shadow_color = Color(0.03, 0.5, 0.3825, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.5, 0.3825, 1)
+theme_override_font_sizes/font_size = 70
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(224, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_pc6so")
+theme_override_colors/font_color = Color(1, 0.956863, 0.0588235, 1)
+theme_override_colors/font_shadow_color = Color(0.5, 0.4765, 0.03, 1)
+theme_override_colors/font_outline_color = Color(0.5, 0.4765, 0.03, 1)
+theme_override_font_sizes/font_size = 70
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
