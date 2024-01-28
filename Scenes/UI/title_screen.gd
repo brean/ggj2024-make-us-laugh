@@ -14,7 +14,9 @@ func to_idle():
 func check_input(dev_idx):
 	for key in ["Left", "Right", "Forward", "Backward", "Jump", "Punch"]:
 		if MultiplayerInput.is_action_just_pressed(dev_idx, key):
-			self.to_start_menu(dev_idx)
+			GameManager.main_device_idx = dev_idx
+			GameManager.player_devices[0] = dev_idx
+			self.to_start_menu()
 
 func _process(_delta):
 	# check joypads
@@ -26,5 +28,5 @@ func _process(_delta):
 	check_input(-1)
 
 
-func to_start_menu(main_dev_idx):
+func to_start_menu():
 	get_tree().change_scene_to_file("res://Scenes/UI/start_menu.tscn")

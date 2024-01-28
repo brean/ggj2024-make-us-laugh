@@ -9,6 +9,12 @@ signal game_mode_exited
 signal start_game
 signal end_game
 
+# ID of the input device of the main controller/keyboard,
+# set by the player who first pressed a button in the title screen
+var main_device_idx
+
+var player_devices = [-2, -2, -2, -2]
+
 var players: Dictionary = {}
 var points_per_player: Dictionary = {}
 
@@ -22,6 +28,7 @@ var flags: Dictionary = {
 
 
 func register_player(player_object):
+	print('REGISTER', player_object.player_id)
 	self.players[player_object.player_id] = player_object
 	self.points_per_player[player_object.player_id] = 0
 
