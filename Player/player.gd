@@ -92,7 +92,7 @@ func _on_body_entered(body):
 	if not tile.has_node('tile_base'):
 		return
 	# player touched this tile!
-	tile.start_falling()
+	tile.test_touch_tile()
 	#self.player_touched_tile.emit(tile)
 
 

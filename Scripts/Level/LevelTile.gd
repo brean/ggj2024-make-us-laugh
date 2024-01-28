@@ -2,12 +2,17 @@ extends Node3D
 class_name LevelTile
 
 var falling_speed = 2
-var start_x
-var start_z
+var start_x = 0
+var start_z = 0
 var max_falling_pos = -10
 var last_reset = Time.get_ticks_msec()
 var falling = false
 var level
+
+enum TileFallingMode {
+	PLAYER_TOUCH 	= 0,
+	RANDOMLY 	= 1,
+}
 
 func reset():
 	var _position = self.position
@@ -30,6 +35,10 @@ func wiggle():
 	_position.x = start_x + (randi() % 100 - 50) * 0.002
 	_position.z = start_z + (randi() % 100 - 50) * 0.002
 	self.position = _position
+
+func test_touch_tile():
+	if level.tile_falling_mode == TileFallingMode.PLAYER_TOUCH:
+		start_falling()
 
 func start_falling():
 	reset()
