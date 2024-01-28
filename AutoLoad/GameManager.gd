@@ -28,7 +28,6 @@ var flags: Dictionary = {
 
 
 func register_player(player_object):
-	print('REGISTER', player_object.player_id)
 	self.players[player_object.player_id] = player_object
 	self.points_per_player[player_object.player_id] = 0
 
