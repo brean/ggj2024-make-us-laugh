@@ -11,7 +11,7 @@ func to_idle():
 	self.canvas_layer.visible = true
 
 
-func _process(delta):
+func _process(_delta):
 	if MultiplayerInput.handled_devices[0]:
 		if MultiplayerInput.is_action_just_pressed(0, "ui_left"):
 			self.to_start_menu()
