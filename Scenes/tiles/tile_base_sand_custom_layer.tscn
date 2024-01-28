@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwvie7lbrb2t4"]
+
+[ext_resource type="PackedScene" uid="uid://baepg17nnrhgn" path="res://Assets/BaseTiles/tile_base_sand.glb" id="1_s2eo4"]
+
+[node name="tile_base_sand_custom_layer" instance=ExtResource("1_s2eo4")]
+
+[node name="hex_forest_detail" parent="." index="0"]
+layers = 4

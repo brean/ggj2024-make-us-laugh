@@ -86,11 +86,21 @@ near = 1.24
 
 [node name="Player" parent="." instance=ExtResource("2_i1omd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82714, 2, 0)
-current_state = 5
 
 [node name="Player2" parent="." instance=ExtResource("2_i1omd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-player_id = -1
+player_id = 1
+current_state = 5
+
+[node name="Player3" parent="." instance=ExtResource("2_i1omd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+player_id = 2
+current_state = 5
+
+[node name="Player4" parent="." instance=ExtResource("2_i1omd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+player_id = 3
+current_state = 5
 
 [node name="GameModeController" parent="." instance=ExtResource("3_k7wo4")]
 
@@ -106,8 +116,13 @@ mesh = SubResource("PlaneMesh_12pd0")
 [node name="big_rock" parent="." instance=ExtResource("6_lsylg")]
 transform = Transform3D(-0.83946, 0, -0.882564, 0, 1, 0, 0.863417, 0, -0.858076, -5.82142, -0.861033, 0.867894)
 
+[node name="Cube" parent="big_rock" index="0"]
+layers = 4
+
 [node name="StaticBody3D" type="StaticBody3D" parent="big_rock"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="big_rock/StaticBody3D"]
 transform = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.98023e-08, 0, 1, -0.0540311, 1.41496, -0.221894)
 shape = SubResource("BoxShape3D_oijyh")
+
+[editable path="big_rock"]

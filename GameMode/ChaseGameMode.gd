@@ -1,5 +1,7 @@
 extends GameMode
 
+const HunterImage = preload("res://GameMode/Images/Hunter.png")
+
 @export var catch_reward: int = 1
 @export var survival_reward: int = 2
 @export var chasing_speed_boost: float = 1.5
@@ -19,6 +21,7 @@ func start():
 	chasing_player.max_speed *= chasing_speed_boost
 	chasing_player.acceleration *= chasing_speed_boost
 	chasing_player.game_symbol.visible = true
+	chasing_player.game_symbol.texture = self.HunterImage
 	
 func on_chased_player_touched(self_id: int, enemy_id: int):
 	if not self_id in caught_player_ids and enemy_id == chasing_player_id:

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlcitnwg22v3u"]
+
+[ext_resource type="Script" path="res://GameMode/change_points_mode.gd" id="1_vopyl"]
+
+[node name="ChangePointsMode" type="Node3D"]
+script = ExtResource("1_vopyl")
+display_name = "Touch to Switch Points"
+duration = 12.0
+
+[node name="ProtectTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ProtectTimer" to="." method="_on_protect_timer_timeout"]

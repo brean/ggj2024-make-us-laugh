@@ -6,8 +6,8 @@ const ModelList = [preload("res://Player/Models/rogue_hooded.tscn"),
 					preload("res://Player/Models/knight.tscn"), 
 					preload("res://Player/Models/barbarian.tscn")]
 
-const OriginalSpeed := 5.5
-const OriginalAcc := 14.5
+const OriginalSpeed := 6.5
+const OriginalAcc := 15.0
 const OriginalJumpImpulse := 250.0
 const RotationSpeed := 0.2
 const IdleThreshold := 0.01
@@ -45,6 +45,7 @@ var char_model : CharacterModel
 @onready var game_symbol = $GameSymbol:
 	get:
 		return game_symbol
+@onready var touch_area = $ModelNode/TouchArea
 
 ### Particles
 @onready var jump_trail_particles = $Particles/JumpTrail
@@ -59,10 +60,12 @@ signal player_did_fall
 
 
 func _ready():
-	GameManager.players[self.player_id] = self
+	GameManager.register_player(self)
 	self.hurtbox.player = self
 	self.hurtbox.connect("got_hit", self.hitbox_got_hit)
 	self.update_weapon()
+	
+	self.touch_area.player = self
 	
 	var new_char_model = self.ModelList[self.player_id].instantiate()
 	self.model.add_child(new_char_model)
@@ -70,6 +73,8 @@ func _ready():
 	$ModelNode/Model.queue_free()
 
 	self.game_symbol.visible = false
+	$BlobShadow.set_color(self.player_id)
+
 
 func _physics_process(_delta):
 	if self.global_position.y < GameManager.ResetHeight:
@@ -105,6 +110,8 @@ func _physics_process(_delta):
 	# Attack
 	if MultiplayerInput.is_action_pressed(self.player_id, "Punch"):
 		if not self.current_weapon.on_cooldown:
+			#var look_direction = Vector2(self.direction.x, -self.direction.y)
+			#self.model.rotation.y =  look_direction.angle() + PI/2.0
 			self.change_state(PlayerStates.ATTACK)
 			self.current_weapon.use_weapon()
 
@@ -114,6 +121,7 @@ func _physics_process(_delta):
 
 	# Rotate model
 	self.rotate_model()
+
 
 func rotate_model():
 	var look_direction = Vector2(self.linear_velocity.x, -self.linear_velocity.z)
@@ -148,6 +156,7 @@ func change_state(new_state):
 	self.current_state = new_state
 	self.start_state = true
 	self.physics_material_override.friction = 1.0
+
 
 func idle_state():
 	self.char_model.animation_player.play("Idle")
@@ -227,6 +236,7 @@ func fall_state():
 	self.input_movement(self.max_speed, self.acceleration)
 	if self.ground_cast.is_colliding():
 		self.change_state(PlayerStates.MOVE)
+
 
 func reset_modifiers():
 	max_speed = OriginalSpeed
