@@ -109,17 +109,14 @@ current_state = 1
 [node name="Player2" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8127, 2, -9.65634)
 player_id = 1
-current_state = 5
 
 [node name="Player3" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2275, 2, 8.3127)
 player_id = 2
-current_state = 5
 
 [node name="Player4" parent="." instance=ExtResource("1_rysm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6284, 2, 8.3127)
 player_id = 3
-current_state = 5
 
 [node name="GameModeController" parent="." instance=ExtResource("2_x7cyb")]
 game_modes = Array[PackedScene]([ExtResource("4_6q8rh"), ExtResource("5_6r3js"), ExtResource("6_103np"), ExtResource("7_wjneq"), ExtResource("8_ov0wh")])
