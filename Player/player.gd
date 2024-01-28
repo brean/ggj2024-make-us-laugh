@@ -12,6 +12,7 @@ const OriginalJumpImpulse := 250.0
 const RotationSpeed := 0.2
 const IdleThreshold := 0.01
 const OriginalKnockbackModifier := 1
+const OriginalBarKnockbackModifier := 600
 
 enum PlayerStates {IDLE, MOVE, JUMP, FALL, ATTACK, DUMMY}
 
@@ -122,6 +123,11 @@ func _physics_process(_delta):
 	# Rotate model
 	self.rotate_model()
 
+func _on_body_entered(body):
+	if body.name == "Bar":
+		if not self.current_state == PlayerStates.DUMMY:
+			var impulse_dir = Vector3(randf(), 1, randf()) * OriginalBarKnockbackModifier
+			apply_central_impulse(impulse_dir)
 
 func rotate_model():
 	var look_direction = Vector2(self.linear_velocity.x, -self.linear_velocity.z)
