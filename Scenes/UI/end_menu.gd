@@ -1,18 +1,8 @@
 extends Node
 
-var max : int = 50
+var max = GameManager.max_points
 
-
-var p1 : int = 47
-var p1_cur : int = 0
-var p2 : int = 50
-var p2_cur : int = 0
-var p3 : int = 17
-var p3_cur : int = 0
-var p4 : int = 4
-var p4_cur : int = 0
-
-var p
+var p = GameManager.points_per_player
 var p_cur
 var fin_trigger = [false,false,false,false] 
 var fin : int = 0
@@ -30,14 +20,14 @@ var timer : Timer
 
 var elapsed_time : float = 0
 
+
 func _ready():
-	p = [12,29,33,50]
 	p_cur = [0,0,0,0]
 	top.resize(4)
 	chars = [$"../Node3D/m_p1/Rogue_Hooded",$"../Node3D/m_p2/Mage",$"../Node3D/m_p3/Knight",$"../Node3D/m_p4/Barbarian"] 
 	labels = [$"../MarginContainer/HBoxContainer/Label", $"../MarginContainer/HBoxContainer/Label2", $"../MarginContainer/HBoxContainer/Label3", $"../MarginContainer/HBoxContainer/Label4"]
 	poles = [$"../Node3D/m_p1", $"../Node3D/m_p2", $"../Node3D/m_p3", $"../Node3D/m_p4"]
-	timer = $Timer	
+	timer = $Timer
 	timer.start(3)
 	timer.wait_time = 0.1
 
@@ -48,8 +38,6 @@ func _on_timer_timeout():
 		get_node("Timer").stop()
 
 func _process(delta):
-
-	
 	_increase()
 	if(counter > 0):
 		elapsed_time += delta
@@ -64,7 +52,6 @@ func _process(delta):
 			_on_button_pressed()
 	
 func _increase():	
-	print(top)
 	for i in range(4):
 		if(p_cur[i] < p[i]): 
 			p_cur[i] = counter
