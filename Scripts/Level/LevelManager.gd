@@ -80,8 +80,8 @@ func set_tiles_as_falling(num_tiles):
 
 func _ready():
 	tile_creation()
-	reset_tiles()
 	if not Engine.is_editor_hint():
+		reset_tiles()
 		set_tiles_as_falling(num_falling_tiles)
 
 func update_tiles_falling_randomly(delta):
