@@ -76,6 +76,7 @@ func set_tiles_as_falling(num_tiles):
 	for i in range(num_tiles):
 		var tile = tiles[(randi() % tiles.size()) - 1]
 		falling_tiles.append(tile)
+		tile.falling = true
 
 func _ready():
 	tile_creation()
