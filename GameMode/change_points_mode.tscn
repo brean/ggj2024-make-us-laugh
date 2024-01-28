@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlcitnwg22v3u"]
+[gd_scene load_steps=2 format=3 uid="uid://bgw7bo5t741d8"]
 
 [ext_resource type="Script" path="res://GameMode/change_points_mode.gd" id="1_vopyl"]
 

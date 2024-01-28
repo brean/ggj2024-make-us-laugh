@@ -1,14 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://caefj76lpbcl3"]
+[gd_scene load_steps=29 format=3 uid="uid://caefj76lpbcl3"]
 
 [ext_resource type="PackedScene" uid="uid://3nt1gsmetmi3" path="res://Player/player.tscn" id="1_rysm8"]
 [ext_resource type="PackedScene" uid="uid://dpd7gr332dte2" path="res://Scenes/UI/ui.tscn" id="1_s85fw"]
 [ext_resource type="PackedScene" uid="uid://chtkpqwflii5j" path="res://GameModeController/game_mode_controller.tscn" id="2_x7cyb"]
+[ext_resource type="PackedScene" uid="uid://dyxbmhq4eceq0" path="res://GameMode/chase_game_mode.tscn" id="4_6q8rh"]
+[ext_resource type="PackedScene" uid="uid://nilxn3jti2xw" path="res://GameMode/last_one_standing_game_mode.tscn" id="5_6r3js"]
 [ext_resource type="Shader" path="res://Shader/water.gdshader" id="5_d4asp"]
 [ext_resource type="PackedScene" uid="uid://dibyjm3ln2whq" path="res://Events/Projectiles/canon.tscn" id="5_w2ils"]
 [ext_resource type="PackedScene" uid="uid://c16brtnnyua3u" path="res://game_camera.tscn" id="6_5n46w"]
+[ext_resource type="PackedScene" path="res://GameMode/change_points_mode.tscn" id="6_103np"]
 [ext_resource type="PackedScene" uid="uid://lpetv7k47vdh" path="res://Events/NatureObstacles/black_hole.tscn" id="7_utd21"]
+[ext_resource type="PackedScene" path="res://GameMode/touch_team_mode.tscn" id="7_wjneq"]
 [ext_resource type="PackedScene" uid="uid://b5cooh5mnaoum" path="res://Scenes/Level.tscn" id="8_6kgbl"]
 [ext_resource type="PackedScene" uid="uid://l66osl76isls" path="res://Events/NatureObstacles/tornado.tscn" id="8_l8nrt"]
+[ext_resource type="PackedScene" uid="uid://cfhnvlm01t3bp" path="res://GameMode/falling_tiles_mode.tscn" id="8_ov0wh"]
 [ext_resource type="PackedScene" uid="uid://bwtjgbkexbjfc" path="res://Scenes/env.tscn" id="9_o0xnw"]
 [ext_resource type="PackedScene" uid="uid://i3yxdhfx28be" path="res://Assets/RotatingBarMode/rotating_bar.tscn" id="11_1oysp"]
 [ext_resource type="Script" path="res://Assets/RotatingBarMode/rotating_bar.gd" id="12_02msi"]
@@ -97,6 +102,7 @@ player_id = 3
 current_state = 5
 
 [node name="GameModeController" parent="." instance=ExtResource("2_x7cyb")]
+game_modes = Array[PackedScene]([ExtResource("4_6q8rh"), ExtResource("5_6r3js"), ExtResource("6_103np"), ExtResource("7_wjneq"), ExtResource("8_ov0wh")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.373678, 0)
