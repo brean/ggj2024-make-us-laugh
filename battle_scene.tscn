@@ -159,6 +159,7 @@ visible = false
 visible = false
 
 [node name="Env" parent="." instance=ExtResource("9_o0xnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79124, 0, 1.65908)
 
 [node name="BarPath" parent="." instance=ExtResource("11_1oysp")]
 transform = Transform3D(1, 0, 2.88505e-22, 0, 1, 0, 2.88505e-22, 0, 1, 0, 1, 0)
