@@ -3,15 +3,15 @@ extends Node
 var max = GameManager.max_points
 
 var p = GameManager.points_per_player
-var p_cur [0, 0, 0, 0]
+var p_cur = [0, 0, 0, 0]
 var fin_trigger = [false,false,false,false] 
 var fin : int = 0
 var anims = ["Death_B", "Use_Item", "Jump_Full_Short","Cheer"]
 @onready var chars = [
-		$"../Node3D/m_p1/Rogue_Hooded",
-		$"../Node3D/m_p2/Mage",
-		$"../Node3D/m_p3/Knight",
-		$"../Node3D/m_p4/Barbarian"]
+	$"../Node3D/m_p1/Rogue_Hooded",
+	$"../Node3D/m_p2/Mage",
+	$"../Node3D/m_p3/Knight",
+	$"../Node3D/m_p4/Barbarian"]
 @onready var labels = [
 	$"../MarginContainer/HBoxContainer/Label",
 	$"../MarginContainer/HBoxContainer/Label2",
@@ -21,8 +21,7 @@ var anims = ["Death_B", "Use_Item", "Jump_Full_Short","Cheer"]
 	$"../Node3D/m_p1",
 	$"../Node3D/m_p2",
 	$"../Node3D/m_p3",
-	$"../Node3D/m_p4"
-]
+	$"../Node3D/m_p4"]
 @onready var timer : Timer = $Timer
 
 var top = []
