@@ -2,8 +2,8 @@ extends Node3D
 class_name LevelTile
 
 var falling_speed = 2
-var start_x = 0
-var start_z = 0
+@export var start_x = 0
+@export var start_z = 0
 var max_falling_pos = -10
 var last_reset = Time.get_ticks_msec()
 var falling = false
