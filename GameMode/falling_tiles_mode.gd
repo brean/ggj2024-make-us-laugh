@@ -5,8 +5,16 @@ extends GameMode
 @export var punch_boost: float = 3
 
 var survivors = []
+var level
+
+enum TileFallingMode {
+	PLAYER_TOUCH 	= 0,
+	RANDOMLY 	= 1,
+}
 
 func start():
+	level = get_node('../../Level')
+	level.set_falling_mode(TileFallingMode.PLAYER_TOUCH)
 	survivors = Array(GameManager.players.keys())
 	for player in GameManager.players.values():
 		player.player_did_fall.connect(on_player_did_fall)
@@ -19,6 +27,7 @@ func on_player_did_fall(player_id: int):
 		on_timeout()
 
 func on_timeout():
+	level.set_falling_mode(TileFallingMode.RANDOMLY)
 	GameManager.flags["prevent_player_reset"] = false
 	
 	for player_id in survivors:

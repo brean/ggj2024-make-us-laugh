@@ -59,6 +59,7 @@ var char_model : CharacterModel
 signal got_hit # self id any enemy id that hit this player
 signal player_did_fall
 signal player_reset
+#signal player_touched_tile
 
 
 func _ready():
@@ -76,6 +77,23 @@ func _ready():
 
 	self.game_symbol.visible = false
 	$BlobShadow.set_color(self.player_id)
+	
+	self.contact_monitor = true
+	self.max_contacts_reported = 2
+
+
+func _on_body_entered(body):
+	if body.name == "Bar":
+		if not self.current_state == PlayerStates.DUMMY:
+			var impulse_dir = Vector3(randf(), 1, randf()) * OriginalBarKnockbackModifier
+			apply_central_impulse(impulse_dir)
+
+	var tile = body.get_node('..')
+	if not tile.has_node('tile_base'):
+		return
+	# player touched this tile!
+	tile.test_touch_tile()
+	#self.player_touched_tile.emit(tile)
 
 
 func _physics_process(_delta):
@@ -125,11 +143,6 @@ func _physics_process(_delta):
 	# Rotate model
 	self.rotate_model()
 
-func _on_body_entered(body):
-	if body.name == "Bar":
-		if not self.current_state == PlayerStates.DUMMY:
-			var impulse_dir = Vector3(randf(), 1, randf()) * OriginalBarKnockbackModifier
-			apply_central_impulse(impulse_dir)
 
 func rotate_model():
 	var look_direction = Vector2(self.linear_velocity.x, -self.linear_velocity.z)

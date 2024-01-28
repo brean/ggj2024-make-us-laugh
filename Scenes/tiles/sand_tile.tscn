@@ -1,16 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtg3f27twcmb1"]
+[gd_scene load_steps=4 format=3 uid="uid://cwj5mdw0qkf3f"]
 
-[ext_resource type="PackedScene" uid="uid://cwvie7lbrb2t4" path="res://Scenes/tiles/tile_base_sand_custom_layer.tscn" id="1_aaiq3"]
+[ext_resource type="PackedScene" uid="uid://baepg17nnrhgn" path="res://Assets/BaseTiles/tile_base_sand.glb" id="1_klyf2"]
+[ext_resource type="Script" path="res://Scripts/Level/LevelTile.gd" id="1_r6rb7"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eci5b"]
 points = PackedVector3Array(1, 0, 0.57, 0, 0, 1.15, -1, 0, 0.57, -1, 0, -0.57, 0, 0, -1.15, 1, 0, -0.57)
 
 [node name="SandTile" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00764787, -2.38419e-07, -0.000320315)
+script = ExtResource("1_r6rb7")
+
+[node name="tile_base" parent="." instance=ExtResource("1_klyf2")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_eci5b")
-
-[node name="tile_base_sand_custom_layer" parent="." instance=ExtResource("1_aaiq3")]
