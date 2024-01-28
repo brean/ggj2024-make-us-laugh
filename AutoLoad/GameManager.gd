@@ -34,7 +34,8 @@ func give_points(player_id: int, points: int):
 	points_per_player[player_id] = max(0, points_per_player[player_id] + points)
 	points_updated.emit(player_id, points_per_player[player_id])
 	
-	if points_per_player[player_id] >= 1:
-		get_tree().change_scene_to_file("res://Scenes/UI/end_menu.tscn")
+	if points_per_player[player_id] >= max_points:
+		self.emit_signal("end_game")
+		get_tree().call_deferred("change_scene_to_file", "res://Scenes/UI/end_menu.tscn")
 	
 	current_max = points_per_player.values().max()

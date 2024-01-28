@@ -43,7 +43,7 @@ func _process(delta):
 		elapsed_time += delta
 		
 		for i in range(4):
-			poles[i].position.y = lerp(-2.4, -2.4+(3.3/max)*p[i], clamp(elapsed_time, 0, (float(p[i])/10))/(float(p[i])/10))		
+			poles[i].position.y = lerp(-2.4, -2.4+(3.3/max)*p[i], clamp(elapsed_time, 0, (float(p[i]+1)/10))/(float(p[i]+1)/10))		
 	
 	if(counter >= max):
 		$"../MarginContainer/Button".set_visible(true)

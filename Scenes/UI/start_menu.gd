@@ -20,7 +20,6 @@ func _ready():
 	$Barbarian.set_visible(false)
 	
 func _process(delta):
-	print(MultiplayerInput.handled_devices)
 	if MultiplayerInput.is_action_just_pressed(0, "ui_left"):
 		if(focused_button == point_button):
 			focused_button = play_button

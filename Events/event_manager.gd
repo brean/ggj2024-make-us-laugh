@@ -102,7 +102,7 @@ func stop_events():
 	self.event_timer.stop()
 	self.label.visible = false
 	for e_idx in self.event_idx:
-		self.EventNodes[self.e_idx].deactivate_event()
+		self.EventNodes[e_idx].deactivate_event()
 
 
 func to_idle():
