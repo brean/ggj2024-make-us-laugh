@@ -21,7 +21,7 @@ stream_1/stream = ExtResource("5_ylb4t")
 stream_1/weight = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wy11b"]
-radius = 0.7
+radius = 1.2
 
 [node name="Punch" instance=ExtResource("1_lp11l")]
 script = ExtResource("2_p86ai")
@@ -38,6 +38,7 @@ stream = SubResource("AudioStreamRandomizer_14ikx")
 volume_db = 10.0
 
 [node name="Hitbox" parent="." index="3" instance=ExtResource("2_o7ffo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.479808)
 monitoring = false
 monitorable = false
 knockback_strength = 400
