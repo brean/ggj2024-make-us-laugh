@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://duinl08ler8x7"]
+[gd_scene load_steps=18 format=3 uid="uid://b645176mbo6jp"]
 
 [ext_resource type="Theme" uid="uid://b14angt2f0dy2" path="res://Scenes/UI/theme.tres" id="1_ewuga"]
 [ext_resource type="Script" path="res://Scenes/UI/title_screen.gd" id="1_k8l86"]
@@ -127,6 +127,87 @@ _data = {
 "RESET": SubResource("Animation_0xkd7")
 }
 
+[sub_resource type="Animation" id="Animation_mji5c"]
+resource_name = "Idle"
+length = 9.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(550, 220), Vector2(500, 210), Vector2(520, 200), Vector2(560, 180), Vector2(620, 180), Vector2(650, 230), Vector2(640, 280), Vector2(600, 310), Vector2(550, 290)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleText:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, 0.0349066, -0.0174533, -0.0523599, -0.0872665, -0.10472, 0.0349066, 0.10472]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleText/Label:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.313726, 0.627451, 0.933333, 1), Color(0.427451, 0.698039, 0, 1), Color(0.929412, 0.423529, 0, 1), Color(0.654902, 0.403922, 0.898039, 1), Color(0.329412, 0.635294, 0.611765, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q0h1o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(550, 220)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleText:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleText/Label:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.313726, 0.627451, 0.933333, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_qlmc4"]
 resource_name = "Start"
 length = 3.0
@@ -170,87 +251,6 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_q0h1o"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TitleText:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(550, 220)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TitleText:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TitleText/Label:theme_override_colors/font_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.313726, 0.627451, 0.933333, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_mji5c"]
-resource_name = "Idle"
-length = 9.0
-loop_mode = 1
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TitleText:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(550, 220), Vector2(500, 210), Vector2(520, 200), Vector2(560, 180), Vector2(620, 180), Vector2(650, 230), Vector2(640, 280), Vector2(600, 310), Vector2(550, 290)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TitleText:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0872665, 0.0349066, -0.0174533, -0.0523599, -0.0872665, -0.10472, 0.0349066, 0.10472]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TitleText/Label:theme_override_colors/font_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 2, 4, 6, 8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.313726, 0.627451, 0.933333, 1), Color(0.427451, 0.698039, 0, 1), Color(0.929412, 0.423529, 0, 1), Color(0.654902, 0.403922, 0.898039, 1), Color(0.329412, 0.635294, 0.611765, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c8qyc"]
 _data = {
 "Idle": SubResource("Animation_mji5c"),
@@ -287,7 +287,7 @@ theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_shadow_color = Color(0.517647, 0.247059, 0, 1)
 theme_override_colors/font_outline_color = Color(0.839216, 0.439216, 0.0509804, 1)
 theme_override_font_sizes/font_size = 40
-text = "-- Press Button -- "
+text = "-- Press button on main controller or keyboard -- "
 horizontal_alignment = 1
 
 [node name="TitleText" type="Node2D" parent="."]
