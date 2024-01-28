@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://clower2u7cw10"]
+[gd_scene load_steps=16 format=3 uid="uid://clower2u7cw10"]
 
 [ext_resource type="Theme" uid="uid://b14angt2f0dy2" path="res://Scenes/UI/theme.tres" id="1_6setb"]
 [ext_resource type="Script" path="res://Scenes/UI/start_menu.gd" id="1_6u6f0"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://g3wn08pp0pt3" path="res://Player/Models/rogue_hooded.tscn" id="6_7d25h"]
 [ext_resource type="PackedScene" uid="uid://c7w44x7vfm1tf" path="res://Player/Models/barbarian.tscn" id="6_k36vc"]
 [ext_resource type="PackedScene" uid="uid://5puqrljgmpcm" path="res://Player/Models/knight.tscn" id="7_ebao4"]
+[ext_resource type="Texture2D" uid="uid://4vneg0hv0aw4" path="res://Scenes/UI/attack_pop_up.png" id="8_grwk7"]
+[ext_resource type="Texture2D" uid="uid://vqc17s7efsss" path="res://Scenes/UI/jump_pop_up.png" id="9_x6sh5"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7fwnn"]
 
@@ -275,6 +277,64 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2, -2.4, 0)
 
 [node name="Knight" parent="." instance=ExtResource("7_ebao4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, -2.4, 0)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(893, 124)
+
+[node name="Button" type="Button" parent="Node2D"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("1_6setb")
+text = "              
+                 
+                           "
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(50, 32)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_grwk7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
+position = Vector2(50, 100)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_x6sh5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Node2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_6setb")
+
+[node name="MarginContainer" type="MarginContainer" parent="Node2D/HBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/HBoxContainer"]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Node2D/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Node2D/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Punch"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Node2D/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Node2D/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Jump"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
