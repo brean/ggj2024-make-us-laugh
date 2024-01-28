@@ -3,31 +3,40 @@ extends Node
 var max = GameManager.max_points
 
 var p = GameManager.points_per_player
-var p_cur
+var p_cur [0, 0, 0, 0]
 var fin_trigger = [false,false,false,false] 
 var fin : int = 0
-var chars
 var anims = ["Death_B", "Use_Item", "Jump_Full_Short","Cheer"]
-var labels
-var poles
+@onready var chars = [
+		$"../Node3D/m_p1/Rogue_Hooded",
+		$"../Node3D/m_p2/Mage",
+		$"../Node3D/m_p3/Knight",
+		$"../Node3D/m_p4/Barbarian"]
+@onready var labels = [
+	$"../MarginContainer/HBoxContainer/Label",
+	$"../MarginContainer/HBoxContainer/Label2",
+	$"../MarginContainer/HBoxContainer/Label3",
+	$"../MarginContainer/HBoxContainer/Label4"]
+@onready var poles = [
+	$"../Node3D/m_p1",
+	$"../Node3D/m_p2",
+	$"../Node3D/m_p3",
+	$"../Node3D/m_p4"
+]
+@onready var timer : Timer = $Timer
+
 var top = []
 var winner
 
 var played = [false, false, false, false]
 
 var counter : int = 0
-var timer : Timer
 
 var elapsed_time : float = 0
 
 
 func _ready():
-	p_cur = [0,0,0,0]
 	top.resize(4)
-	chars = [$"../Node3D/m_p1/Rogue_Hooded",$"../Node3D/m_p2/Mage",$"../Node3D/m_p3/Knight",$"../Node3D/m_p4/Barbarian"] 
-	labels = [$"../MarginContainer/HBoxContainer/Label", $"../MarginContainer/HBoxContainer/Label2", $"../MarginContainer/HBoxContainer/Label3", $"../MarginContainer/HBoxContainer/Label4"]
-	poles = [$"../Node3D/m_p1", $"../Node3D/m_p2", $"../Node3D/m_p3", $"../Node3D/m_p4"]
-	timer = $Timer
 	timer.start(3)
 	timer.wait_time = 0.1
 
@@ -41,7 +50,6 @@ func _process(delta):
 	_increase()
 	if(counter > 0):
 		elapsed_time += delta
-		
 		for i in range(4):
 			poles[i].position.y = lerp(-2.4, -2.4+(3.3/max)*p[i], clamp(elapsed_time, 0, (float(p[i]+1)/10))/(float(p[i]+1)/10))		
 	
@@ -65,7 +73,6 @@ func _increase():
 				fin_trigger[i] = true;
 				if(fin == 4): 
 					fin = -1
-			
 		if(top[0] == chars[i]):
 			if(!played[0]):
 				chars[i].animation_player.play(anims[0])
