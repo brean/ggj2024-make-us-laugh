@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=3 uid="uid://ce0ky55tw1t35"]
+
+[ext_resource type="Script" path="res://GameMode/Collectables/point_coin.gd" id="1_m0tam"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3yn0"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.819608, 0.54902, 0.129412, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_17w4c"]
+height = 0.2
+radial_segments = 32
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_flrwh"]
+radius = 0.737801
+
+[sub_resource type="Animation" id="Animation_32kbi"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0), Vector3(0, 0.9, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0), Vector3(1.5708, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iecx2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_en4be"]
+_data = {
+"Idle": SubResource("Animation_32kbi"),
+"RESET": SubResource("Animation_iecx2")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cj0d3"]
+size = Vector3(0.350317, 0.5, 0.304395)
+
+[node name="PointCoin" type="CharacterBody3D"]
+collision_layer = 0
+script = ExtResource("1_m0tam")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.7, 0)
+material_override = SubResource("StandardMaterial3D_g3yn0")
+mesh = SubResource("CylinderMesh_17w4c")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.678348, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0426924, 0)
+shape = SubResource("SphereShape3D_flrwh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_en4be")
+}
+autoplay = "Idle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00452881, 0.257463, 5.823e-05)
+shape = SubResource("BoxShape3D_cj0d3")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

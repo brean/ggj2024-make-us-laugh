@@ -57,7 +57,8 @@ var char_model : CharacterModel
 
 
 signal got_hit # self id any enemy id that hit this player
-signal player_did_fall 
+signal player_did_fall
+signal player_reset
 
 
 func _ready():
@@ -79,13 +80,14 @@ func _ready():
 
 func _physics_process(_delta):
 	if self.global_position.y < GameManager.ResetHeight:
-		if not GameManager.flags["prevent_player_reset"]:
-			self.reset_player()
-		
 		if not surpress_player_fall_signal:
 			self.emit_signal("player_did_fall", self.player_id)
 			surpress_player_fall_signal = true
 			falling_in_water_sound.play()
+		
+		if not GameManager.flags["prevent_player_reset"]:
+			# make sure we send the reset-player signal AFTER the player-did-fall signal
+			self.reset_player()
 	else:
 		surpress_player_fall_signal = false
 	
@@ -149,6 +151,7 @@ func reset_player():
 	GameManager.give_points(self.player_id, -1)
 	self.global_position = Vector3(randf_range(-5, 5), 5.0, randf_range(-5, 5))
 	self.linear_velocity = Vector3(0, 0, 0)
+	self.emit_signal("player_reset", self.player_id)
 
 
 func change_state(new_state):

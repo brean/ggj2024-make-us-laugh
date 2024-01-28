@@ -28,5 +28,5 @@ func _ready():
 		multi_mesh.set_instance_transform(i, _transform)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
