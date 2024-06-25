@@ -13,6 +13,8 @@ func _physics_process(delta):
 
 
 func _on_area_3d_body_entered(body):
+	if not body.name.begins_with('Player'):
+		return
 	GameManager.give_points(body.player_id, 1)
 	var particles = self.CoinParticle.instantiate()
 	self.get_parent().add_child(particles)
