@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ciu6jipe5moa6"]
+[gd_scene load_steps=8 format=3 uid="uid://ciu6jipe5moa6"]
 
 [ext_resource type="Script" path="res://Scripts/Level/LevelTile.gd" id="1_mwa0f"]
 [ext_resource type="ArrayMesh" uid="uid://cw0vxfuumcw53" path="res://Assets/grass/grass.res" id="2_2dsv4"]
+[ext_resource type="Material" uid="uid://d4hrjcdrnand3" path="res://Shader/grass_material.tres" id="2_d4tci"]
 [ext_resource type="Script" path="res://Scripts/GrassSpawn.gd" id="3_oppea"]
 [ext_resource type="PackedScene" uid="uid://swpxeo0rmwfy" path="res://Assets/BaseTiles/tile_base.glb" id="3_tcgta"]
 
@@ -23,6 +24,7 @@ script = ExtResource("1_mwa0f")
 shape = SubResource("ConvexPolygonShape3D_agecr")
 
 [node name="Grass" type="MultiMeshInstance3D" parent="."]
+material_override = ExtResource("2_d4tci")
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_idd3t")
 script = ExtResource("3_oppea")
